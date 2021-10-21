@@ -14,18 +14,23 @@ on:
   workflow_dispatch:
 
 jobs:
+  setup:
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.0.x'
+        include-prerlease: true
+
   build:
     runs-on: windows-latest
+    needs: setup
 
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '5.0.x'
-          include-prerelease: true
-
       - name: Test with dotnet
         run: dotnet test
 
