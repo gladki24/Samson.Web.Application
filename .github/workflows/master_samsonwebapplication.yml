@@ -1,11 +1,7 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
-name: Build, run unit tests and deploy SamsonWebApplication to Azure
 
 
-# On push to main or master branches run jobs
-# workflow_dispatch acitvates manual running a workflow button
+name: Continous Integration for Samson.Web.Application
+
 on:
   push:
     branches:
