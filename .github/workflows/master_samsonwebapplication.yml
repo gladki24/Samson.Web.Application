@@ -26,6 +26,9 @@ jobs:
           dotnet-version: '5.0.x'
           include-prerelease: true
 
+      - name: Test with dotnet
+        run: dotnet test
+
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
