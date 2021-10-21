@@ -14,30 +14,25 @@ on:
   workflow_dispatch:
 
 jobs:
-  setup:
-    runs-on: windows-latest
-    
-    steps:
-    - uses: actions/checkout@v2
-    
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '5.0.x'
-        include-prerlease: true
-
   build:
     runs-on: windows-latest
-    needs: setup
 
     steps:
+      - uses: actions/checkout@v2
+    
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0.x'
+          include-prerelease: true
+    
       - name: Test with dotnet
         run: dotnet test
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
-      - name: dotnet publish
+      - name: Publish with dotnet
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/dist
 
       - name: Upload artifact for deployment job
@@ -45,15 +40,6 @@ jobs:
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/dist
-  
-#   test:
-#     runs-on: windows-latest
-#     needs: build
-    
-#     steps:
-#       - name: Run Unit Tests
-#       - uses: actions/checkout@v2
-#       - run: dotnet test
   
   deploy:
     runs-on: windows-latest
