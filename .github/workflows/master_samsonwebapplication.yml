@@ -39,9 +39,8 @@ jobs:
     needs: build
     
     steps:
-      - uses: actions/checkout@v2
-      
       - name: Run Unit Tests
+      - uses: actions/checkout@v2
       - run: dotnet test
   
   deploy:
