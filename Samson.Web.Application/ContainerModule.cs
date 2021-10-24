@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using MediatR.Extensions.Autofac.DependencyInjection;
 
 namespace Samson.Web.Application
 {
@@ -6,7 +7,7 @@ namespace Samson.Web.Application
     {
         protected override void Load(ContainerBuilder builder)
         {
-            // Registration components logic
+            builder.RegisterMediatR(typeof(Program).Assembly);
         }
     }
 }
