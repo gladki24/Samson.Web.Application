@@ -1,12 +1,12 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
 
-
-name: Continous Integration for Samson.Web.Application
+name: Build and deploy ASP.Net Core app to Azure Web App - SamsonWebApplication
 
 on:
   push:
     branches:
       - master
-      - main
   workflow_dispatch:
 
 jobs:
@@ -15,28 +15,25 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-    
-      - name: Setup .NET Core
+
+      - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '5.0.x'
           include-prerelease: true
-    
-      - name: Test with dotnet
-        run: dotnet test
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
-      - name: Publish with dotnet
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/dist
+      - name: dotnet publish
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: .net-app
-          path: ${{env.DOTNET_ROOT}}/dist
-  
+          path: ${{env.DOTNET_ROOT}}/myapp
+
   deploy:
     runs-on: windows-latest
     needs: build
@@ -56,5 +53,5 @@ jobs:
         with:
           app-name: 'SamsonWebApplication'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_286242F8D1A54231A89F6ED16B1C42CB }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_523225D210414BBDAF631EF0D2EE3BA5 }}
           package: .
