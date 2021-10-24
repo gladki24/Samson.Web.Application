@@ -1,15 +1,10 @@
+using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Samson.Web.Application
 {
@@ -51,6 +46,15 @@ namespace Samson.Web.Application
             {
                 endpoints.MapControllers();
             });
+        }
+
+        /// <summary>
+        /// Allow to access to Autofac ContainerBuilder to register components in DI container
+        /// </summary>
+        /// <param name="builder">Used to build IContainer from component registration.</param>
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule<ContainerModule>();
         }
     }
 }
