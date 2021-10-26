@@ -1,7 +1,8 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using Autofac;
+using Samson.Web.Application.Infrastructure.Configuration;
+using Microsoft.Extensions.Configuration;
+using Samson.Web.Application.Infrastructure.Attributes;
 
 namespace Samson.Web.Application.Infrastructure.Extensions
 {
@@ -47,6 +48,14 @@ namespace Samson.Web.Application.Infrastructure.Extensions
                 .RegisterAssemblyTypes(assembly)
                 .Where(type => type.IsReadModel())
                 .AsImplementedInterfaces();
+        }
+
+        public static void RegisterDatabaseConfiguration(this ContainerBuilder container, IConfiguration configuration)
+        {
+            container
+                .Register(c => new DatabaseConfiguration(configuration["ConnectionString:MongoDB:Atlas"]))
+                .As<IDatabaseConfiguration>()
+                .SingleInstance();
         }
     }
 }
