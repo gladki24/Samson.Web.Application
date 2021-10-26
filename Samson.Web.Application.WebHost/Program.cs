@@ -1,8 +1,9 @@
+using System.IO;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Samson.Web.Application
+namespace Samson.Web.Application.WebHost
 {
     public class Program
     {
@@ -16,6 +17,7 @@ namespace Samson.Web.Application
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.UseContentRoot(Directory.GetCurrentDirectory());
                     webBuilder.UseStartup<Startup>();
                 });
     }

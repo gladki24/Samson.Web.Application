@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Samson.Web.Application.Infrastructure\Samson.Web.Application.Infrastructure.csproj" />
+    <ProjectReference Include="..\Samson.Web.Models\Samson.Web.Application.Models.csproj" />
+  </ItemGroup>
+
+</Project>

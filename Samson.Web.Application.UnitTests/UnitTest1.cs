@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace Samson.Web.Application.Specs
+namespace Samson.Web.Application.UnitTests
 {
     public class Tests
     {
