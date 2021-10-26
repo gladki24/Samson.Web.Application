@@ -50,7 +50,7 @@ namespace Samson.Web.Application.WebHost
         /// <param name="builder">Used to build IContainer from component registration.</param>
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            builder.RegisterModule<MainModule>();
+            builder.RegisterModule(new MainModule(Configuration));
         }
 
         /// <summary>

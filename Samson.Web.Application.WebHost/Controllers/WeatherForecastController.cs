@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Samson.Web.Application.Infrastructure.Attributes;
 
 namespace Samson.Web.Application.WebHost.Controllers
 {
@@ -16,10 +18,15 @@ namespace Samson.Web.Application.WebHost.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IDatabaseConfiguration _configuration;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(
+            ILogger<WeatherForecastController> logger,
+            IDatabaseConfiguration configuration
+            )
         {
             _logger = logger;
+            _configuration = configuration;
         }
 
         [HttpGet]
@@ -33,6 +40,12 @@ namespace Samson.Web.Application.WebHost.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [HttpGet("Secret")]
+        public IActionResult Secret()
+        {
+            return Ok(_configuration.ConnectionString);
         }
     }
 }
