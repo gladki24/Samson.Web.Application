@@ -1,6 +1,6 @@
 using System;
 
-namespace Samson.Web.Application
+namespace Samson.Web.Application.WebHost
 {
     public class WeatherForecast
     {

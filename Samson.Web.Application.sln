@@ -3,9 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samson.Web.Application", "Samson.Web.Application\Samson.Web.Application.csproj", "{CC4A5DC7-CBB2-47B5-B408-A5CAD9333AA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samson.Web.Application.WebHost", "Samson.Web.Application.WebHost\Samson.Web.Application.WebHost.csproj", "{CC4A5DC7-CBB2-47B5-B408-A5CAD9333AA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samson.Web.Application.UnitTests", "Samson.Web.Application.Specs\Samson.Web.Application.UnitTests.csproj", "{29B43802-B0C0-44D9-AE71-9E6B33E2AF91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samson.Web.Application.UnitTests", "Samson.Web.Application.UnitTests\Samson.Web.Application.UnitTests.csproj", "{29B43802-B0C0-44D9-AE71-9E6B33E2AF91}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samson.Web.Application.Api", "Samson.Web.Application.Api\Samson.Web.Application.Api.csproj", "{E6EB73B2-16C6-48CD-B55E-DCFE441F9640}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samson.Web.Application.Models", "Samson.Web.Models\Samson.Web.Application.Models.csproj", "{3FF9CE89-9C93-46C3-ACA8-FBB20E60D349}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samson.Web.Application.Infrastructure", "Samson.Web.Application.Infrastructure\Samson.Web.Application.Infrastructure.csproj", "{B79E52D5-E09A-4227-8072-4E946BF315B3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samson.Web.Application.ReadModels", "Samson.Web.Application.ReadModels\Samson.Web.Application.ReadModels.csproj", "{4D18FE13-1172-412C-933C-577C2847BB57}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samson.Web.Application.Persistence", "Samson.Web.Application.Persistence\Samson.Web.Application.Persistence.csproj", "{75B20A09-C42D-4923-A2BA-CBE9991DBFB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samson.Web.Application", "Samson.Web.Application\Samson.Web.Application.csproj", "{54F50125-47C4-48D7-8996-D7B715799308}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +33,30 @@ Global
 		{29B43802-B0C0-44D9-AE71-9E6B33E2AF91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29B43802-B0C0-44D9-AE71-9E6B33E2AF91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29B43802-B0C0-44D9-AE71-9E6B33E2AF91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6EB73B2-16C6-48CD-B55E-DCFE441F9640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6EB73B2-16C6-48CD-B55E-DCFE441F9640}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6EB73B2-16C6-48CD-B55E-DCFE441F9640}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6EB73B2-16C6-48CD-B55E-DCFE441F9640}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FF9CE89-9C93-46C3-ACA8-FBB20E60D349}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FF9CE89-9C93-46C3-ACA8-FBB20E60D349}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FF9CE89-9C93-46C3-ACA8-FBB20E60D349}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FF9CE89-9C93-46C3-ACA8-FBB20E60D349}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B79E52D5-E09A-4227-8072-4E946BF315B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B79E52D5-E09A-4227-8072-4E946BF315B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B79E52D5-E09A-4227-8072-4E946BF315B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B79E52D5-E09A-4227-8072-4E946BF315B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D18FE13-1172-412C-933C-577C2847BB57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D18FE13-1172-412C-933C-577C2847BB57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D18FE13-1172-412C-933C-577C2847BB57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D18FE13-1172-412C-933C-577C2847BB57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75B20A09-C42D-4923-A2BA-CBE9991DBFB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75B20A09-C42D-4923-A2BA-CBE9991DBFB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75B20A09-C42D-4923-A2BA-CBE9991DBFB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75B20A09-C42D-4923-A2BA-CBE9991DBFB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54F50125-47C4-48D7-8996-D7B715799308}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54F50125-47C4-48D7-8996-D7B715799308}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54F50125-47C4-48D7-8996-D7B715799308}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54F50125-47C4-48D7-8996-D7B715799308}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
