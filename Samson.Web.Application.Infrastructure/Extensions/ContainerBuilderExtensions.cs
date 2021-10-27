@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Data;
+using System.Reflection;
 using Autofac;
 using Samson.Web.Application.Infrastructure.Configuration;
 using Microsoft.Extensions.Configuration;
@@ -50,10 +52,17 @@ namespace Samson.Web.Application.Infrastructure.Extensions
                 .AsImplementedInterfaces();
         }
 
-        public static void RegisterDatabaseConfiguration(this ContainerBuilder container, IConfiguration configuration)
+        public static void RegisterDatabaseConfiguration(this ContainerBuilder container)
         {
+            var mongodDbAtlasConnectionString = Environment.GetEnvironmentVariable("ConnectionString:MongoDB:Atlas");
+
+            if (mongodDbAtlasConnectionString.IsNullOrEmpty())
+            {
+                throw new NoNullAllowedException();
+            }
+
             container
-                .Register(c => new DatabaseConfiguration(configuration["ConnectionString:MongoDB:Atlas"]))
+                .Register(c => new DatabaseConfiguration(mongodDbAtlasConnectionString))
                 .As<IDatabaseConfiguration>()
                 .SingleInstance();
         }
