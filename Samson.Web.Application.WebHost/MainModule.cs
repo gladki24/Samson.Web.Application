@@ -1,8 +1,8 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using AutoMapper.Contrib.Autofac.DependencyInjection;
 using MediatR.Extensions.Autofac.DependencyInjection;
 using Samson.Web.Application.Infrastructure.Extensions;
+using Samson.Web.Application.Persistence;
 using Samson.Web.Application.ReadModels;
 
 namespace Samson.Web.Application.WebHost
@@ -23,6 +23,7 @@ namespace Samson.Web.Application.WebHost
             builder.RegisterAutoMapper(typeof(Program).Assembly);
             builder.RegisterModule<ApplicationContainer>();
             builder.RegisterModule<ReadModelContainer>();
+            builder.RegisterModule<PersistenceContainer>();
         }
     }
 }

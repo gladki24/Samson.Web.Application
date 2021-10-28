@@ -60,7 +60,24 @@ namespace Samson.Web.Application.UnitTests
             foreach (var commandHandler in classesEndingInCommandHandler)
             {
                 var hasCommandHandlerAttribute = commandHandler.IsDefined(typeof(ReadModelAttribute), false);
-                Assert.True(hasCommandHandlerAttribute, "Command handler has to be annotated by CommandHandlerAttribute");
+                Assert.True(hasCommandHandlerAttribute,
+                    "Command handler has to be annotated by CommandHandlerAttribute");
+            }
+        }
+
+        [Test]
+        public void Repositories_AreAnnotatedByAttribute_Repository()
+        {
+            var classEndingInRepository = from type in types
+                where !type.FullName.IsNullOrEmpty()
+                where type.FullName.EndsWith("Repository")
+                select type;
+
+            foreach (var repository in classEndingInRepository)
+            {
+                var hasRepositoryAttribute = repository.IsDefined(typeof(RepositoryAttribute), false);
+                Assert.True(hasRepositoryAttribute,
+                    "Repository has to be annotated by RepositoryAttribute");
             }
         }
     }
