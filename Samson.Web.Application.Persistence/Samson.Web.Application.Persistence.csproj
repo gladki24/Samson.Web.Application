@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -6,10 +6,12 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="6.3.0" />
+    <PackageReference Include="AutoMapper.Contrib.Autofac.DependencyInjection" Version="5.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Samson.Web.Application.Infrastructure\Samson.Web.Application.Infrastructure.csproj" />
+    <ProjectReference Include="..\Samson.Web.Models\Samson.Web.Application.Models.csproj" />
   </ItemGroup>
 
 </Project>

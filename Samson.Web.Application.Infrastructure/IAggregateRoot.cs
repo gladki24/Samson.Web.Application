@@ -2,8 +2,14 @@
 
 namespace Samson.Web.Application.Infrastructure
 {
+    /// <summary>
+    /// Represent root of aggregate
+    /// </summary>
     public interface IAggregateRoot
     {
-        ObjectId Id { get; set; }
+        /// <summary>
+        /// Key of aggregate
+        /// </summary>
+        ObjectId Id { get; }
     }
 }

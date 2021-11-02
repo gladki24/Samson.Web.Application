@@ -6,7 +6,7 @@ namespace Samson.Web.Application.Infrastructure.Attributes
     /// Attribute to mark command handlers. Provides registrations in DI container
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
-    public class CommandHandlerAttribute : System.Attribute
+    public class CommandHandlerAttribute : Attribute
     {
     }
 }

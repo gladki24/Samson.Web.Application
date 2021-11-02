@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using AutoMapper.Contrib.Autofac.DependencyInjection;
 using Samson.Web.Application.Infrastructure.Extensions;
 
 namespace Samson.Web.Application.Persistence
@@ -14,7 +15,8 @@ namespace Samson.Web.Application.Persistence
         /// <param name="builder">Target container builder</param>
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterRepositories();
+            builder.RegisterAutoMapper(ThisAssembly);
+            builder.RegisterRepositories(ThisAssembly);
         }
     }
 }

@@ -44,5 +44,21 @@ namespace Samson.Web.Application.Infrastructure.Extensions
         /// <returns>Type is able to register as repository in DI container</returns>
         public static bool IsRepository(this Type type) =>
             type.IsRegistrable() && type.IsDefined(typeof(RepositoryAttribute), false);
+
+        /// <summary>
+        /// Specifies is Type able to register as service in DI container
+        /// </summary>
+        /// <param name="type">Standard .NET type</param>
+        /// <returns>Type is able to register as service in DI container</returns>
+        public static bool IsService(this Type type) =>
+            type.IsRegistrable() && type.IsDefined(typeof(ServiceAttribute), false);
+
+        /// <summary>
+        /// Specifies is Type able to register as factory in DI container
+        /// </summary>
+        /// <param name="type">Standard .NET type</param>
+        /// <returns>Type is able to register as factory in DI container</returns>
+        public static bool IsFactory(this Type type) =>
+            type.IsRegistrable() && type.IsDefined(typeof(FactoryAttribute), false);
     }
 }

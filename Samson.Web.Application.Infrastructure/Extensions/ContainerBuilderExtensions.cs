@@ -16,32 +16,60 @@ namespace Samson.Web.Application.Infrastructure.Extensions
         /// Register all classes annotated as QueryHandler in DI container
         /// </summary>
         /// <param name="container">Target DI container</param>
-        public static void RegisterQueryHandlers(this ContainerBuilder container)
+        /// <param name="assembly">Source assembly to find types</param>
+        public static void RegisterQueryHandlers(this ContainerBuilder container, Assembly assembly)
         {
-            RegisterAssemblyTypesInContainerAsImplementedInterfaces(container, type => type.IsQueryHandler());
+            RegisterAssemblyTypesInContainerAsImplementedInterfaces(container, assembly, type => type.IsQueryHandler());
         }
 
         /// <summary>
         /// Register all classes annotated as CommandHandler in DI container
         /// </summary>
         /// <param name="container">Target DI container</param>
-        public static void RegisterCommandHandlers(this ContainerBuilder container)
+        /// <param name="assembly">Source assembly to find types</param>
+        public static void RegisterCommandHandlers(this ContainerBuilder container, Assembly assembly)
         {
-            RegisterAssemblyTypesInContainerAsImplementedInterfaces(container, type => type.IsCommandHandler());
+            RegisterAssemblyTypesInContainerAsImplementedInterfaces(container, assembly, type => type.IsCommandHandler());
         }
 
         /// <summary>
         /// Register all classes annotated as ReadModel in DI container
         /// </summary>
         /// <param name="container">Target DI container</param>
-        public static void RegisterReadModels(this ContainerBuilder container)
+        /// <param name="assembly">Source assembly to find types</param>
+        public static void RegisterReadModels(this ContainerBuilder container, Assembly assembly)
         {
-            RegisterAssemblyTypesInContainerAsImplementedInterfaces(container, type => type.IsReadModel());
+            RegisterAssemblyTypesInContainerAsImplementedInterfaces(container, assembly, type => type.IsReadModel());
         }
 
-        public static void RegisterRepositories(this ContainerBuilder container)
+        /// <summary>
+        /// Register all repositories annotated as Repository in DI container
+        /// </summary>
+        /// <param name="container">Target DI container</param>
+        /// <param name="assembly">Source assembly to find types</param>
+        public static void RegisterRepositories(this ContainerBuilder container, Assembly assembly)
         {
-            RegisterAssemblyTypesInContainerAsImplementedInterfaces(container, type => type.IsRepository());
+            RegisterAssemblyTypesInContainerAsImplementedInterfaces(container, assembly, type => type.IsRepository());
+        }
+
+        /// <summary>
+        /// Register all application services as Service in DI container
+        /// </summary>
+        /// <param name="container">Target DI container</param>
+        /// <param name="assembly">Source assembly to find types</param>
+        public static void RegisterServices(this ContainerBuilder container, Assembly assembly)
+        {
+            RegisterAssemblyTypesInContainerAsImplementedInterfaces(container, assembly, type => type.IsService());;
+        }
+
+        /// <summary>
+        /// Register all factories as Factory in DI container
+        /// </summary>
+        /// <param name="container">Target DI container</param>
+        /// <param name="assembly">Source assembly to find types</param>
+        public static void RegisterFactories(this ContainerBuilder container, Assembly assembly)
+        {
+            RegisterAssemblyTypesInContainerAsImplementedInterfaces(container, assembly, type => type.IsFactory());
         }
 
         /// <summary>
@@ -68,21 +96,13 @@ namespace Samson.Web.Application.Infrastructure.Extensions
         /// </summary>
         /// <param name="container">Target DI container</param>
         /// <param name="filter">Specifies which types should be registered</param>
-        private static void RegisterAssemblyTypesInContainerAsImplementedInterfaces(ContainerBuilder container, Func<Type, bool> filter)
+        /// <param name="assembly">Assembly to find types</param>
+        private static void RegisterAssemblyTypesInContainerAsImplementedInterfaces(ContainerBuilder container, Assembly assembly, Func<Type, bool> filter)
         {
-            var assembly = GetAssembly();
-
             container
                 .RegisterAssemblyTypes(assembly)
                 .Where(filter)
                 .AsImplementedInterfaces();
         }
-
-        /// <summary>
-        /// Get calling assemblies
-        /// </summary>
-        /// <returns>Assemblies from calling .NET project</returns>
-        private static Assembly GetAssembly()
-            => Assembly.GetCallingAssembly();
     }
 }

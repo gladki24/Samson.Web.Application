@@ -15,7 +15,7 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "ConnectionString:MongoDB:Atlas": "Test Value Local"
+        "ConnectionString:MongoDB:Atlas": "mongodb://localhost:27017/?readPreference=primary&ssl=false"
       }
     },
     "Samson.Web.Application": {
