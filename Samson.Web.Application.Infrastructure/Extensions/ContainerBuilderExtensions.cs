@@ -39,9 +39,31 @@ namespace Samson.Web.Application.Infrastructure.Extensions
             RegisterAssemblyTypesInContainerAsImplementedInterfaces(container, type => type.IsReadModel());
         }
 
+        /// <summary>
+        /// Register all repositories annotated as Repository in DI container
+        /// </summary>
+        /// <param name="container">Target DI container</param>
         public static void RegisterRepositories(this ContainerBuilder container)
         {
             RegisterAssemblyTypesInContainerAsImplementedInterfaces(container, type => type.IsRepository());
+        }
+
+        /// <summary>
+        /// Register all application services as Service in DI container
+        /// </summary>
+        /// <param name="container">Target DI container</param>
+        public static void RegisterServices(this ContainerBuilder container)
+        {
+            RegisterAssemblyTypesInContainerAsImplementedInterfaces(container, type => type.IsService());;
+        }
+
+        /// <summary>
+        /// Register all factories as Factory in DI container
+        /// </summary>
+        /// <param name="container"></param>
+        public static void RegisterFactories(this ContainerBuilder container)
+        {
+            RegisterAssemblyTypesInContainerAsImplementedInterfaces(container, type => type.IsFactory());
         }
 
         /// <summary>

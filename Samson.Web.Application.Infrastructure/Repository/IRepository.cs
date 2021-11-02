@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using MongoDB.Bson;
 
 namespace Samson.Web.Application.Infrastructure.Repository
@@ -6,7 +7,7 @@ namespace Samson.Web.Application.Infrastructure.Repository
     /// <summary>
     /// Generic Repository to communicate with data source
     /// </summary>
-    /// <typeparam name="TModel">Type of model stored in data source</typeparam>
+    /// <typeparam name="TModel">Type of model mapped to entity in data source</typeparam>
     public interface IRepository<TModel> where TModel : IAggregateRoot
     {
         /// <summary>
@@ -27,25 +28,25 @@ namespace Samson.Web.Application.Infrastructure.Repository
         /// </summary>
         /// <param name="model">Model data structure</param>
         /// <returns>Reference to stored model in data source</returns>
-        public TModel Create(TModel model);
+        public Task Create(TModel model);
 
         /// <summary>
         /// Update model in data source find by model id
         /// </summary>
         /// <param name="id">Id of model to update</param>
         /// <param name="model">Updated data to persist in data source</param>
-        public void Update(ObjectId id, TModel model);
+        public Task Update(ObjectId id, TModel model);
 
         /// <summary>
         /// Remove model from data source by entire model
         /// </summary>
         /// <param name="model">Entire model to find object in data source</param>
-        public void Remove(TModel model);
+        public Task Remove(TModel model);
 
         /// <summary>
         /// Remove mode from data source by model id
         /// </summary>
         /// <param name="id">Id of model to find object in data source</param>
-        public void Remove(ObjectId id);
+        public Task Remove(ObjectId id);
     }
 }

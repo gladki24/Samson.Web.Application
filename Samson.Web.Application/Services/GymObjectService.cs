@@ -1,0 +1,53 @@
+﻿using System;
+using System.Threading.Tasks;
+using MediatR;
+using MongoDB.Bson;
+using Samson.Web.Application.DataStructures;
+using Samson.Web.Application.Factories.Interfaces;
+using Samson.Web.Application.Infrastructure.Repository;
+using Samson.Web.Application.Models.Domains;
+using Samson.Web.Application.Services.Interfaces;
+
+namespace Samson.Web.Application.Services
+{
+    /// <summary>
+    /// Application service to work with GymObject. Default implementation of IGymObjectService
+    /// </summary>
+    public class GymObjectService : IGymObjectService
+    {
+        private readonly IRepository<GymObject> _repository;
+        private readonly IGymObjectFactory _factory;
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public GymObjectService(IRepository<GymObject> repository, IGymObjectFactory factory)
+        {
+            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            _factory = factory ?? throw new ArgumentNullException(nameof(factory));
+        }
+
+        public Task<ObjectId> Create(CreateGymObjectDataStructure dataStructure)
+        {
+            var gymObject = _factory.CreateGymObject(dataStructure);
+            return _repository.Create(gymObject).ContinueWith(_ => gymObject.Id);
+        }
+
+        public Task<ObjectId> Update(UpdateGymObjectDataStructure dataStructure)
+        {
+            var gymObject = GetOrThrow(dataStructure.Id);
+            return _repository.Update(dataStructure.Id, gymObject).ContinueWith(_ => gymObject.Id);
+        }
+
+        public Task<ObjectId> Delete(ObjectId id)
+        {
+            var gymObject = GetOrThrow(id);
+            return _repository.Remove(gymObject).ContinueWith(_ => id);
+        }
+
+        private GymObject GetOrThrow(ObjectId id)
+        { 
+            return _repository.Get(id) ?? throw new ApplicationException("GymObject not found");
+        }
+    }
+}

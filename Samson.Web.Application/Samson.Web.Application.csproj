@@ -5,16 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\" />
-    <Folder Include="CommandHandlers\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="MediatR" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Samson.Web.Application.Infrastructure\Samson.Web.Application.Infrastructure.csproj" />
+    <ProjectReference Include="..\Samson.Web.Application.Persistence\Samson.Web.Application.Persistence.csproj" />
     <ProjectReference Include="..\Samson.Web.Application.ReadModels\Samson.Web.Application.ReadModels.csproj" />
     <ProjectReference Include="..\Samson.Web.Models\Samson.Web.Application.Models.csproj" />
   </ItemGroup>

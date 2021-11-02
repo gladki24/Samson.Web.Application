@@ -16,6 +16,8 @@ namespace Samson.Web.Application
         {
             builder.RegisterQueryHandlers();
             builder.RegisterCommandHandlers();
+            builder.RegisterServices();
+            builder.RegisterFactories();
         }
     }
 }

@@ -3,13 +3,13 @@
 namespace Samson.Web.Application.Infrastructure
 {
     /// <summary>
-    /// Represent root of aggregate
+    /// Model able to store in data source
     /// </summary>
-    public interface IAggregateRoot
+    public interface IEntity
     {
         /// <summary>
-        /// Key of aggregate
+        /// Key of entity
         /// </summary>
-        ObjectId Id { get; }
+        ObjectId Id { get; set; }
     }
 }

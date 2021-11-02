@@ -3,10 +3,10 @@
 namespace Samson.Web.Application.Infrastructure.Attributes
 {
     /// <summary>
-    /// Attribute to mark command handlers. Provides registrations in DI container
+    /// Attribute to mark application services. Provides registration in DI container.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
-    public class CommandHandlerAttribute : Attribute
+    public class ServiceAttribute : Attribute
     {
     }
 }
