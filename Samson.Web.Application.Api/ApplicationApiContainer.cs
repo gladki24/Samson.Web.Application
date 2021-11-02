@@ -1,22 +1,25 @@
-﻿using Autofac;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Autofac;
 using AutoMapper.Contrib.Autofac.DependencyInjection;
-using Samson.Web.Application.Infrastructure.Extensions;
 
-namespace Samson.Web.Application.Persistence
+namespace Samson.Web.Application.Api
 {
     /// <summary>
-    /// Module to register Repositories components in DI container
+    /// Module to register Application.Api components
     /// </summary>
-    public class PersistenceContainer : Module
+    public class ApplicationApiContainer : Module
     {
         /// <summary>
-        /// Load Repositories components to DI Container
+        /// Load Application.Api components to DI container
         /// </summary>
         /// <param name="builder">Target container builder</param>
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterAutoMapper(ThisAssembly);
-            builder.RegisterRepositories(ThisAssembly);
         }
     }
 }

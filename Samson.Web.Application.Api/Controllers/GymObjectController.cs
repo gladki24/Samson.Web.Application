@@ -3,9 +3,16 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
+using MongoDB.Bson;
 using Samson.Web.Application.Api.Requests.GymObject;
+using Samson.Web.Application.Api.ViewModels.GymObject;
 using Samson.Web.Application.Commands.GymObject;
+using Samson.Web.Application.Infrastructure;
+using Samson.Web.Application.Models.Dtos.GymObject;
+using Samson.Web.Application.Queries.GymObject;
 
 namespace Samson.Web.Application.Api.Controllers
 {
@@ -31,11 +38,17 @@ namespace Samson.Web.Application.Api.Controllers
         /// </summary>
         /// <returns>GymObject</returns>
         [HttpGet("getById")]
-        public async Task<ActionResult> GetById()
+        public async Task<ActionResult> GetById([FromBody] string id)
         {
-            // todo
+            if (id.IsNullOrEmpty())
+            {
+                BadRequest();
+            }
 
-            return Ok();
+            var query = _mapper.Map<string, GymObjectQuery>(id);
+            var queryResult = await _mediator.Send(query);
+            var result = _mapper.Map<GymObjectDto, GymObjectViewModel>(queryResult);
+            return Ok(result);
         }
 
         /// <summary>
@@ -45,9 +58,10 @@ namespace Samson.Web.Application.Api.Controllers
         [HttpGet("getAll")]
         public async Task<ActionResult> GetAll()
         {
-            // todo
-
-            return Ok();
+            var query = new AllGymObjectQuery();
+            var queryResult = await _mediator.Send(query);
+            var result = _mapper.Map<IEnumerable<GymObjectDto>, IEnumerable<GymObjectViewModel>>(queryResult);
+            return Ok(result);
         }
 
         /// <summary>
@@ -63,8 +77,8 @@ namespace Samson.Web.Application.Api.Controllers
             }
 
             var command = _mapper.Map<CreateGymObjectRequest, CreateGymObjectCommand>(request);
-            await _mediator.Send(command);
-            return Ok();
+            var result = await _mediator.Send(command);
+            return Ok(result.ToJson());
         }
 
         /// <summary>

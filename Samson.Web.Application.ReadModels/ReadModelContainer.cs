@@ -14,7 +14,7 @@ namespace Samson.Web.Application.ReadModels
         /// <param name="builder">Target container builder</param>
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterReadModels();
+            builder.RegisterReadModels(ThisAssembly);
         }
     }
 }

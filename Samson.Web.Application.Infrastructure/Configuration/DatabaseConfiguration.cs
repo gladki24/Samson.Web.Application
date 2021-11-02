@@ -10,7 +10,7 @@ namespace Samson.Web.Application.Infrastructure.Configuration
         public DatabaseConfiguration(string connectionString)
         {
             ConnectionString = connectionString;
-            DatabaseName = "TestDb";
+            DatabaseName = "SamsonDatabase";
         }
     }
 }

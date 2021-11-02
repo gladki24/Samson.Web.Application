@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using AutoMapper.Contrib.Autofac.DependencyInjection;
 using Samson.Web.Application.Infrastructure.Extensions;
 
 namespace Samson.Web.Application
@@ -11,13 +12,14 @@ namespace Samson.Web.Application
         /// <summary>
         /// Load Application components to DI Container
         /// </summary>
-        /// <param name="builder"></param>
+        /// <param name="builder">Target container builder</param>
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterQueryHandlers();
-            builder.RegisterCommandHandlers();
-            builder.RegisterServices();
-            builder.RegisterFactories();
+            builder.RegisterAutoMapper(ThisAssembly);
+            builder.RegisterQueryHandlers(ThisAssembly);
+            builder.RegisterCommandHandlers(ThisAssembly);
+            builder.RegisterServices(ThisAssembly);
+            builder.RegisterFactories(ThisAssembly);
         }
     }
 }

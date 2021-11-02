@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Samson.Web.Application.Api.Requests
+namespace Samson.Web.Application.Api.ViewModels
 {
     public class GymPassTypeViewModel
     {

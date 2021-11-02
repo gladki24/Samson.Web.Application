@@ -30,7 +30,7 @@ namespace Samson.Web.Application.Infrastructure.Repository
             var client = new MongoClient(databaseConfiguration.ConnectionString);
             var database = client.GetDatabase(databaseConfiguration.DatabaseName);
 
-            Collection = database.GetCollection<TEntity>($"{nameof(TModel)}Collection");
+            Collection = database.GetCollection<TEntity>($"{typeof(TModel).Name}Collection");
         }
 
         /// <summary>
@@ -58,10 +58,12 @@ namespace Samson.Web.Application.Infrastructure.Repository
         /// Add model to collection
         /// </summary>
         /// <param name="model">Model to add to collection</param>
-        public Task Create(TModel model)
+        /// <returns>Key of created entity in collection</returns>
+        public Task<ObjectId> Create(TModel model)
         {
             var entity = Mapper.Map<TModel, TEntity>(model);
-            return Collection.InsertOneAsync(entity);
+            var result = Collection.InsertOneAsync(entity).ContinueWith(_ => model.Id);
+            return result;
         }
 
         /// <summary>
@@ -69,27 +71,30 @@ namespace Samson.Web.Application.Infrastructure.Repository
         /// </summary>
         /// <param name="id">Id of model to update</param>
         /// <param name="updatedModel">Updated model to persist in collection</param>
-        public Task Update(ObjectId id, TModel updatedModel)
+        /// <returns>Key of updated entity in collection</returns>
+        public Task<ObjectId> Update(ObjectId id, TModel updatedModel)
         {
             var entity = Mapper.Map<TModel, TEntity>(updatedModel);
-            return Collection.ReplaceOneAsync(model => model.Id == id, entity);
+            return Collection.ReplaceOneAsync(model => model.Id == id, entity).ContinueWith(_ => updatedModel.Id);
         }
 
         /// <summary>
         /// Remove model from data source by entire model
         /// </summary>
         /// <param name="modelToDelete">Entire model to find object in collection</param>
-        public Task Remove(TModel modelToDelete)
+        /// <returns>Key of removed entity in collection</returns>
+        public Task<ObjectId> Remove(TModel modelToDelete)
         {
             var entity = Mapper.Map<TModel, TEntity>(modelToDelete);
-            return Collection.DeleteOneAsync(model => model.Id == entity.Id);
+            return Collection.DeleteOneAsync(model => model.Id == entity.Id).ContinueWith(_ => modelToDelete.Id);
         }
 
         /// <summary>
         /// Remove model from collection by model id
         /// </summary>
         /// <param name="id">Id model to find object in collection</param>
-        public Task Remove(ObjectId id)
-            => Collection.DeleteOneAsync(model => model.Id == id);
+        /// <returns>Key of removed entity in collection</returns>
+        public Task<ObjectId> Remove(ObjectId id)
+            => Collection.DeleteOneAsync(model => model.Id == id).ContinueWith(_ => id);
     }
 }
