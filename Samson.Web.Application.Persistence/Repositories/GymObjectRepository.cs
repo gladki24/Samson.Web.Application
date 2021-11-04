@@ -15,7 +15,8 @@ namespace Samson.Web.Application.Persistence.Repositories
         /// <summary>
         /// Default constructor
         /// </summary>
-        /// <param name="databaseConfiguration"></param>
+        /// <param name="databaseConfiguration">Default configuration of database</param>
+        /// <param name="mapper">Mapper to map between types</param>
         public GymObjectRepository(IDatabaseConfiguration databaseConfiguration, IMapper mapper) : base(databaseConfiguration, mapper)
         {
         }

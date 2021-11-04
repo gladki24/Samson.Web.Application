@@ -1,6 +1,7 @@
 ﻿using MongoDB.Bson;
 using Samson.Web.Application.Infrastructure;
 using System.Collections.Generic;
+using Samson.Web.Application.Models.DataStructures;
 
 namespace Samson.Web.Application.Models.Domains
 {
@@ -27,6 +28,16 @@ namespace Samson.Web.Application.Models.Domains
             Name = name;
             CovidConfiguration = covidConfiguration;
             Rooms = rooms;
+        }
+
+        /// <summary>
+        /// Update model by data structure
+        /// </summary>
+        /// <param name="dataStructure">Data structure of GymObject domain</param>
+        public void Update(UpdateGymObjectDataStructure dataStructure)
+        {
+            Name = dataStructure.Name;
+            CovidConfiguration.Update(dataStructure.CovidConfiguration);
         }
     }
 }

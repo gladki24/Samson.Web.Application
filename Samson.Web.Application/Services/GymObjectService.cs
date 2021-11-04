@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MongoDB.Bson;
-using Samson.Web.Application.DataStructures;
 using Samson.Web.Application.Factories.Interfaces;
 using Samson.Web.Application.Infrastructure.Attributes;
 using Samson.Web.Application.Infrastructure.Repository;
+using Samson.Web.Application.Models.DataStructures;
 using Samson.Web.Application.Models.Domains;
 using Samson.Web.Application.Services.Interfaces;
 
@@ -37,6 +37,7 @@ namespace Samson.Web.Application.Services
         public Task<ObjectId> Update(UpdateGymObjectDataStructure dataStructure)
         {
             var gymObject = GetOrThrow(dataStructure.Id);
+            gymObject.Update(dataStructure);
             return _repository.Update(dataStructure.Id, gymObject);
         }
 

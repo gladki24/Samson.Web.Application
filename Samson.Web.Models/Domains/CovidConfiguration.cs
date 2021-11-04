@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using Samson.Web.Application.Models.DataStructures;
 
 namespace Samson.Web.Application.Models.Domains
 {
@@ -22,6 +23,17 @@ namespace Samson.Web.Application.Models.Domains
             Id = id;
             PersonFactorPerMeter = personFactorPerMeter;
             IsActive = isActive;
+        }
+
+
+        /// <summary>
+        /// Update model from data structure
+        /// </summary>
+        /// <param name="dataStructure">Data structure of CovidConfiguration domain</param>
+        public void Update(CovidConfigurationDataStructure dataStructure)
+        {
+            PersonFactorPerMeter = dataStructure.PersonFactorPerMeter;
+            IsActive = dataStructure.IsActive;
         }
     }
 }

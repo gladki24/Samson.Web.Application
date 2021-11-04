@@ -3,7 +3,7 @@ using MongoDB.Bson;
 using Samson.Web.Application.Api.Requests.GymObject;
 using Samson.Web.Application.Api.ViewModels.GymObject;
 using Samson.Web.Application.Commands.GymObject;
-using Samson.Web.Application.DataStructures;
+using Samson.Web.Application.Models.DataStructures;
 using Samson.Web.Application.Models.Dtos.GymObject;
 using Samson.Web.Application.Queries.GymObject;
 

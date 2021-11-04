@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Samson.Web.Application.DataStructures
+namespace Samson.Web.Application.Models.DataStructures
 {
     /// <summary>
     /// Data structure to create new gym object
