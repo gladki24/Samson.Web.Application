@@ -25,6 +25,12 @@ namespace Samson.Web.Application.Api.Controllers
         private readonly IMapper _mapper;
         private readonly IMediator _mediator;
 
+        /// <summary>
+        /// Default controller
+        /// </summary>
+        /// <param name="logger">Application logger</param>
+        /// <param name="mapper">Mapper to map between objects</param>
+        /// <param name="mediator">CQRS Mediator</param>
         public GymObjectController(ILogger<GymObjectController> logger, IMapper mapper, IMediator mediator)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -35,6 +41,7 @@ namespace Samson.Web.Application.Api.Controllers
         /// <summary>
         /// Get GymObject by id
         /// </summary>
+        /// <param name="id">id of gym objects</param>
         /// <returns>GymObject</returns>
         [HttpGet("getById/{id}")]
         public async Task<ActionResult> GetById(string id)

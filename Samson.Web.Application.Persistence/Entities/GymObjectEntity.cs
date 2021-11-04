@@ -5,6 +5,9 @@ using Samson.Web.Application.Infrastructure;
 
 namespace Samson.Web.Application.Persistence.Entities
 {
+    /// <summary>
+    /// Entity of GymObject
+    /// </summary>
     public class GymObjectEntity : IEntity
     {
         [BsonId]
