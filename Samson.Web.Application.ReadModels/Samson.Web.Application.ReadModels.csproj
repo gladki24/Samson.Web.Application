@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Samson.Web.Application.Infrastructure\Samson.Web.Application.Infrastructure.csproj" />
+    <ProjectReference Include="..\Samson.Web.Application.Persistence\Samson.Web.Application.Persistence.csproj" />
     <ProjectReference Include="..\Samson.Web.Models\Samson.Web.Application.Models.csproj" />
   </ItemGroup>
 

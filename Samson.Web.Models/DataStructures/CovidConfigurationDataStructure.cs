@@ -1,4 +1,4 @@
-﻿namespace Samson.Web.Application.DataStructures
+﻿namespace Samson.Web.Application.Models.DataStructures
 {
     public class CovidConfigurationDataStructure
     {

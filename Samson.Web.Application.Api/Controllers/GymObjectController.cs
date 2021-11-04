@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using Samson.Web.Application.Api.Requests.GymObject;
@@ -37,8 +36,8 @@ namespace Samson.Web.Application.Api.Controllers
         /// Get GymObject by id
         /// </summary>
         /// <returns>GymObject</returns>
-        [HttpGet("getById")]
-        public async Task<ActionResult> GetById([FromBody] string id)
+        [HttpGet("getById/{id}")]
+        public async Task<ActionResult> GetById(string id)
         {
             if (id.IsNullOrEmpty())
             {

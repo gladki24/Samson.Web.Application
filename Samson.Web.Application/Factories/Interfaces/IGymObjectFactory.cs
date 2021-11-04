@@ -1,4 +1,4 @@
-﻿using Samson.Web.Application.DataStructures;
+﻿using Samson.Web.Application.Models.DataStructures;
 using Samson.Web.Application.Models.Domains;
 
 namespace Samson.Web.Application.Factories.Interfaces

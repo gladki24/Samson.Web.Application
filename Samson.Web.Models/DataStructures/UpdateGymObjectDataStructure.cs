@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using MongoDB.Bson;
 
-namespace Samson.Web.Application.DataStructures
+namespace Samson.Web.Application.Models.DataStructures
 {
     /// <summary>
     /// Data structure to update existing gym object
@@ -11,6 +11,5 @@ namespace Samson.Web.Application.DataStructures
         public ObjectId Id { get; set; }
         public string Name { get; set; }
         public CovidConfigurationDataStructure CovidConfiguration { get; set; }
-        public IEnumerable<RoomConfigurationDataStructure> Rooms { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using MediatR;
 using MongoDB.Bson;
-using Samson.Web.Application.DataStructures;
+using Samson.Web.Application.Models.DataStructures;
 
 namespace Samson.Web.Application.Services.Interfaces
 {

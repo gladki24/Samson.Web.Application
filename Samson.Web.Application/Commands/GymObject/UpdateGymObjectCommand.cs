@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using MediatR;
 using MongoDB.Bson;
-using Samson.Web.Application.DataStructures;
+using Samson.Web.Application.Models.DataStructures;
 
 namespace Samson.Web.Application.Commands.GymObject
 {
@@ -13,6 +13,5 @@ namespace Samson.Web.Application.Commands.GymObject
         public string Id { get; set; }
         public string Name { get; set; }
         public CovidConfigurationDataStructure CovidConfiguration { get; set; }
-        public IEnumerable<RoomConfigurationDataStructure> Rooms { get; set; }
     }
 }

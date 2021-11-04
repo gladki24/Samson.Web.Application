@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using MongoDB.Bson;
 using Samson.Web.Application.Models.Dtos.GymObject;
 
@@ -14,13 +15,13 @@ namespace Samson.Web.Application.ReadModels.Interfaces
         /// </summary>
         /// <param name="id">key</param>
         /// <returns>dto</returns>
-        GymObjectDto GetById(ObjectId id);
+        Task<GymObjectDto> GetById(ObjectId id);
 
         /// <summary>
         /// Get all gym object from collection
         /// </summary>
         /// <returns>dtos list</returns>
-        List<GymObjectDto> GetAll();
+        Task<List<GymObjectDto>> GetAll();
 
     }
 }
