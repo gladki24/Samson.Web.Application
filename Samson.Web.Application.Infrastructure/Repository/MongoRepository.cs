@@ -5,6 +5,7 @@ using AutoMapper;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using Samson.Web.Application.Infrastructure.Attributes;
+using Samson.Web.Application.Infrastructure.Configuration;
 
 namespace Samson.Web.Application.Infrastructure.Repository
 {

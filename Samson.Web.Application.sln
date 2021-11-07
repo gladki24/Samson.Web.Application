@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samson.Web.Application.Read
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samson.Web.Application.Persistence", "Samson.Web.Application.Persistence\Samson.Web.Application.Persistence.csproj", "{75B20A09-C42D-4923-A2BA-CBE9991DBFB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samson.Web.Application", "Samson.Web.Application\Samson.Web.Application.csproj", "{54F50125-47C4-48D7-8996-D7B715799308}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samson.Web.Application", "Samson.Web.Application\Samson.Web.Application.csproj", "{54F50125-47C4-48D7-8996-D7B715799308}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samson.Web.Application.Identity", "Samson.Web.Application.Identity\Samson.Web.Application.Identity.csproj", "{A0497797-DD39-4B8D-BDE0-CF8A7959C428}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{54F50125-47C4-48D7-8996-D7B715799308}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54F50125-47C4-48D7-8996-D7B715799308}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54F50125-47C4-48D7-8996-D7B715799308}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0497797-DD39-4B8D-BDE0-CF8A7959C428}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0497797-DD39-4B8D-BDE0-CF8A7959C428}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0497797-DD39-4B8D-BDE0-CF8A7959C428}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0497797-DD39-4B8D-BDE0-CF8A7959C428}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

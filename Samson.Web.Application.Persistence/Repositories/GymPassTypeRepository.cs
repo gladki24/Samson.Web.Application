@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Samson.Web.Application.Infrastructure.Attributes;
+using Samson.Web.Application.Infrastructure.Configuration;
 using Samson.Web.Application.Infrastructure.Repository;
 using Samson.Web.Application.Models.Domains;
 using Samson.Web.Application.Persistence.Entities;

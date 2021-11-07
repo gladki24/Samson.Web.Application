@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Samson.Web.Application.Identity;
+using Samson.Web.Application.Identity.Configuration;
 using Samson.Web.Application.WebHost.Configuration;
 
 namespace Samson.Web.Application.WebHost
@@ -37,6 +39,7 @@ namespace Samson.Web.Application.WebHost
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddJwtAuth(AutofacContainer.Resolve<IJwtConfiguration>().Key);
             services.AddOptions();
             services.AddControllers();
             services.AddSwaggerGen(c =>

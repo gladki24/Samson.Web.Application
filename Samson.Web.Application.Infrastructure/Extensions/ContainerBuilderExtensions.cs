@@ -79,14 +79,10 @@ namespace Samson.Web.Application.Infrastructure.Extensions
         public static void RegisterDatabaseConfiguration(this ContainerBuilder container)
         {
             var mongodDbAtlasConnectionString = Environment.GetEnvironmentVariable("ConnectionString:MongoDB:Atlas");
-
-            if (mongodDbAtlasConnectionString.IsNullOrEmpty())
-            {
-                throw new NoNullAllowedException();
-            }
+            var mongoDbDatabaseName = Environment.GetEnvironmentVariable("MongoDB:DatabaseName");
 
             container
-                .Register(c => new DatabaseConfiguration(mongodDbAtlasConnectionString))
+                .Register(c => new DatabaseConfiguration(mongodDbAtlasConnectionString, mongoDbDatabaseName))
                 .As<IDatabaseConfiguration>()
                 .SingleInstance();
         }
