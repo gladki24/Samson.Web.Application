@@ -1,45 +1,48 @@
 ﻿using System;
-using MediatR;
-using Samson.Web.Application.Commands.GymObject;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using MediatR;
 using MongoDB.Bson;
+using Samson.Web.Application.Commands.Event;
 using Samson.Web.Application.Infrastructure.Attributes;
-using Samson.Web.Application.Models.DataStructures;
+using Samson.Web.Application.Models.DataStructures.Event;
 using Samson.Web.Application.Services.Interfaces;
 
-namespace Samson.Web.Application.CommandHandlers.GymObject
+namespace Samson.Web.Application.CommandHandlers.Event
 {
     /// <summary>
-    /// CreateGymObjectCommand command handler
+    /// CreateEventCommand command handler
     /// </summary>
     [CommandHandler]
-    public class CreateGymObjectCommandHandler : IRequestHandler<CreateGymObjectCommand, ObjectId>
+    public class CreateEventCommandHandler : IRequestHandler<CreateEventCommand, ObjectId>
     {
-        private readonly IGymObjectService _service;
+        private readonly IEventService _service;
         private readonly IMapper _mapper;
 
         /// <summary>
         /// Default constructor
         /// </summary>
-        /// <param name="service">Service to manage GymObject domain</param>
+        /// <param name="service">Service to manage Event domain</param>
         /// <param name="mapper">Mapper to map between models</param>
-        public CreateGymObjectCommandHandler(IGymObjectService service, IMapper mapper)
+        public CreateEventCommandHandler(IEventService service, IMapper mapper)
         {
             _service = service ?? throw new ArgumentNullException(nameof(service));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         /// <summary>
-        /// Handle CreateGymObjectCommand command
+        /// Handle CreateEventCommand command
         /// </summary>
         /// <param name="request">command</param>
         /// <param name="cancellationToken">cancellation notification</param>
-        /// <returns>void</returns>
-        Task<ObjectId> IRequestHandler<CreateGymObjectCommand, ObjectId>.Handle(CreateGymObjectCommand request, CancellationToken cancellationToken)
+        /// <returns></returns>
+        Task<ObjectId> IRequestHandler<CreateEventCommand, ObjectId>.Handle(CreateEventCommand request,
+            CancellationToken cancellationToken)
         {
-            var dataStructure = _mapper.Map<CreateGymObjectCommand, CreateGymObjectDataStructure>(request);
+            var dataStructure = _mapper.Map<CreateEventCommand, CreateEventDataStructure>(request);
             return _service.Create(dataStructure);
         }
     }

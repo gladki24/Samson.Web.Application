@@ -10,12 +10,12 @@ using Samson.Web.Application.Queries.GymObject;
 namespace Samson.Web.Application.Api.MapperProfiles
 {
     /// <summary>
-    /// Mapping profile to map GymObject controller related objects
+    /// Mapping profile to map GymObject controller related objects.
     /// </summary>
     public class GymObjectControllerMapperProfile : Profile
     {
         /// <summary>
-        /// Default constructor
+        /// Default constructor.
         /// </summary>
         public GymObjectControllerMapperProfile()
         {

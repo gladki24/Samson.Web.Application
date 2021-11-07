@@ -2,6 +2,9 @@
 
 namespace Samson.Web.Application.Api.Requests.GymObject
 {
+    /// <summary>
+    /// Request to update gym object
+    /// </summary>
     public class UpdateGymObjectRequest
     {
         public string Id { get; set; }

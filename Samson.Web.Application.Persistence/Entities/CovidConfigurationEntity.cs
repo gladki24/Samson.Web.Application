@@ -4,6 +4,9 @@ using Samson.Web.Application.Infrastructure;
 
 namespace Samson.Web.Application.Persistence.Entities
 {
+    /// <summary>
+    /// Entity of CovidConfiguration
+    /// </summary>
     public class CovidConfigurationEntity : IEntity
     {
         [BsonId]

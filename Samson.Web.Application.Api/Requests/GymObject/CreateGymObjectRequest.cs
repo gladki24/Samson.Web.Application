@@ -2,6 +2,9 @@
 
 namespace Samson.Web.Application.Api.Requests.GymObject
 {
+    /// <summary>
+    /// Request to create GymObject model
+    /// </summary>
     public class CreateGymObjectRequest
     {
         public string Name { get; set; }

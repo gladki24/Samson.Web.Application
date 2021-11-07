@@ -3,6 +3,9 @@ using MongoDB.Bson;
 
 namespace Samson.Web.Application.Models.Dtos.GymObject
 {
+    /// <summary>
+    /// GymObject data transfer object.
+    /// </summary>
     public class GymObjectDto
     {
         public ObjectId Id { get; set; }

@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using MediatR;
 using MongoDB.Bson;
 using Samson.Web.Application.Models.DataStructures;
 

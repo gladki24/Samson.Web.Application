@@ -3,6 +3,9 @@ using Samson.Web.Application.Models.Domains;
 
 namespace Samson.Web.Application.Factories.Interfaces
 {
+    /// <summary>
+    /// Factory to create GymObject domain
+    /// </summary>
     public interface IGymObjectFactory
     {
         /// <summary>
