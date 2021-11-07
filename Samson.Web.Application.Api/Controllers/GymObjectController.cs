@@ -16,9 +16,10 @@ using Samson.Web.Application.Queries.GymObject;
 namespace Samson.Web.Application.Api.Controllers
 {
     /// <summary>
-    /// Gym object API Controller. Provide CRUD operations on GymObject model
+    /// Gym object API Controller. Provide CRUD operations on GymObject model.
     /// </summary>
     [ApiController]
+    [Route("[controller]")]
     public class GymObjectController : ControllerBase
     {
         private readonly ILogger<GymObjectController> _logger;
@@ -26,7 +27,7 @@ namespace Samson.Web.Application.Api.Controllers
         private readonly IMediator _mediator;
 
         /// <summary>
-        /// Default controller
+        /// Default controller.
         /// </summary>
         /// <param name="logger">Application logger</param>
         /// <param name="mapper">Mapper to map between objects</param>
@@ -39,9 +40,9 @@ namespace Samson.Web.Application.Api.Controllers
         }
 
         /// <summary>
-        /// Get GymObject by id
+        /// Get GymObject by id.
         /// </summary>
-        /// <param name="id">id of gym objects</param>
+        /// <param name="id">Id of gym objects</param>
         /// <returns>GymObject</returns>
         [HttpGet("getById/{id}")]
         public async Task<ActionResult> GetById(string id)
@@ -58,7 +59,7 @@ namespace Samson.Web.Application.Api.Controllers
         }
 
         /// <summary>
-        /// Get all gym objects
+        /// Get all GymObject view models.
         /// </summary>
         /// <returns>List of all gym objects</returns>
         [HttpGet("getAll")]
@@ -71,9 +72,9 @@ namespace Samson.Web.Application.Api.Controllers
         }
 
         /// <summary>
-        /// Create new gym object
+        /// Create new GymObject.
         /// </summary>
-        /// <param name="request">Data to create new gym object</param>
+        /// <param name="request">Data to create new GymObject</param>
         [HttpPost("create")]
         public async Task<ActionResult> Create(CreateGymObjectRequest request)
         {
@@ -88,9 +89,9 @@ namespace Samson.Web.Application.Api.Controllers
         }
 
         /// <summary>
-        /// Update gym object
+        /// Update GymObject.
         /// </summary>
-        /// <param name="request">Data to update gym object</param>
+        /// <param name="request">Data to update GymObject</param>
         [HttpPut("update")]
         public async Task<ActionResult> Update(UpdateGymObjectRequest request)
         {
@@ -105,9 +106,9 @@ namespace Samson.Web.Application.Api.Controllers
         }
 
         /// <summary>
-        /// Delete gym object
+        /// Delete GymObject.
         /// </summary>
-        /// <param name="request">Data to find and delete gym object</param>
+        /// <param name="request">Data to find and delete GymObject</param>
         [HttpDelete("delete")]
         public async Task<ActionResult> Delete(DeleteGymObjectRequest request)
         {

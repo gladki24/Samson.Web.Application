@@ -6,12 +6,12 @@ using Samson.Web.Application.Persistence.Entities;
 namespace Samson.Web.Application.Persistence.MappingProfiles
 {
     /// <summary>
-    /// Mapping profile to map GymObject entities and models
+    /// Mapping profile to map GymObject entities and models.
     /// </summary>
     public class GymObjectMapperProfile : Profile
     {
         /// <summary>
-        /// Default constructor
+        /// Default constructor.
         /// </summary>
         public GymObjectMapperProfile()
         {

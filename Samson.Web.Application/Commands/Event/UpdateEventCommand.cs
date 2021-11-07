@@ -1,9 +1,12 @@
-﻿namespace Samson.Web.Application.Api.Requests.Event
+﻿using MediatR;
+using MongoDB.Bson;
+
+namespace Samson.Web.Application.Commands.Event
 {
     /// <summary>
-    /// Request to update event
+    /// Command to update Event
     /// </summary>
-    public class UpdateEventRequest
+    public class UpdateEventCommand : IRequest<ObjectId>
     {
         public string Name { get; set; }
         public string StartDate { get; set; }

@@ -21,6 +21,11 @@ namespace Samson.Web.Application.ReadModels
         private readonly IDatabaseConfiguration _databaseConfiguration;
         private readonly IMapper _mapper;
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="databaseConfiguration">Configuration of connection with database</param>
+        /// <param name="mapper">Mapper to map between models</param>
         public GymObjectReadModel(
             IDatabaseConfiguration databaseConfiguration,
             IMapper mapper

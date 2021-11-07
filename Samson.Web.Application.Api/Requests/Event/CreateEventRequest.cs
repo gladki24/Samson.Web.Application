@@ -1,5 +1,8 @@
 ﻿namespace Samson.Web.Application.Api.Requests.Event
 {
+    /// <summary>
+    /// Request to create event
+    /// </summary>
     public class CreateEventRequest
     {
         public string Name { get; set; }

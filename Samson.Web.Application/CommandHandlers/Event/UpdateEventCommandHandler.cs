@@ -4,42 +4,42 @@ using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
 using MongoDB.Bson;
-using Samson.Web.Application.Commands.GymObject;
+using Samson.Web.Application.Commands.Event;
 using Samson.Web.Application.Infrastructure.Attributes;
-using Samson.Web.Application.Models.DataStructures;
+using Samson.Web.Application.Models.DataStructures.Event;
 using Samson.Web.Application.Services.Interfaces;
 
-namespace Samson.Web.Application.CommandHandlers.GymObject
+namespace Samson.Web.Application.CommandHandlers.Event
 {
     /// <summary>
-    /// UpdateGymObjectCommand command handler.
+    /// UpdateEventCommand command handler.
     /// </summary>
     [CommandHandler]
-    public class UpdateGymObjectCommandHandler : IRequestHandler<UpdateGymObjectCommand, ObjectId>
+    public class UpdateEventCommandHandler : IRequestHandler<UpdateEventCommand, ObjectId>
     {
-        private readonly IGymObjectService _service;
+        private readonly IEventService _service;
         private readonly IMapper _mapper;
 
         /// <summary>
         /// Default constructor
         /// </summary>
-        /// <param name="service">Service to manage GymObject domain</param>
+        /// <param name="service">Service to manage Event domain</param>
         /// <param name="mapper">Mapper to map between models</param>
-        public UpdateGymObjectCommandHandler(IGymObjectService service, IMapper mapper)
+        public UpdateEventCommandHandler(IEventService service, IMapper mapper)
         {
             _service = service ?? throw new ArgumentNullException(nameof(service));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         /// <summary>
-        /// Handle UpdateGymObjectCommand command.
+        /// Handle UpdateEventCommand command.
         /// </summary>
         /// <param name="request">Command</param>
         /// <param name="cancellationToken">Cancellation notification</param>
-        /// <returns>void</returns>
-        public Task<ObjectId> Handle(UpdateGymObjectCommand request, CancellationToken cancellationToken)
+        /// <returns></returns>
+        public Task<ObjectId> Handle(UpdateEventCommand request, CancellationToken cancellationToken)
         {
-            var dataStructure = _mapper.Map<UpdateGymObjectCommand, UpdateGymObjectDataStructure>(request);
+            var dataStructure = _mapper.Map<UpdateEventCommand, UpdateEventDataStructure>(request);
             return _service.Update(dataStructure);
         }
     }
