@@ -2,6 +2,7 @@
 using MediatR;
 using MongoDB.Bson;
 using Samson.Web.Application.Models.DataStructures;
+using Samson.Web.Application.Models.DataStructures.GymObject;
 
 namespace Samson.Web.Application.Commands.GymObject
 {

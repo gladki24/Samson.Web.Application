@@ -7,7 +7,7 @@ using Samson.Web.Application.Persistence.Entities;
 namespace Samson.Web.Application.Persistence.Repositories
 {
     /// <summary>
-    /// Repository of GymObject domain
+    /// Repository of GymObject domain.
     /// </summary>
     [Repository]
     public class GymObjectRepository : MongoRepository<GymObject, GymObjectEntity>

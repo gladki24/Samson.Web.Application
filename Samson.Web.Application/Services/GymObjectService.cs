@@ -5,6 +5,7 @@ using Samson.Web.Application.Factories.Interfaces;
 using Samson.Web.Application.Infrastructure.Attributes;
 using Samson.Web.Application.Infrastructure.Repository;
 using Samson.Web.Application.Models.DataStructures;
+using Samson.Web.Application.Models.DataStructures.GymObject;
 using Samson.Web.Application.Models.Domains;
 using Samson.Web.Application.Services.Interfaces;
 

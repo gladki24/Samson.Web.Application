@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using MongoDB.Bson;
 using Samson.Web.Application.Models.DataStructures;
+using Samson.Web.Application.Models.DataStructures.GymObject;
 
 namespace Samson.Web.Application.Services.Interfaces
 {

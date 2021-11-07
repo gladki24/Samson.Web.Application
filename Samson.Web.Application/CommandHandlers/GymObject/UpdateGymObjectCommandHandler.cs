@@ -7,6 +7,7 @@ using MongoDB.Bson;
 using Samson.Web.Application.Commands.GymObject;
 using Samson.Web.Application.Infrastructure.Attributes;
 using Samson.Web.Application.Models.DataStructures;
+using Samson.Web.Application.Models.DataStructures.GymObject;
 using Samson.Web.Application.Services.Interfaces;
 
 namespace Samson.Web.Application.CommandHandlers.GymObject

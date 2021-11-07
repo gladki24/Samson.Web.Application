@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 
-namespace Samson.Web.Application.Models.DataStructures
+namespace Samson.Web.Application.Models.DataStructures.GymObject
 {
     /// <summary>
-    /// Data structure to update existing gym object
+    /// Data structure to update existing GymObject.
     /// </summary>
     public class UpdateGymObjectDataStructure
     {

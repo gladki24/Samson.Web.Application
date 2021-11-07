@@ -45,7 +45,7 @@ namespace Samson.Web.Application.UnitTests
             foreach (var readModel in classesEndingInReadModel)
             {
                 var hasReadModelAttribute = readModel.IsDefined(typeof(ReadModelAttribute), false);
-                Assert.True(hasReadModelAttribute, "Read model has to be annotated by ReadModelAttribute");
+                Assert.True(hasReadModelAttribute, $"Read model has to be annotated by ReadModelAttribute: {readModel.Name}");
             }
         }
 
@@ -63,7 +63,7 @@ namespace Samson.Web.Application.UnitTests
             foreach (var queryHandler in classesEndingInQueryHandler)
             {
                 var hasQueryHandlerAttribute = queryHandler.IsDefined(typeof(QueryHandlerAttribute), false);
-                Assert.True(hasQueryHandlerAttribute, "Query handler has to be annotated by QueryHandlerAttribute");
+                Assert.True(hasQueryHandlerAttribute, $"Query handler has to be annotated by QueryHandlerAttribute: {queryHandler.Name}");
             }
         }
 
@@ -81,8 +81,7 @@ namespace Samson.Web.Application.UnitTests
             foreach (var commandHandler in classesEndingInCommandHandler)
             {
                 var hasCommandHandlerAttribute = commandHandler.IsDefined(typeof(CommandHandlerAttribute), false);
-                Assert.True(hasCommandHandlerAttribute,
-                    "Command handler has to be annotated by CommandHandlerAttribute");
+                Assert.True(hasCommandHandlerAttribute, $"Command handler has to be annotated by CommandHandlerAttribute: {commandHandler.Name}");
             }
         }
 
@@ -100,8 +99,7 @@ namespace Samson.Web.Application.UnitTests
             foreach (var repository in classEndingInRepository)
             {
                 var hasRepositoryAttribute = repository.IsDefined(typeof(RepositoryAttribute), false);
-                Assert.True(hasRepositoryAttribute,
-                    "Repository has to be annotated by RepositoryAttribute");
+                Assert.True(hasRepositoryAttribute, $"Repository has to be annotated by RepositoryAttribute: {repository.Name}");
             }
         }
 
@@ -111,16 +109,15 @@ namespace Samson.Web.Application.UnitTests
         [Test]
         public void Services_AreAnnotatedByAttribute_Service()
         {
-            var classEndingInRepository = from type in _applicationTypes
+            var classEndingInService = from type in _applicationTypes
                 where !type.FullName.IsNullOrEmpty() && !type.IsInterface
                 where type.FullName.EndsWith("Service")
                 select type;
 
-            foreach (var repository in classEndingInRepository)
+            foreach (var service in classEndingInService)
             {
-                var hasServiceAttribute = repository.IsDefined(typeof(ServiceAttribute), false);
-                Assert.True(hasServiceAttribute,
-                    "Repository has to be annotated by ServiceAttribute");
+                var hasServiceAttribute = service.IsDefined(typeof(ServiceAttribute), false);
+                Assert.True(hasServiceAttribute, $"Repository has to be annotated by ServiceAttribute: {service.Name}");
             }
         }
 
@@ -130,16 +127,15 @@ namespace Samson.Web.Application.UnitTests
         [Test]
         public void Factory_AreAnnotatedByAttribute_Factory()
         {
-            var classEndingInRepository = from type in _applicationTypes
+            var classEndingInFactory = from type in _applicationTypes
                 where !type.FullName.IsNullOrEmpty() && !type.IsInterface
                 where type.FullName.EndsWith("Factory")
                 select type;
 
-            foreach (var repository in classEndingInRepository)
+            foreach (var factory in classEndingInFactory)
             {
-                var hasFactoryAttribute = repository.IsDefined(typeof(FactoryAttribute), false);
-                Assert.True(hasFactoryAttribute,
-                    "Repository has to be annotated by FactoryAttribute");
+                var hasFactoryAttribute = factory.IsDefined(typeof(FactoryAttribute), false);
+                Assert.True(hasFactoryAttribute, $"Repository has to be annotated by FactoryAttribute: {factory.Name}");
             }
         }
     }

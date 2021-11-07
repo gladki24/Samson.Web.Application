@@ -3,6 +3,9 @@ using System;
 
 namespace Samson.Web.Application.Models.DataStructures.Event
 {
+    /// <summary>
+    /// Data structure to create Event.
+    /// </summary>
     public class CreateEventDataStructure
     {
         public ObjectId Id { get; set; }
