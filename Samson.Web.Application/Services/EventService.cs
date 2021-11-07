@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Samson.Web.Application.Services
 {
     /// <summary>
-    /// Application service to work with Event
+    /// Application service to work with Event.
     /// </summary>
     [Service]
     public class EventService : IEventService

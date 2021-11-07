@@ -16,14 +16,14 @@ namespace Samson.Web.Application.ReadModels.Interfaces
         /// <summary>
         /// Get Event from collection by id.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">Key</param>
+        /// <returns>Dto</returns>
         Task<EventDto> GetById(ObjectId id);
 
         /// <summary>
         /// Get all Events from collection.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Dtos list</returns>
         Task<List<EventDto>> GetAll();
     }
 }

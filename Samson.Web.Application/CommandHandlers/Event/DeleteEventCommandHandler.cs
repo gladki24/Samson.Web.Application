@@ -20,7 +20,7 @@ namespace Samson.Web.Application.CommandHandlers.Event
         private readonly IMapper _mapper;
 
         /// <summary>
-        /// Default constructore
+        /// Default constructor.
         /// </summary>
         /// <param name="service">Service to manage Event domain</param>
         /// <param name="mapper">Mapper to map between models</param>
@@ -31,7 +31,7 @@ namespace Samson.Web.Application.CommandHandlers.Event
         }
 
         /// <summary>
-        /// Handle DeleteEventCommand command
+        /// Handle DeleteEventCommand command.
         /// </summary>
         /// <param name="request">Command</param>
         /// <param name="cancellationToken">Cancellation notification</param>

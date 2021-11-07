@@ -92,7 +92,7 @@ namespace Samson.Web.Application.Api.Controllers
         /// Update GymObject.
         /// </summary>
         /// <param name="request">Data to update GymObject</param>
-        [HttpPut("update")]
+        [HttpPost("update")]
         public async Task<ActionResult> Update(UpdateGymObjectRequest request)
         {
             if (request == null)

@@ -1,4 +1,5 @@
 ﻿using Samson.Web.Application.Models.DataStructures;
+using Samson.Web.Application.Models.DataStructures.GymObject;
 using Samson.Web.Application.Models.Domains;
 
 namespace Samson.Web.Application.Factories.Interfaces

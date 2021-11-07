@@ -57,7 +57,7 @@ namespace Samson.Web.Application.Api.Controllers
         /// <summary>
         /// Get all Event view models.
         /// </summary>
-        /// <returns>List of all events</returns>
+        /// <returns>List of all Events</returns>
         [HttpGet("getAll")]
         public async Task<ActionResult> GetAll()
         {
@@ -88,7 +88,7 @@ namespace Samson.Web.Application.Api.Controllers
         /// Update Event.
         /// </summary>
         /// <param name="request">Data to update Event</param>
-        [HttpPut("update")]
+        [HttpPost("update")]
         public async Task<ActionResult> Update(UpdateEventRequest request)
         {
             if (request == null)
