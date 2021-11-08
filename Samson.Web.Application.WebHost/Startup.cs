@@ -95,7 +95,7 @@ namespace Samson.Web.Application.WebHost
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Samson.Web.Application v1"));
             app.UseRouting();
-            app.UseAuthorization();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints => endpoints.MapControllers());
             AutofacContainer = app.ApplicationServices.GetAutofacRoot();

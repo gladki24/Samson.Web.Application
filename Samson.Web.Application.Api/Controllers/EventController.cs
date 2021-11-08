@@ -6,7 +6,6 @@ using Samson.Web.Application.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using MongoDB.Bson;
 using Samson.Web.Application.Api.ViewModels.Event;
 using Samson.Web.Application.Commands.Event;
@@ -19,7 +18,6 @@ namespace Samson.Web.Application.Api.Controllers
     /// Event object API Controller. Provide CRUD operations on Event model.
     /// </summary>
     [ApiController]
-    [Authorize]
     [Route("[controller]")]
     public class EventController : ControllerBase
     {
