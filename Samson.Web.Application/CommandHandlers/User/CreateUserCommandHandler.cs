@@ -4,43 +4,42 @@ using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
 using MongoDB.Bson;
-using Samson.Web.Application.Commands.Event;
+using Samson.Web.Application.Commands.User;
 using Samson.Web.Application.Infrastructure.Attributes;
-using Samson.Web.Application.Models.DataStructures.Event;
+using Samson.Web.Application.Models.DataStructures.User;
 using Samson.Web.Application.Services.Interfaces;
 
-namespace Samson.Web.Application.CommandHandlers.Event
+namespace Samson.Web.Application.CommandHandlers.User
 {
     /// <summary>
-    /// CreateEventCommand command handler.
+    /// CreateUserCommand command handler.
     /// </summary>
     [CommandHandler]
-    public class CreateEventCommandHandler : IRequestHandler<CreateEventCommand, ObjectId>
+    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, ObjectId>
     {
-        private readonly IEventService _service;
+        private readonly IUserService _service;
         private readonly IMapper _mapper;
 
         /// <summary>
         /// Default constructor.
         /// </summary>
-        /// <param name="service">Service to manage Event domain</param>
+        /// <param name="service">Service to manage User domain</param>
         /// <param name="mapper">Mapper to map between models</param>
-        public CreateEventCommandHandler(IEventService service, IMapper mapper)
+        public CreateUserCommandHandler(IUserService service, IMapper mapper)
         {
             _service = service ?? throw new ArgumentNullException(nameof(service));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         /// <summary>
-        /// Handle CreateEventCommand command.
+        /// Handle CreateUserCommand command.
         /// </summary>
         /// <param name="request">Command</param>
         /// <param name="cancellationToken">Cancellation notification</param>
-        /// <returns>Create User Id</returns>
-        Task<ObjectId> IRequestHandler<CreateEventCommand, ObjectId>.Handle(CreateEventCommand request,
-            CancellationToken cancellationToken)
+        /// <returns></returns>
+        public Task<ObjectId> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            var dataStructure = _mapper.Map<CreateEventCommand, CreateEventDataStructure>(request);
+            var dataStructure = _mapper.Map<CreateUserCommand, CreateUserDataStructure>(request);
             return _service.Create(dataStructure);
         }
     }

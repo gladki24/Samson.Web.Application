@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
@@ -36,15 +38,36 @@ namespace Samson.Web.Application.WebHost
         /// <summary>
         /// Configuration of application services
         /// </summary>
-        /// <param name="services"></param>
+        /// <param name="services">Collection of registered services</param>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddJwtAuth(AutofacContainer.Resolve<IJwtConfiguration>().Key);
+            services.AddJwtAuth(Environment.GetEnvironmentVariable("Authentication:JWT:Key"));
             services.AddOptions();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Samson.Web.Application", Version = "v1" });
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "JWT Authorization token {token}",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new string[] { }
+                    }
+                });
             });
         }
 
@@ -67,11 +90,12 @@ namespace Samson.Web.Application.WebHost
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Samson.Web.Application v1"));
             }
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Samson.Web.Application v1"));
             app.UseRouting();
+            app.UseAuthorization();
             app.UseAuthorization();
             app.UseEndpoints(endpoints => endpoints.MapControllers());
             AutofacContainer = app.ApplicationServices.GetAutofacRoot();

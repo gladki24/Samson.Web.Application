@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Samson.Web.Application.Infrastructure.Extensions;
 
 namespace Samson.Web.Application.Identity
 {
@@ -14,6 +15,7 @@ namespace Samson.Web.Application.Identity
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterIdentityConfiguration();
+            builder.RegisterServices(ThisAssembly);
         }
     }
 }
