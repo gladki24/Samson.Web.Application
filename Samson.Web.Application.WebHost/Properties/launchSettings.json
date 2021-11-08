@@ -15,7 +15,9 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "ConnectionString:MongoDB:Atlas": "mongodb://localhost:27017/?readPreference=primary&ssl=false"
+        "ConnectionString:MongoDB:Atlas": "mongodb://localhost:27017/?readPreference=primary&ssl=false",
+        "MongoDB:DatabaseName": "SamsonDatabase",
+        "Authentication:JWT:Key": "[ONLY DEV JWT KEY] Super key to provide JWT token in application"
       }
     },
     "Samson.Web.Application": {

@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Samson.Web.Application.Api\Samson.Web.Application.Api.csproj" />
+    <ProjectReference Include="..\Samson.Web.Application.Identity\Samson.Web.Application.Identity.csproj" />
     <ProjectReference Include="..\Samson.Web.Application.Persistence\Samson.Web.Application.Persistence.csproj" />
     <ProjectReference Include="..\Samson.Web.Application\Samson.Web.Application.csproj" />
   </ItemGroup>

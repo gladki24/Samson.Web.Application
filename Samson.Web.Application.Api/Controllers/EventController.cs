@@ -104,7 +104,7 @@ namespace Samson.Web.Application.Api.Controllers
         /// <summary>
         /// Delete Event.
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="request">Data to find and delete Event</param>
         /// <returns>Data to find and delete Event</returns>
         [HttpDelete("delete")]
         public async Task<ActionResult> Delete(DeleteEventRequest request)

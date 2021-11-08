@@ -6,6 +6,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using Samson.Web.Application.Infrastructure.Attributes;
+using Samson.Web.Application.Infrastructure.Configuration;
 using Samson.Web.Application.Models.Dtos.GymPass;
 using Samson.Web.Application.Persistence.Entities;
 using Samson.Web.Application.ReadModels.Interfaces;

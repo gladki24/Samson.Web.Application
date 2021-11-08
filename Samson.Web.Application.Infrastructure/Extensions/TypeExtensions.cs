@@ -3,6 +3,9 @@ using Samson.Web.Application.Infrastructure.Attributes;
 
 namespace Samson.Web.Application.Infrastructure.Extensions
 {
+    /// <summary>
+    /// Extensions for Type type
+    /// </summary>
     public static class TypeExtensions
     {
         /// <summary>
