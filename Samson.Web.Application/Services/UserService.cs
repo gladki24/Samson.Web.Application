@@ -20,12 +20,14 @@ namespace Samson.Web.Application.Services
         private readonly IUserRepository _repository;
         private readonly IUserFactory _factory;
         private readonly IAuthenticationService _authenticationService;
+        private readonly IHashService _hashService;
 
-        public UserService(IUserRepository repository, IUserFactory factory, IAuthenticationService authenticationService)
+        public UserService(IUserRepository repository, IUserFactory factory, IAuthenticationService authenticationService, IHashService hashService)
         {
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
             _factory = factory ?? throw new ArgumentNullException(nameof(factory));
             _authenticationService = authenticationService ?? throw new ArgumentNullException(nameof(authenticationService));
+            _hashService = hashService ?? throw new ArgumentNullException(nameof(hashService));
         }
 
         public Task<ObjectId> Create(CreateUserDataStructure dataStructure)
@@ -57,7 +59,7 @@ namespace Samson.Web.Application.Services
         {
             var user = GetByLoginOrThrow(dataStructure.Login);
 
-            if (user.Password != dataStructure.Password)
+            if (!_hashService.Verify(dataStructure.Password, user.Password))
             {
                 throw new ApplicationException("User password is invalid.");
             }
