@@ -1,16 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Samson.Web.Application.Infrastructure.Attributes;
-using Samson.Web.Application.Models.Dtos;
 using Samson.Web.Application.Models.Dtos.GymPass;
-using Samson.Web.Application.Queries;
 using Samson.Web.Application.Queries.GymPass;
 using Samson.Web.Application.ReadModels.Interfaces;
 
-namespace Samson.Web.Application.QueryHandlers
+namespace Samson.Web.Application.QueryHandlers.GymPass
 {
+    /// <summary>
+    /// Query to get all GymPassTypes
+    /// </summary>
     [QueryHandler]
     public class GymPassTypesQueryHandler : IRequestHandler<GetAllGymPassTypesQuery, List<GymPassTypeDto>>
     {
@@ -25,7 +27,7 @@ namespace Samson.Web.Application.QueryHandlers
         /// <param name="readModel">Read model to get list of gym pass types</param>
         public GymPassTypesQueryHandler(IGymPassReadModel readModel)
         {
-            _readModel = readModel;
+            _readModel = readModel ?? throw new ArgumentNullException(nameof(readModel));
         }
 
         /// <summary>

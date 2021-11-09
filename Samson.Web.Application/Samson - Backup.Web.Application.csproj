@@ -18,4 +18,8 @@
     <ProjectReference Include="..\Samson.Web.Models\Samson.Web.Application.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Queries\NewFolder\" />
+  </ItemGroup>
+
 </Project>

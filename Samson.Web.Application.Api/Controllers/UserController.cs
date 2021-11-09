@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using Samson.Web.Application.Api.Requests.User;
+using Samson.Web.Application.Api.ViewModels.User;
 using Samson.Web.Application.Commands.User;
+using Samson.Web.Application.Infrastructure;
+using Samson.Web.Application.Models.Dtos.User;
+using Samson.Web.Application.Queries.User;
 
 namespace Samson.Web.Application.Api.Controllers
 {
@@ -41,8 +42,15 @@ namespace Samson.Web.Application.Api.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult> GetById(string id)
         {
-            // todo
-            return Ok();
+            if (id.IsNullOrEmpty())
+            {
+                BadRequest();
+            }
+
+            var query = _mapper.Map<string, GetUserByIdQuery>(id);
+            var queryResult = await _mediator.Send(query);
+            var result = _mapper.Map<UserDto, UserViewModel>(queryResult);
+            return Ok(result);
         }
 
         /// <summary>
