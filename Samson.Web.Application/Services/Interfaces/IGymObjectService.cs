@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using MongoDB.Bson;
-using Samson.Web.Application.Models.DataStructures;
 using Samson.Web.Application.Models.DataStructures.GymObject;
 
 namespace Samson.Web.Application.Services.Interfaces
@@ -28,7 +27,21 @@ namespace Samson.Web.Application.Services.Interfaces
         /// Delete GymObject domain
         /// </summary>
         /// <param name="id">Id of GymObject</param>
-        /// <returns>GymObject Id</returns>
+        /// <returns>Deleted GymObject Id</returns>
         Task<ObjectId> Delete(ObjectId id);
+
+        /// <summary>
+        /// Add GymRoom to GymObject
+        /// </summary>
+        /// <param name="dataStructure">Data to add GymRoom to GymObject</param>
+        /// <returns>GymRoom Id</returns>
+        Task<ObjectId> AddRoom(AddGymRoomDataStructure dataStructure);
+
+        /// <summary>
+        /// Remove GymRoom from GymObject
+        /// </summary>
+        /// <param name="dataStructure">Data to find GymRoom and delete from GymObject</param>
+        /// <returns>Deleted GymRoom Id</returns>
+        Task<ObjectId> RemoveRoom(RemoveGymRoomDataStructure dataStructure);
     }
 }

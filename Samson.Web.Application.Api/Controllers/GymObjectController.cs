@@ -122,5 +122,41 @@ namespace Samson.Web.Application.Api.Controllers
 
             return Ok();
         }
+
+        /// <summary>
+        /// Add room to GymObject.
+        /// </summary>
+        /// <param name="request">Data to add GymRoom to GymObject</param>
+        [HttpPost("addRoom")]
+        public async Task<ActionResult> AddRoom(AddGymRoomRequest request)
+        {
+            if (request == null)
+            {
+                return BadRequest();
+            }
+
+            var command = _mapper.Map<AddGymRoomRequest, AddGymRoomCommand>(request);
+            var result = await _mediator.Send(command);
+
+            return Ok(result.ToJson());
+        }
+
+        /// <summary>
+        /// Remove room from GymObject.
+        /// </summary>
+        /// <param name="request">Data to find GymRoom and remove from GymObject</param>
+        [HttpDelete("removeRoom")]
+        public async Task<ActionResult> RemoveRoom(RemoveGymRoomRequest request)
+        {
+            if (request == null)
+            {
+                return BadRequest();
+            }
+
+            var command = _mapper.Map<RemoveGymRoomRequest, RemoveGymRoomCommand>(request);
+            await _mediator.Send(command);
+
+            return Ok();
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Samson.Web.Application.Infrastructure.ViewModels;
 
 namespace Samson.Web.Application.Api.Requests.GymObject
 {
@@ -8,6 +8,6 @@ namespace Samson.Web.Application.Api.Requests.GymObject
     public class RoomConfigurationRequest
     {
         public string Name { get; set; }
-        public Tuple<int, int> Dimensions { get; set; }
+        public DimensionViewModel Dimensions { get; set; }
     }
 }

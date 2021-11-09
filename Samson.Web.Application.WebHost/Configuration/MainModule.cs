@@ -3,6 +3,7 @@ using AutoMapper.Contrib.Autofac.DependencyInjection;
 using MediatR.Extensions.Autofac.DependencyInjection;
 using Samson.Web.Application.Api;
 using Samson.Web.Application.Identity;
+using Samson.Web.Application.Infrastructure;
 using Samson.Web.Application.Infrastructure.Extensions;
 using Samson.Web.Application.Persistence;
 using Samson.Web.Application.ReadModels;
@@ -28,6 +29,7 @@ namespace Samson.Web.Application.WebHost.Configuration
             builder.RegisterModule<ApplicationApiContainer>();
             builder.RegisterModule<ReadModelContainer>();
             builder.RegisterModule<PersistenceContainer>();
+            builder.RegisterModule<InfrastructureContainer>();
         }
     }
 }
