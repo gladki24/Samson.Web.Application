@@ -104,7 +104,11 @@ namespace Samson.Web.Application.Api.Controllers
             return Ok();
         }
 
-        [HttpPost]
+        /// <summary>
+        /// Login user
+        /// </summary>
+        /// <param name="request">Data to login User</param>
+        [HttpPost("login")]
         public async Task<ActionResult> Login(LoginUserRequest request)
         {
             if (request == null)

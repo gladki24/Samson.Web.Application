@@ -17,12 +17,13 @@ namespace Samson.Web.Application.Models.Domains
         /// Default constructor.
         /// </summary>
         /// <param name="id">Key</param>
+        /// <param name="password">Hashed password</param>
         /// <param name="dataStructure">Data structure to create User</param>
-        public User(ObjectId id, CreateUserDataStructure dataStructure)
+        public User(ObjectId id, string password, CreateUserDataStructure dataStructure)
         {
             Id = id;
             Login = dataStructure.Login;
-            Password = dataStructure.Password;
+            Password = password;
         }
 
         /// <summary>
