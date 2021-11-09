@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Samson.Web.Application.Identity;
 using Samson.Web.Application.Identity.Configuration;
+using Samson.Web.Application.Infrastructure.Middlewares;
 using Samson.Web.Application.WebHost.Configuration;
 
 namespace Samson.Web.Application.WebHost
@@ -90,13 +91,19 @@ namespace Samson.Web.Application.WebHost
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }
-
+            }         
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Samson.Web.Application v1"));
             app.UseRouting();
+            app.UseCors(options => options
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true)
+                .AllowCredentials()
+            );
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseMiddleware<ErrorHandlerMiddleware>();
             app.UseEndpoints(endpoints => endpoints.MapControllers());
             AutofacContainer = app.ApplicationServices.GetAutofacRoot();
             app.UseRouting();
