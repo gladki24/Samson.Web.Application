@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using MongoDB.Bson;
 using Samson.Web.Application.Factories.Interfaces;
 using Samson.Web.Application.Infrastructure.Attributes;
+using Samson.Web.Application.Infrastructure.Exceptions;
 using Samson.Web.Application.Infrastructure.Repository;
 using Samson.Web.Application.Models.DataStructures.GymObject;
 using Samson.Web.Application.Models.Domains;
@@ -68,7 +69,7 @@ namespace Samson.Web.Application.Services
 
         private GymObject GetOrThrow(ObjectId id)
         { 
-            return _repository.Get(id) ?? throw new ApplicationException("GymObject not found");
+            return _repository.Get(id) ?? throw new BusinessLogicException("GymObject not found");
         }
     }
 }

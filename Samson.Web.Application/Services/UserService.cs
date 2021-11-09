@@ -4,6 +4,7 @@ using MongoDB.Bson;
 using Samson.Web.Application.Factories.Interfaces;
 using Samson.Web.Application.Identity.Services.Interfaces;
 using Samson.Web.Application.Infrastructure.Attributes;
+using Samson.Web.Application.Infrastructure.Exceptions;
 using Samson.Web.Application.Models.DataStructures.User;
 using Samson.Web.Application.Models.Domains;
 using Samson.Web.Application.Persistence.Repositories.Interfaces;
@@ -49,7 +50,7 @@ namespace Samson.Web.Application.Services
 
             if (user.Password != dataStructure.Password)
             {
-                throw new ApplicationException("Invalid password. Valid password is required to delete account");
+                throw new BusinessLogicException("Invalid password. Valid password is required to delete account");
             }
 
             return _repository.Remove(user);
@@ -61,7 +62,7 @@ namespace Samson.Web.Application.Services
 
             if (!_hashService.Verify(dataStructure.Password, user.Password))
             {
-                throw new ApplicationException("User password is invalid.");
+                throw new BusinessLogicException("User password is invalid.");
             }
 
             return Task.FromResult(_authenticationService.GenerateJwtToken(dataStructure.Login));
@@ -69,12 +70,12 @@ namespace Samson.Web.Application.Services
 
         private User GetOrThrow(ObjectId id)
         {
-            return _repository.Get(id) ?? throw new ApplicationException("User not found.");
+            return _repository.Get(id) ?? throw new BusinessLogicException("User not found.");
         }
 
         private User GetByLoginOrThrow(string login)
         {
-            return _repository.GetByLogin(login) ?? throw new ApplicationException("User login is invalid.");
+            return _repository.GetByLogin(login) ?? throw new BusinessLogicException("User login is invalid.");
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using MongoDB.Bson;
 using Samson.Web.Application.Factories.Interfaces;
 using Samson.Web.Application.Infrastructure.Attributes;
+using Samson.Web.Application.Infrastructure.Exceptions;
 using Samson.Web.Application.Infrastructure.Repository;
 using Samson.Web.Application.Models.DataStructures.Event;
 using Samson.Web.Application.Models.Domains;
@@ -46,7 +47,7 @@ namespace Samson.Web.Application.Services
 
         private Event GetOrThrow(ObjectId id)
         {
-            return _repository.Get(id) ?? throw new ApplicationException("Event not found");
+            return _repository.Get(id) ?? throw new BusinessLogicException("Event not found");
         }
     }
 }
