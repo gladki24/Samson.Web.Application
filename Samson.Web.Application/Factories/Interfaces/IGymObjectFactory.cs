@@ -1,5 +1,4 @@
-﻿using Samson.Web.Application.Models.DataStructures;
-using Samson.Web.Application.Models.DataStructures.GymObject;
+﻿using Samson.Web.Application.Models.DataStructures.GymObject;
 using Samson.Web.Application.Models.Domains;
 
 namespace Samson.Web.Application.Factories.Interfaces
@@ -10,10 +9,17 @@ namespace Samson.Web.Application.Factories.Interfaces
     public interface IGymObjectFactory
     {
         /// <summary>
-        /// Create gym object from data structure
+        /// Create GymObject from data structure.
         /// </summary>
-        /// <param name="dataStructure">Data structure to create gym object</param>
+        /// <param name="dataStructure">Data structure to create GymObject</param>
         /// <returns>GymObject domain</returns>
         GymObject CreateGymObject(CreateGymObjectDataStructure dataStructure);
+
+        /// <summary>
+        /// Create GymRoom from data structure.
+        /// </summary>
+        /// <param name="dataStructure">Data structure to create GymRoom</param>
+        /// <returns>GymRoom domain</returns>
+        GymRoom CreateGymRoom(AddGymRoomDataStructure dataStructure);
     }
 }

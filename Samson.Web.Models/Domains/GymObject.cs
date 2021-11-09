@@ -13,7 +13,7 @@ namespace Samson.Web.Application.Models.Domains
         public ObjectId Id { get; private set; }
         public string Name { get; private set; }
         public CovidConfiguration CovidConfiguration { get; private set; }
-        public IEnumerable<GymRoom> Rooms { get; private set; }
+        public IList<GymRoom> Rooms { get; private set; }
 
         /// <summary>
         /// Default constructor
@@ -22,7 +22,7 @@ namespace Samson.Web.Application.Models.Domains
         /// <param name="name">Name of object</param>
         /// <param name="covidConfiguration">COVID configuration</param>
         /// <param name="rooms">Rooms located in the building</param>
-        public GymObject(ObjectId id, string name, CovidConfiguration covidConfiguration, IEnumerable<GymRoom> rooms)
+        public GymObject(ObjectId id, string name, CovidConfiguration covidConfiguration, IList<GymRoom> rooms)
         {
             Id = id;
             Name = name;

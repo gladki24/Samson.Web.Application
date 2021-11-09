@@ -1,15 +1,15 @@
 ﻿using Autofac;
 using AutoMapper.Contrib.Autofac.DependencyInjection;
 
-namespace Samson.Web.Application.Api
+namespace Samson.Web.Application.Infrastructure
 {
     /// <summary>
-    /// Module to register Application.Api components.
+    /// Module to register Infrastructure components.
     /// </summary>
-    public class ApplicationApiContainer : Module
+    public class InfrastructureContainer : Module
     {
         /// <summary>
-        /// Load Application.Api components to DI container
+        /// Load Infrastructure components to DI container
         /// </summary>
         /// <param name="builder">Target container builder</param>
         protected override void Load(ContainerBuilder builder)

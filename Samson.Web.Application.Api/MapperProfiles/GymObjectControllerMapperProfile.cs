@@ -3,7 +3,6 @@ using MongoDB.Bson;
 using Samson.Web.Application.Api.Requests.GymObject;
 using Samson.Web.Application.Api.ViewModels.GymObject;
 using Samson.Web.Application.Commands.GymObject;
-using Samson.Web.Application.Models.DataStructures;
 using Samson.Web.Application.Models.DataStructures.GymObject;
 using Samson.Web.Application.Models.Dtos.GymObject;
 using Samson.Web.Application.Queries.GymObject;
@@ -36,6 +35,12 @@ namespace Samson.Web.Application.Api.MapperProfiles
             CreateMap<GymRoomDto, GymRoomViewModel>();
             CreateMap<GymObjectDto, GymObjectViewModel>();
             CreateMap<CovidConfigurationDto, CovidConfigurationViewModel>();
+
+            CreateMap<AddGymRoomRequest, AddGymRoomCommand>();
+            CreateMap<RemoveGymRoomRequest, RemoveGymRoomCommand>();
+
+            CreateMap<AddGymRoomCommand, AddGymRoomDataStructure>();
+            CreateMap<RemoveGymRoomCommand, RemoveGymRoomDataStructure>();
         }
     }
 }

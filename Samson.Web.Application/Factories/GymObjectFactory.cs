@@ -2,7 +2,6 @@
 using MongoDB.Bson;
 using Samson.Web.Application.Factories.Interfaces;
 using Samson.Web.Application.Infrastructure.Attributes;
-using Samson.Web.Application.Models.DataStructures;
 using Samson.Web.Application.Models.DataStructures.GymObject;
 using Samson.Web.Application.Models.Domains;
 
@@ -18,11 +17,14 @@ namespace Samson.Web.Application.Factories
                 CreateRooms(dataStructure.Rooms)
                 );
 
+        public GymRoom CreateGymRoom(AddGymRoomDataStructure dataStructure) =>
+            new GymRoom(ObjectId.GenerateNewId(), dataStructure.Name, dataStructure.Dimensions);
+
         private CovidConfiguration CreateCovidConfiguration(
             CovidConfigurationDataStructure covidConfigurationDataStructure) => new CovidConfiguration(ObjectId.GenerateNewId(),
                 covidConfigurationDataStructure.PersonFactorPerMeter, covidConfigurationDataStructure.IsActive);
 
-        private IEnumerable<GymRoom> CreateRooms(IEnumerable<RoomConfigurationDataStructure> dataStructures)
+        private IList<GymRoom> CreateRooms(IEnumerable<RoomConfigurationDataStructure> dataStructures)
         {
             var gymRooms = new List<GymRoom>();
 
