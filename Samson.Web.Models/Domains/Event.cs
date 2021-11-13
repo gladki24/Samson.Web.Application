@@ -6,7 +6,7 @@ using System;
 namespace Samson.Web.Application.Models.Domains
 {
     /// <summary>
-    /// Represent event in gym object
+    /// Represent Event in gym object.
     /// </summary>
     public class Event : IAggregateRoot
     {
@@ -20,7 +20,7 @@ namespace Samson.Web.Application.Models.Domains
         public ObjectId GymRoomId { get; set; }
 
         /// <summary>
-        /// Default constructor
+        /// Default constructor.
         /// </summary>
         /// <param name="id">Key</param>
         /// <param name="dataStructure">Data structure to create Event</param>

@@ -1,7 +1,7 @@
 ﻿namespace Samson.Web.Application.Api.Requests.Event
 {
     /// <summary>
-    /// Request to delete event
+    /// Request to delete Event.
     /// </summary>
     public class DeleteEventRequest
     {

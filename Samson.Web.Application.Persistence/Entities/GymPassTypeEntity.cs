@@ -5,7 +5,7 @@ using Samson.Web.Application.Infrastructure;
 namespace Samson.Web.Application.Persistence.Entities
 {
     /// <summary>
-    /// Entity of GymPassType
+    /// Entity of GymPassType.
     /// </summary>
     public class GymPassTypeEntity : IEntity
     {

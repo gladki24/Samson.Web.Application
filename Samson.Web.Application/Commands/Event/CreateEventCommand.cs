@@ -4,7 +4,7 @@ using MongoDB.Bson;
 namespace Samson.Web.Application.Commands.Event
 {
     /// <summary>
-    /// Command to create Event
+    /// Command to create Event.
     /// </summary>
     public class CreateEventCommand : IRequest<ObjectId>
     {
