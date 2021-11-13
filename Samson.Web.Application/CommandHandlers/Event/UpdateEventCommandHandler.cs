@@ -21,7 +21,7 @@ namespace Samson.Web.Application.CommandHandlers.Event
         private readonly IMapper _mapper;
 
         /// <summary>
-        /// Default constructor
+        /// Default constructor.
         /// </summary>
         /// <param name="service">Service to manage Event domain</param>
         /// <param name="mapper">Mapper to map between models</param>

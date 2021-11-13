@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
@@ -21,19 +22,23 @@ namespace Samson.Web.Application.ReadModels
     {
         private readonly IDatabaseConfiguration _databaseConfiguration;
         private readonly IMapper _mapper;
+        private readonly ILogger _logger;
 
         /// <summary>
         /// Default constructor
         /// </summary>
         /// <param name="databaseConfiguration">Configuration of connection with database</param>
         /// <param name="mapper">Mapper to map between models</param>
+        /// <param name="logger">Log information about database queries</param>
         public GymObjectReadModel(
             IDatabaseConfiguration databaseConfiguration,
-            IMapper mapper
+            IMapper mapper,
+            ILogger<GymObjectReadModel> logger
         )
         {
             _databaseConfiguration = databaseConfiguration ?? throw new ArgumentNullException(nameof(databaseConfiguration));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         public Task<GymObjectDto> GetById(ObjectId id)
@@ -54,7 +59,7 @@ namespace Samson.Web.Application.ReadModels
 
         public Task<List<GymObjectDto>> GetAll()
         {
-            var client = new MongoClient(_databaseConfiguration.ConnectionString);
+            var client = _databaseConfiguration.CreateClient(_logger);
             var database = client.GetDatabase(_databaseConfiguration.DatabaseName);
 
             var collection = database.GetCollection<GymObjectEntity>("GymObjectCollection");
@@ -65,6 +70,35 @@ namespace Samson.Web.Application.ReadModels
             return query
                 .ToListAsync()
                 .ContinueWith(result => _mapper.Map<List<GymObjectDto>>(result.Result));
+        }
+
+        public Task<GymRoomDetailsDto> GetRoomById(ObjectId id)
+        {
+            var query = GetGetAllGymRoomDetailsQuery()
+                .AppendStage<BsonDocument>("{ $match: { _id: " + id.ToJson() + " }}");
+
+            return query.As<GymRoomDetailsDto>().SingleOrDefaultAsync();
+        }
+
+        public Task<List<GymRoomDetailsDto>> GetAllRooms()
+        {
+            return GetGetAllGymRoomDetailsQuery()
+                .As<GymRoomDetailsDto>()
+                .ToListAsync();
+        }
+
+        private IAggregateFluent<BsonDocument> GetGetAllGymRoomDetailsQuery()
+        {
+            var client = _databaseConfiguration.CreateClient(_logger);
+            var database = client.GetDatabase(_databaseConfiguration.DatabaseName);
+
+            var collection = database.GetCollection<GymObjectEntity>("GymObjectCollection");
+
+            return collection
+                .Aggregate()
+                .AppendStage<BsonDocument>("{ $addFields: { 'Rooms.GymObject': '$$ROOT' }}")
+                .AppendStage<BsonDocument>("{ $unwind: '$Rooms' }")
+                .AppendStage<BsonDocument>("{ $replaceRoot: { newRoot: '$Rooms'}}");
         }
     }
 }

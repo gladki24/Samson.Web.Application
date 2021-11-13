@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
@@ -9,7 +8,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Samson.Web.Application.Identity;
-using Samson.Web.Application.Identity.Configuration;
 using Samson.Web.Application.Infrastructure.Middlewares;
 using Samson.Web.Application.WebHost.Configuration;
 

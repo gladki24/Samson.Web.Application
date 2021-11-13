@@ -31,6 +31,8 @@ namespace Samson.Web.Application.Api.MapperProfiles
 
             CreateMap<string, GymObjectQuery>().ConstructUsing((id, ctx) =>
                 new GymObjectQuery(ctx.Mapper.Map<string, ObjectId>(id)));
+            CreateMap<string, GetGymRoomByIdQuery>().ConstructUsing((id, context) =>
+                new GetGymRoomByIdQuery {Id = context.Mapper.Map<ObjectId>(id)});
 
             CreateMap<GymRoomDto, GymRoomViewModel>();
             CreateMap<GymObjectDto, GymObjectViewModel>();
@@ -41,6 +43,8 @@ namespace Samson.Web.Application.Api.MapperProfiles
 
             CreateMap<AddGymRoomCommand, AddGymRoomDataStructure>();
             CreateMap<RemoveGymRoomCommand, RemoveGymRoomDataStructure>();
+
+            CreateMap<GymRoomDetailsDto, GymRoomDetailsViewModel>();
         }
     }
 }

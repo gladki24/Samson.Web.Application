@@ -28,14 +28,12 @@ namespace Samson.Web.Application.QueryHandlers.GymObject
         }
 
         /// <summary>
-        /// Handle AllGymObjectQuery
+        /// Handle AllGymObjectQuery query.
         /// </summary>
-        /// <param name="request">query</param>
-        /// <param name="cancellationToken">cancellation notification</param>
+        /// <param name="request">Query</param>
+        /// <param name="cancellationToken">Cancellation notification</param>
         /// <returns>DTO</returns>
-        public Task<List<GymObjectDto>> Handle(AllGymObjectQuery request, CancellationToken cancellationToken)
-        {
-            return _readModel.GetAll();
-        }
+        public Task<List<GymObjectDto>> Handle(AllGymObjectQuery request, CancellationToken cancellationToken) 
+            => _readModel.GetAll();
     }
 }

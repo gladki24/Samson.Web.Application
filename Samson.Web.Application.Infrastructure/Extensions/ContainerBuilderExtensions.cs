@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Data;
 using System.Reflection;
 using Autofac;
+using MongoDB.Driver;
+using MongoDB.Driver.Core.Events;
 using Samson.Web.Application.Infrastructure.Configuration;
-using Samson.Web.Application.Infrastructure.Attributes;
 
 namespace Samson.Web.Application.Infrastructure.Extensions
 {

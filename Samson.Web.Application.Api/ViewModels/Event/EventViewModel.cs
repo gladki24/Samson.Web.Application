@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Samson.Web.Application.Api.ViewModels.Event
 {
     /// <summary>
-    /// Event view model
+    /// Event view model.
     /// </summary>
     public class EventViewModel
     {

@@ -49,12 +49,32 @@ namespace Samson.Web.Application.Api.Controllers
         {
             if (id.IsNullOrEmpty())
             {
-                BadRequest();
+                return BadRequest();
             }
 
             var query = _mapper.Map<string, GymObjectQuery>(id);
             var queryResult = await _mediator.Send(query);
             var result = _mapper.Map<GymObjectDto, GymObjectViewModel>(queryResult);
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Get GymRoom by id.
+        /// </summary>
+        /// <param name="id">Id of GymRoom</param>
+        /// <returns>GymRoom</returns>
+        [HttpGet("getRoomById/{id}")]
+        public async Task<ActionResult> GetRoomById(string id)
+        {
+            if (id.IsNullOrEmpty())
+            {
+                return BadRequest();
+            }
+
+            var query = _mapper.Map<string, GetGymRoomByIdQuery>(id);
+            var queryResult = await _mediator.Send(query);
+            var result = _mapper.Map<GymRoomDetailsDto, GymRoomDetailsViewModel>(queryResult);
+
             return Ok(result);
         }
 
@@ -68,6 +88,19 @@ namespace Samson.Web.Application.Api.Controllers
             var query = new AllGymObjectQuery();
             var queryResult = await _mediator.Send(query);
             var result = _mapper.Map<IEnumerable<GymObjectDto>, IEnumerable<GymObjectViewModel>>(queryResult);
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Get all GymRoomDetail view models.
+        /// </summary>
+        /// <returns>List of all GymRoomDetail view models</returns>
+        [HttpGet("getAllRooms")]
+        public async Task<ActionResult> GetAllRooms()
+        {
+            var query = new GetAllGymRoomQuery();
+            var queryResult = await _mediator.Send(query);
+            var result = _mapper.Map<IEnumerable<GymRoomDetailsDto>, IEnumerable<GymRoomDetailsViewModel>>(queryResult);
             return Ok(result);
         }
 

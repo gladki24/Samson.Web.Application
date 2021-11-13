@@ -23,5 +23,18 @@ namespace Samson.Web.Application.ReadModels.Interfaces
         /// <returns>dtos list</returns>
         Task<List<GymObjectDto>> GetAll();
 
+        /// <summary>
+        /// Get GymRoom from collection by id.
+        /// </summary>
+        /// <param name="id">key</param>
+        /// <returns>dto</returns>
+        Task<GymRoomDetailsDto> GetRoomById(ObjectId id);
+
+        /// <summary>
+        /// Get All GymRooms from collection.
+        /// </summary>
+        /// <returns>dtos list</returns>
+        Task<List<GymRoomDetailsDto>> GetAllRooms();
+
     }
 }

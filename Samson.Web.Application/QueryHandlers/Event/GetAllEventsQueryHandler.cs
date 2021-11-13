@@ -28,10 +28,10 @@ namespace Samson.Web.Application.QueryHandlers.Event
         }
 
         /// <summary>
-        /// Handle AllEventsQuery
+        /// Handle AllEventsQuery.
         /// </summary>
-        /// <param name="request"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="request">Command</param>
+        /// <param name="cancellationToken">Cancellation notification</param>
         /// <returns></returns>
         public Task<List<EventDto>> Handle(GetAllEventsQuery request, CancellationToken cancellationToken)
         {
