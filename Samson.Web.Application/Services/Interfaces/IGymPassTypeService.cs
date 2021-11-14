@@ -10,7 +10,7 @@ namespace Samson.Web.Application.Services.Interfaces
     public interface IGymPassTypeService
     {
         /// <summary>
-        /// Create GymPassType domain.
+        /// CreatePersonalTrainer GymPassType domain.
         /// </summary>
         /// <param name="dataStructure">Data to create GymPassType domain</param>
         /// <returns>GymPassType Id</returns>

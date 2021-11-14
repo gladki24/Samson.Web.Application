@@ -68,7 +68,7 @@ namespace Samson.Web.Application.Api.Controllers
         }
 
         /// <summary>
-        /// Create new Event.
+        /// CreatePersonalTrainer new Event.
         /// </summary>
         /// <param name="request">Data to create new Event</param>
         [HttpPost("create")]

@@ -9,14 +9,14 @@ namespace Samson.Web.Application.Factories.Interfaces
     public interface IGymObjectFactory
     {
         /// <summary>
-        /// Create GymObject from data structure.
+        /// CreatePersonalTrainer GymObject from data structure.
         /// </summary>
         /// <param name="dataStructure">Data structure to create GymObject</param>
         /// <returns>GymObject domain</returns>
         GymObject CreateGymObject(CreateGymObjectDataStructure dataStructure);
 
         /// <summary>
-        /// Create GymRoom from data structure.
+        /// CreatePersonalTrainer GymRoom from data structure.
         /// </summary>
         /// <param name="dataStructure">Data structure to create GymRoom</param>
         /// <returns>GymRoom domain</returns>

@@ -3,10 +3,10 @@ using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using MongoDB.Bson;
 using Samson.Web.Application.Api.Requests.User;
 using Samson.Web.Application.Api.ViewModels.User;
 using Samson.Web.Application.Commands.User;
+using Samson.Web.Application.Commands.User.Client;
 using Samson.Web.Application.Infrastructure;
 using Samson.Web.Application.Models.Dtos.User;
 using Samson.Web.Application.Queries.User;
@@ -14,31 +14,31 @@ using Samson.Web.Application.Queries.User;
 namespace Samson.Web.Application.Api.Controllers
 {
     /// <summary>
-    /// User object API Controller. Provide CRUD operations on User model.
+    /// Client domain API Controller.
     /// </summary>
     [ApiController]
     [Route("[controller]")]
-    public class UserController : ControllerBase
+    public class ClientController : ControllerBase
     {
         private readonly IMapper _mapper;
         private readonly IMediator _mediator;
 
         /// <summary>
-        /// Default constructor
+        /// Default constructor.
         /// </summary>
         /// <param name="mapper">Mapper to map between models</param>
         /// <param name="mediator">CQRS mediator</param>
-        public UserController(IMapper mapper, IMediator mediator)
+        public ClientController(IMapper mapper, IMediator mediator)
         {
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
         /// <summary>
-        /// Get User by id.
+        /// Get Client by id.
         /// </summary>
-        /// <param name="id">Id of User</param>
-        /// <returns>User</returns>
+        /// <param name="id">Id of Client</param>
+        /// <returns>Client</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult> GetById(string id)
         {
@@ -47,50 +47,52 @@ namespace Samson.Web.Application.Api.Controllers
                 BadRequest();
             }
 
-            var query = _mapper.Map<string, GetUserByIdQuery>(id);
+            var query = _mapper.Map<string, GetClientByIdQuery>(id);
             var queryResult = await _mediator.Send(query);
-            var result = _mapper.Map<UserDto, UserViewModel>(queryResult);
+            var result = _mapper.Map<ClientDto, ClientViewModel>(queryResult);
+
             return Ok(result);
         }
 
         /// <summary>
-        /// Create new User.
+        /// Register Client.
         /// </summary>
-        /// <param name="request">Data to create User</param>
-        [HttpPost("create")]
-        public async Task<ActionResult> Create(CreateUserRequest request)
+        /// <param name="request">Data to register Client</param>
+        [HttpPost("register")]
+        public async Task<ActionResult> Register(RegisterClientRequest request)
         {
             if (request == null)
             {
-                BadRequest();
+                return BadRequest();
             }
 
-            var command = _mapper.Map<CreateUserRequest, CreateUserCommand>(request);
+            var command = _mapper.Map<RegisterClientRequest, RegisterClientCommand>(request);
             var result = await _mediator.Send(command);
-            return Ok(result.ToJson());
+
+            return Ok(result);
         }
 
         /// <summary>
-        /// Update User.
+        /// Update Client.
         /// </summary>
-        /// <param name="request">Data to update User</param>
+        /// <param name="request">Data to update Client</param>
         [HttpPost("update")]
-        public async Task<ActionResult> Update(UpdateUserRequest request)
+        public async Task<ActionResult> Update(UpdateClientRequest request)
         {
             if (request == null)
             {
-                BadRequest();
+                return BadRequest();
             }
 
-            var command = _mapper.Map<UpdateUserRequest, UpdateUserCommand>(request);
+            var command = _mapper.Map<UpdateClientRequest, UpdateClientCommand>(request);
             await _mediator.Send(command);
             return Ok();
         }
 
         /// <summary>
-        /// Delete User.
+        /// Delete Client.
         /// </summary>
-        /// <param name="request">Data to find, validate and delete User</param>
+        /// <param name="request">Data to find and delete Client</param>
         [HttpDelete("delete")]
         public async Task<ActionResult> Delete(DeleteUserRequest request)
         {
@@ -99,26 +101,9 @@ namespace Samson.Web.Application.Api.Controllers
                 return BadRequest();
             }
 
-            var command = _mapper.Map<DeleteUserRequest, DeleteUserCommand>(request);
+            var command = _mapper.Map<DeleteUserRequest, DeleteClientCommand>(request);
             await _mediator.Send(command);
             return Ok();
-        }
-
-        /// <summary>
-        /// Login user
-        /// </summary>
-        /// <param name="request">Data to login User</param>
-        [HttpPost("login")]
-        public async Task<ActionResult> Login(LoginUserRequest request)
-        {
-            if (request == null)
-            {
-                return BadRequest();
-            }
-
-            var command = _mapper.Map<LoginUserRequest, LoginUserCommand>(request);
-            var result = await _mediator.Send(command);
-            return Ok(result);
         }
     }
 }

@@ -14,7 +14,10 @@ namespace Samson.Web.Application.Persistence.MappingProfiles
         /// </summary>
         public UserMapperProfile()
         {
-            CreateMap<User, UserEntity>().ReverseMap();
+            CreateMap<PersonalTrainer, PersonalTrainerEntity>().ReverseMap();
+            CreateMap<Client, ClientEntity>().ReverseMap();
+            CreateMap<ClientEntity, User>();
+            CreateMap<PersonalTrainerEntity, User>();
         }
     }
 }

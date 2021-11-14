@@ -74,7 +74,7 @@ namespace Samson.Web.Application.Api.Controllers
         }
 
         /// <summary>
-        /// Create new GymPassType
+        /// CreatePersonalTrainer new GymPassType
         /// </summary>
         /// <param name="request">Data to create new GymPassType</param>
         [HttpPost("create")]

@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using AutoMapper;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using Samson.Web.Application.Infrastructure.Attributes;
 using Samson.Web.Application.Infrastructure.Configuration;
 
 namespace Samson.Web.Application.Infrastructure.Repository
@@ -32,6 +31,22 @@ namespace Samson.Web.Application.Infrastructure.Repository
             var database = client.GetDatabase(databaseConfiguration.DatabaseName);
 
             Collection = database.GetCollection<TEntity>($"{typeof(TModel).Name}Collection");
+        }
+
+        /// <summary>
+        /// Constructor with possibility to specify custom collection name.
+        /// </summary>
+        /// <param name="databaseConfiguration">Configuration of connection with MongoDB database</param>
+        /// <param name="mapper">AutoMapper to map from model to entity</param>
+        /// <param name="collectionName">Allow to specify custom collection name</param>
+        public MongoRepository(IDatabaseConfiguration databaseConfiguration, IMapper mapper, string collectionName)
+        {
+            Mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+
+            var client = new MongoClient(databaseConfiguration.ConnectionString);
+            var database = client.GetDatabase(databaseConfiguration.DatabaseName);
+
+            Collection = database.GetCollection<TEntity>(collectionName);
         }
 
         /// <summary>

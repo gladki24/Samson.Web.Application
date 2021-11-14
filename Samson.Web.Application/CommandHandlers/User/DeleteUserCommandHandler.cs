@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -35,7 +32,7 @@ namespace Samson.Web.Application.CommandHandlers.User
         }
 
         /// <summary>
-        /// Handle CreateUserCommand command.
+        /// Handle DeleteUserCommand command.
         /// </summary>
         /// <param name="request">Command</param>
         /// <param name="cancellationToken">Cancellation notification</param>

@@ -10,7 +10,7 @@ namespace Samson.Web.Application.Services.Interfaces
     public interface IGymObjectService
     {
         /// <summary>
-        /// Create GymObject domain
+        /// CreatePersonalTrainer GymObject domain
         /// </summary>
         /// <param name="dataStructure">Data to create GymObject domain</param>
         /// <returns>GymObject Id</returns>

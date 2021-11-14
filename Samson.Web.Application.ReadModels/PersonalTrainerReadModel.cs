@@ -7,15 +7,16 @@ using MongoDB.Driver.Linq;
 using Samson.Web.Application.Infrastructure.Attributes;
 using Samson.Web.Application.Infrastructure.Configuration;
 using Samson.Web.Application.Models.Dtos.User;
+using Samson.Web.Application.Persistence.Entities;
 using Samson.Web.Application.ReadModels.Interfaces;
 
 namespace Samson.Web.Application.ReadModels
 {
     /// <summary>
-    /// Default implementation of IUserReadModel
+    /// Default implementation of IPersonalTrainerReadModel
     /// </summary>
     [ReadModel]
-    public class UserReadModel : IUserReadModel
+    public class PersonalTrainerReadModel : IPersonalTrainerReadModel
     {
         private readonly IDatabaseConfiguration _databaseConfiguration;
         private readonly IMapper _mapper;
@@ -25,7 +26,7 @@ namespace Samson.Web.Application.ReadModels
         /// </summary>
         /// <param name="databaseConfiguration">Configuration of connection with database</param>
         /// <param name="mapper">Mapper to map between models</param>
-        public UserReadModel(
+        public PersonalTrainerReadModel(
             IDatabaseConfiguration databaseConfiguration, IMapper mapper)
         {
             _databaseConfiguration =
@@ -33,20 +34,19 @@ namespace Samson.Web.Application.ReadModels
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-        public Task<UserDto> GetById(ObjectId id)
+        public Task<PersonalTrainerDto> GetById(ObjectId id)
         {
             var client = new MongoClient(_databaseConfiguration.ConnectionString);
             var database = client.GetDatabase(_databaseConfiguration.DatabaseName);
 
-            var collection = database.GetCollection<UserDto>("UserCollection");
+            var collection = database.GetCollection<PersonalTrainerEntity>("UserCollection");
 
-            var query = from user in collection.AsQueryable()
-                where user.Id == id
-                select new UserDto(user.Id, user.Login);
+            var query = collection
+                .Aggregate()
+                .Match(clientEntity => clientEntity.Id == id)
+                .As<PersonalTrainerDto>();
 
-            return query
-                .SingleOrDefaultAsync()
-                .ContinueWith(result => _mapper.Map<UserDto>(result.Result));
+            return query.SingleOrDefaultAsync();
         }
     }
 }

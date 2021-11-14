@@ -9,7 +9,7 @@ namespace Samson.Web.Application.Factories.Interfaces
     public interface IEventFactory
     {
         /// <summary>
-        /// Create Event from data structure.
+        /// CreatePersonalTrainer Event from data structure.
         /// </summary>
         /// <param name="dataStructure">Data structure to create Event</param>
         /// <returns>Event domain</returns>

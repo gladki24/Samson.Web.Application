@@ -10,7 +10,7 @@ namespace Samson.Web.Application.Services.Interfaces
     public interface IExerciseMachineService
     {
         /// <summary>
-        /// Create ExerciseMachine domain.
+        /// CreatePersonalTrainer ExerciseMachine domain.
         /// </summary>
         /// <param name="dataStructure">Data to create ExerciseMachine domain</param>
         /// <returns>ExerciseMachine Id</returns>

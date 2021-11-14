@@ -105,7 +105,7 @@ namespace Samson.Web.Application.Api.Controllers
         }
 
         /// <summary>
-        /// Create new GymObject.
+        /// CreatePersonalTrainer new GymObject.
         /// </summary>
         /// <param name="request">Data to create new GymObject</param>
         [HttpPost("create")]

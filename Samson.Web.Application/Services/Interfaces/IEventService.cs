@@ -10,7 +10,7 @@ namespace Samson.Web.Application.Services.Interfaces
     public interface IEventService
     {
         /// <summary>
-        /// Create Event domain.
+        /// CreatePersonalTrainer Event domain.
         /// </summary>
         /// <param name="dataStructure">Data to create Event domain</param>
         /// <returns>Event Id</returns>

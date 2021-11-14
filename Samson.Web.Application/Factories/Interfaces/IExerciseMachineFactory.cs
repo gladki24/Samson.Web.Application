@@ -9,7 +9,7 @@ namespace Samson.Web.Application.Factories.Interfaces
     public interface IExerciseMachineFactory
     {
         /// <summary>
-        /// Create ExerciseMachine data structure.
+        /// CreatePersonalTrainer ExerciseMachine data structure.
         /// </summary>
         /// <param name="dataStructure">Data structure to create ExerciseMachine</param>
         /// <returns>ExerciseMachine domain</returns>
