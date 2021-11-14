@@ -18,6 +18,7 @@ namespace Samson.Web.Application.Persistence.MappingProfiles
             CreateMap<Client, ClientEntity>().ReverseMap();
             CreateMap<ClientEntity, User>();
             CreateMap<PersonalTrainerEntity, User>();
+            CreateMap<Subscription, SubscriptionEntity>().ReverseMap();
         }
     }
 }

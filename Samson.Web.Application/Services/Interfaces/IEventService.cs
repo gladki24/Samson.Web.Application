@@ -1,6 +1,7 @@
 ﻿using MongoDB.Bson;
 using Samson.Web.Application.Models.DataStructures.Event;
 using System.Threading.Tasks;
+using MediatR;
 
 namespace Samson.Web.Application.Services.Interfaces
 {
@@ -29,5 +30,18 @@ namespace Samson.Web.Application.Services.Interfaces
         /// <param name="id">Id of Event</param>
         /// <returns>Event Id</returns>
         Task<ObjectId> Delete(ObjectId id);
+
+        /// <summary>
+        /// Client for the event.
+        /// </summary>
+        /// <param name="dataStructure">Data structure to client enroll to event</param>
+        /// <returns></returns>
+        Task<Unit> ClientEnroll(EnrollEventDataStructure dataStructure);
+
+        /// <summary>
+        /// Client resign from participation in the event request.
+        /// </summary>
+        /// <param name="dataStructure">Data structure to client resign from event</param>
+        Task<Unit> ClientResign(ResignEventDataStructure dataStructure);
     }
 }

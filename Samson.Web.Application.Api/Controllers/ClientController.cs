@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 using Samson.Web.Application.Api.Requests.User;
 using Samson.Web.Application.Api.ViewModels.User;
 using Samson.Web.Application.Commands.User;
@@ -69,7 +70,7 @@ namespace Samson.Web.Application.Api.Controllers
             var command = _mapper.Map<RegisterClientRequest, RegisterClientCommand>(request);
             var result = await _mediator.Send(command);
 
-            return Ok(result);
+            return Ok(result.ToJson());
         }
 
         /// <summary>
@@ -102,6 +103,22 @@ namespace Samson.Web.Application.Api.Controllers
             }
 
             var command = _mapper.Map<DeleteUserRequest, DeleteClientCommand>(request);
+            await _mediator.Send(command);
+            return Ok();
+        }
+
+        /// <summary>
+        /// Extend Client account pass.
+        /// </summary>
+        [HttpPost("extendPass")]
+        public async Task<ActionResult> ExtendPass(ExtendClientPassRequest request)
+        {
+            if (request == null)
+            {
+                return BadRequest();
+            }
+
+            var command = _mapper.Map<ExtendClientPassRequest, ExtendClientPassCommand>(request);
             await _mediator.Send(command);
             return Ok();
         }

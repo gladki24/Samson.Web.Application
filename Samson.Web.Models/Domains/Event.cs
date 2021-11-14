@@ -2,6 +2,7 @@
 using Samson.Web.Application.Infrastructure;
 using Samson.Web.Application.Models.DataStructures.Event;
 using System;
+using System.Collections.Generic;
 
 namespace Samson.Web.Application.Models.Domains
 {
@@ -14,8 +15,8 @@ namespace Samson.Web.Application.Models.Domains
         public string Name { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public int MaximumParticipanats { get; set; }
-        public ObjectId[] ParticipantsId { get; set; }
+        public int MaximumParticipants { get; set; }
+        public IList<ObjectId> ParticipantsId { get; set; }
         public ObjectId EventSupervisorId { get; set; }
         public ObjectId GymRoomId { get; set; }
 
@@ -30,11 +31,17 @@ namespace Samson.Web.Application.Models.Domains
             Name = dataStructure.Name;
             StartDate = dataStructure.StartDate;
             EndDate = dataStructure.EndDate;
-            MaximumParticipanats = dataStructure.MaximumParticipants;
-            ParticipantsId = dataStructure.Participants;
-            EventSupervisorId = dataStructure.EventSupervisor;
+            MaximumParticipants = dataStructure.MaximumParticipants;
+            ParticipantsId = dataStructure.ParticipantsId;
+            EventSupervisorId = dataStructure.EventSupervisorId;
             GymRoomId = dataStructure.GymRoomId;
         }
+
+        /// <summary>
+        /// Empty constructor.
+        /// </summary>
+        public Event()
+        {}
 
         /// <summary>
         /// Update model by data structure
@@ -45,7 +52,7 @@ namespace Samson.Web.Application.Models.Domains
             Name = dataStructure.Name;
             StartDate = dataStructure.StartDate;
             EndDate = dataStructure.EndDate;
-            MaximumParticipanats = dataStructure.MaximumParticipants;
+            MaximumParticipants = dataStructure.MaximumParticipants;
             EventSupervisorId = dataStructure.EventSupervisor;
             GymRoomId = dataStructure.GymRoomId;
         }

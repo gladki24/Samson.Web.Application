@@ -3,6 +3,7 @@ using Samson.Web.Application.Infrastructure.Attributes;
 using Samson.Web.Application.Infrastructure.Configuration;
 using Samson.Web.Application.Models.Domains;
 using Samson.Web.Application.Persistence.Entities;
+using Samson.Web.Application.Persistence.Repositories.Interfaces;
 
 namespace Samson.Web.Application.Persistence.Repositories
 {
@@ -10,7 +11,7 @@ namespace Samson.Web.Application.Persistence.Repositories
     /// Repository to Client domain.
     /// </summary>
     [Repository]
-    public class ClientRepository : UserRepository<Client, ClientEntity>
+    public class ClientRepository : UserRepository<Client, ClientEntity>, IClientRepository
     {
         /// <summary>
         /// Default constructor

@@ -8,6 +8,7 @@ using Samson.Web.Application.Models.Domains;
 using Samson.Web.Application.Services.Interfaces;
 using System;
 using System.Threading.Tasks;
+using MediatR;
 
 namespace Samson.Web.Application.Services
 {
@@ -36,6 +37,32 @@ namespace Samson.Web.Application.Services
         {
             var @event = GetOrThrow(id);
             return _repository.Remove(@event);
+        }
+
+        public Task<Unit> ClientEnroll(EnrollEventDataStructure dataStructure)
+        {
+            var @event = GetOrThrow(dataStructure.EventId);
+
+            if (@event.ParticipantsId.Contains(dataStructure.ClientId))
+                throw new BusinessLogicException("The user is already signed up for this event.");
+            if (@event.ParticipantsId.Count + 1 > @event.MaximumParticipants)
+                throw new BusinessLogicException("Too many event participants.");
+            if (@event.EndDate.CompareTo(DateTime.Now) < 0)
+                throw new BusinessLogicException("The event is no longer available.");
+
+            @event.ParticipantsId.Add(dataStructure.ClientId);
+
+            return _repository.Update(dataStructure.EventId, @event).ContinueWith(_ => new Unit());
+        }
+
+        public Task<Unit> ClientResign(ResignEventDataStructure dataStructure)
+        {
+            var @event = GetOrThrow(dataStructure.EventId);
+
+            if (!@event.ParticipantsId.Remove(dataStructure.ClientId))
+                throw new BusinessLogicException("Client not take part event");
+
+            return _repository.Update(dataStructure.EventId, @event).ContinueWith(_ => new Unit());
         }
 
         public Task<ObjectId> Update(UpdateEventDataStructure dataStructure)

@@ -118,5 +118,37 @@ namespace Samson.Web.Application.Api.Controllers
             await _mediator.Send(command);
             return Ok();
         }
+
+        /// <summary>
+        /// Enroll Client to Event.
+        /// </summary>
+        [HttpPost("enroll")]
+        public async Task<ActionResult> Enroll(EnrollEventRequest request)
+        {
+            if (request == null)
+            {
+                return BadRequest();
+            }
+
+            var command = _mapper.Map<EnrollEventRequest, EnrollEventCommand>(request);
+            await _mediator.Send(command);
+            return Ok();
+        }
+
+        /// <summary>
+        /// Client resignation from the event.
+        /// </summary>
+        [HttpPost("resign")]
+        public async Task<ActionResult> Resign(ResignEventRequest request)
+        {
+            if (request == null)
+            {
+                return BadRequest();
+            }
+
+            var command = _mapper.Map<ResignEventRequest, ResignEventCommand>(request);
+            await _mediator.Send(command);
+            return Ok();
+        }
     }
 }

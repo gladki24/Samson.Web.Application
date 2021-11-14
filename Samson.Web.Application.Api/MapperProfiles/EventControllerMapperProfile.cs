@@ -30,6 +30,12 @@ namespace Samson.Web.Application.Api.MapperProfiles
                 new GetEventByIdQuery(context.Mapper.Map<string, ObjectId>(id)));
 
             CreateMap<EventDto, EventViewModel>();
+
+            CreateMap<EnrollEventRequest, EnrollEventCommand>();
+            CreateMap<EnrollEventCommand, EnrollEventDataStructure>();
+
+            CreateMap<ResignEventRequest, ResignEventCommand>();
+            CreateMap<ResignEventCommand, ResignEventDataStructure>();
         }
 
     }

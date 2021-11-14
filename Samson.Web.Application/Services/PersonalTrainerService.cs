@@ -19,8 +19,7 @@ namespace Samson.Web.Application.Services
     {
         private readonly IUserFactory _factory;
 
-        public PersonalTrainerService(IUserRepository<PersonalTrainer> repository, IAuthenticationService authenticationService,
-            IHashService hashService, IUserFactory factory)
+        public PersonalTrainerService(IPersonalTrainerRepository repository, IHashService hashService, IUserFactory factory)
             : base(repository, hashService)
         {
             _factory = factory ?? throw new ArgumentNullException(nameof(factory));

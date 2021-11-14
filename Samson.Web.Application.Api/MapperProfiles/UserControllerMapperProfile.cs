@@ -8,6 +8,7 @@ using Samson.Web.Application.Commands.User.PersonalTrainer;
 using Samson.Web.Application.Models.DataStructures.User;
 using Samson.Web.Application.Models.DataStructures.User.Client;
 using Samson.Web.Application.Models.DataStructures.User.PersonalTrainer;
+using Samson.Web.Application.Models.Dtos.Subscription;
 using Samson.Web.Application.Models.Dtos.User;
 using Samson.Web.Application.Queries.User;
 
@@ -55,6 +56,11 @@ namespace Samson.Web.Application.Api.MapperProfiles
                 new GetPersonalTrainerByIdQuery(context.Mapper.Map<string, ObjectId>(id)));
             CreateMap<string, GetClientByIdQuery>().ConstructUsing((id, context)
                 => new GetClientByIdQuery(context.Mapper.Map<string, ObjectId>(id)));
+
+            CreateMap<ExtendClientPassRequest, ExtendClientPassCommand>();
+            CreateMap<ExtendClientPassCommand, ExtendClientPassDataStructure>();
+
+            CreateMap<SubscriptionDto, SubscriptionViewModel>();
         }
     }
 }

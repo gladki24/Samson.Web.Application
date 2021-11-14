@@ -11,10 +11,10 @@ namespace Samson.Web.Application.Models.Dtos.Event
     {
         public ObjectId Id { get; set; }
         public string Name { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
-        public int MaximumPartipicants { get; set; }
-        public IEnumerable<ObjectId> ParipicantIds { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public int MaximumParticipants { get; set; }
+        public IEnumerable<ObjectId> ParticipantsId { get; set; }
         public ObjectId EventSupervisorId { get; set; }
         public ObjectId GymRoomId { get; set; }
     }
