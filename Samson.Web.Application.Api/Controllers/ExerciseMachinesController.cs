@@ -70,7 +70,7 @@ namespace Samson.Web.Application.Api.Controllers
         }
 
         /// <summary>
-        /// Create new ExerciseMachine.
+        /// CreatePersonalTrainer new ExerciseMachine.
         /// </summary>
         /// <param name="request">Data to create new ExerciseMachine</param>
         [HttpPost("create")]

@@ -9,7 +9,7 @@ namespace Samson.Web.Application.Factories.Interfaces
     public interface IGymPassTypeFactory
     {
         /// <summary>
-        /// Create GymPassType from data structure.
+        /// CreatePersonalTrainer GymPassType from data structure.
         /// </summary>
         /// <param name="dataStructure">Data structure to create GymPassType</param>
         /// <returns>GymPassType domain</returns>

@@ -10,31 +10,28 @@ using Samson.Web.Application.ReadModels.Interfaces;
 namespace Samson.Web.Application.QueryHandlers.User
 {
     /// <summary>
-    /// Get User by id query handler
+    /// Get Client by id query handler.
     /// </summary>
     [QueryHandler]
-    public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, UserDto>
+    public class GetClientByIdQueryHandler : IRequestHandler<GetClientByIdQuery, ClientDto>
     {
-        private readonly IUserReadModel _readModel;
+        private readonly IClientReadModel _readModel;
 
         /// <summary>
         /// Default constructor.
         /// </summary>
-        /// <param name="readModel">Read model to read UserDto by id from collection.</param>
-        public GetUserByIdQueryHandler(IUserReadModel readModel)
+        /// <param name="readModel">Read model to get Client by id</param>
+        public GetClientByIdQueryHandler(IClientReadModel readModel)
         {
             _readModel = readModel ?? throw new ArgumentNullException(nameof(readModel));
         }
 
         /// <summary>
-        /// Handle GetUserByIdQuery query.
+        /// Handle GetClientByIdQuery query.
         /// </summary>
         /// <param name="request">Query</param>
         /// <param name="cancellationToken">Cancellation notification</param>
-        /// <returns></returns>
-        public Task<UserDto> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
-        {
-            return _readModel.GetById(request.Id);
-        }
+        public Task<ClientDto> Handle(GetClientByIdQuery request, CancellationToken cancellationToken)
+            => _readModel.GetById(request.Id);
     }
 }

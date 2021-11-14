@@ -16,7 +16,7 @@ namespace Samson.Web.Application.CommandHandlers.User
     [CommandHandler]
     public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, string>
     {
-        private readonly IUserService _service;
+        private readonly ITokenService _service;
         private readonly IMapper _mapper;
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace Samson.Web.Application.CommandHandlers.User
         /// </summary>
         /// <param name="service">Service to manage User domain</param>
         /// <param name="mapper">Mapper to map between models</param>
-        public LoginUserCommandHandler(IUserService service, IMapper mapper)
+        public LoginUserCommandHandler(ITokenService service, IMapper mapper)
         {
             _service = service ?? throw new ArgumentNullException(nameof(service));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));

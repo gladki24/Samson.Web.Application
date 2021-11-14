@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MongoDB.Bson;
-using Samson.Web.Application.Factories.Interfaces;
 using Samson.Web.Application.Identity.Services.Interfaces;
 using Samson.Web.Application.Infrastructure.Attributes;
 using Samson.Web.Application.Infrastructure.Exceptions;
@@ -16,66 +15,30 @@ namespace Samson.Web.Application.Services
     /// Application service to work with User.
     /// </summary>
     [Service]
-    public class UserService : IUserService
+    public class UserService<TUser> : IUserService where TUser : User
     {
-        private readonly IUserRepository _repository;
-        private readonly IUserFactory _factory;
-        private readonly IAuthenticationService _authenticationService;
+        protected readonly IUserRepository<TUser> Repository;
         private readonly IHashService _hashService;
 
-        public UserService(IUserRepository repository, IUserFactory factory, IAuthenticationService authenticationService, IHashService hashService)
+        public UserService(IUserRepository<TUser> repository, IHashService hashService)
         {
-            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
-            _factory = factory ?? throw new ArgumentNullException(nameof(factory));
-            _authenticationService = authenticationService ?? throw new ArgumentNullException(nameof(authenticationService));
+            Repository = repository ?? throw new ArgumentNullException(nameof(repository));
             _hashService = hashService ?? throw new ArgumentNullException(nameof(hashService));
-        }
-
-        public Task<ObjectId> Create(CreateUserDataStructure dataStructure)
-        {
-            var user = _factory.Create(dataStructure);
-            return _repository.Create(user);
-        }
-
-        public Task<ObjectId> Update(UpdateUserDataStructure dataStructure)
-        {
-            var user = GetOrThrow(dataStructure.Id);
-            user.Update(dataStructure);
-            return _repository.Update(dataStructure.Id, user);
         }
 
         public Task<ObjectId> Delete(DeleteUserDataStructure dataStructure)
         {
             var user = GetOrThrow(dataStructure.Id);
 
-            if (user.Password != dataStructure.Password)
-            {
-                throw new BusinessLogicException("Invalid password. Valid password is required to delete account");
-            }
-
-            return _repository.Remove(user);
-        }
-
-        public Task<string> Authenticate(AuthenticateUserDataStructure dataStructure)
-        {
-            var user = GetByLoginOrThrow(dataStructure.Login);
-
             if (!_hashService.Verify(dataStructure.Password, user.Password))
-            {
-                throw new BusinessLogicException("User password is invalid.");
-            }
+                throw new BusinessLogicException("Invalid password. Valid password is required to delete account");
 
-            return Task.FromResult(_authenticationService.GenerateJwtToken(dataStructure.Login));
+            return Repository.Remove(user);
         }
 
-        private User GetOrThrow(ObjectId id)
+        protected TUser GetOrThrow(ObjectId id)
         {
-            return _repository.Get(id) ?? throw new BusinessLogicException("User not found.");
-        }
-
-        private User GetByLoginOrThrow(string login)
-        {
-            return _repository.GetByLogin(login) ?? throw new BusinessLogicException("User login is invalid.");
+            return Repository.Get(id) ?? throw new BusinessLogicException("User not found.");
         }
     }
 }

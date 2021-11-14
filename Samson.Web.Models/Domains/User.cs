@@ -10,6 +10,8 @@ namespace Samson.Web.Application.Models.Domains
     public class User : IAggregateRoot
     {
         public ObjectId Id { get; private set; }
+        public string Name { get; private set; }
+        public string Surname { get; private set; }
         public string Login { get; private set; }
         public string Password { get; private set; }
 
@@ -19,9 +21,11 @@ namespace Samson.Web.Application.Models.Domains
         /// <param name="id">Key</param>
         /// <param name="password">Hashed password</param>
         /// <param name="dataStructure">Data structure to create User</param>
-        public User(ObjectId id, string password, CreateUserDataStructure dataStructure)
+        protected User(ObjectId id, string password, CreateUserDataStructure dataStructure)
         {
             Id = id;
+            Name = dataStructure.Name;
+            Surname = dataStructure.Surname;
             Login = dataStructure.Login;
             Password = password;
         }
@@ -29,7 +33,7 @@ namespace Samson.Web.Application.Models.Domains
         /// <summary>
         /// Empty constructor.
         /// </summary>
-        public User()
+        protected User()
         {
 
         }
@@ -40,8 +44,8 @@ namespace Samson.Web.Application.Models.Domains
         /// <param name="dataStructure">Data structure to update User</param>
         public void Update(UpdateUserDataStructure dataStructure)
         {
-            Login = dataStructure.Login;
-            Password = dataStructure.Password;
+            Name = dataStructure.Name;
+            Surname = dataStructure.Surname;
         }
     }
 }
