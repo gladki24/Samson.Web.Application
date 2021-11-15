@@ -10,7 +10,7 @@ using Samson.Web.Application.Queries.GymPass;
 namespace Samson.Web.Application.Api.MapperProfiles
 {
     /// <summary>
-    /// Mapping profile to map GymPassType controller realted objects.
+    /// Mapping profile to map GymPassType controller related objects.
     /// </summary>
     public class GymPassTypeControllerMapperProfile : Profile
     {

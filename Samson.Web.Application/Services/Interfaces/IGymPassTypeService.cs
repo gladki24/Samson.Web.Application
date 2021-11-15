@@ -10,21 +10,21 @@ namespace Samson.Web.Application.Services.Interfaces
     public interface IGymPassTypeService
     {
         /// <summary>
-        /// CreatePersonalTrainer GymPassType domain.
+        /// Create GymPassType aggregate.
         /// </summary>
         /// <param name="dataStructure">Data to create GymPassType domain</param>
         /// <returns>GymPassType Id</returns>
         Task<ObjectId> Create(CreateGymPassTypeDataStructure dataStructure);
 
         /// <summary>
-        /// Update GymPassType domain.
+        /// Update GymPassType aggregate.
         /// </summary>
         /// <param name="dataStructure">Data to update GymPassType domain</param>
         /// <returns>GymPassType Id</returns>
         Task<ObjectId> Update(UpdateGymPassTypeDataStructure dataStructure);
 
         /// <summary>
-        /// Delete GymPassType domain.
+        /// Delete GymPassType aggregate.
         /// </summary>
         /// <param name="id">Id of GymPassType domain</param>
         /// <returns>GymPassType Id</returns>

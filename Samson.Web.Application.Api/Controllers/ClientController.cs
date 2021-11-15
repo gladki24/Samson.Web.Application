@@ -63,9 +63,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> Register(RegisterClientRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
 
             var command = _mapper.Map<RegisterClientRequest, RegisterClientCommand>(request);
             var result = await _mediator.Send(command);
@@ -81,9 +79,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> Update(UpdateClientRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
 
             var command = _mapper.Map<UpdateClientRequest, UpdateClientCommand>(request);
             await _mediator.Send(command);
@@ -98,9 +94,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> Delete(DeleteUserRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
 
             var command = _mapper.Map<DeleteUserRequest, DeleteClientCommand>(request);
             await _mediator.Send(command);
@@ -114,9 +108,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> ExtendPass(ExtendClientPassRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
 
             var command = _mapper.Map<ExtendClientPassRequest, ExtendClientPassCommand>(request);
             await _mediator.Send(command);

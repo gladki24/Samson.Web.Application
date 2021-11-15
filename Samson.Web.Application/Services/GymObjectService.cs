@@ -69,7 +69,7 @@ namespace Samson.Web.Application.Services
 
         private GymObject GetOrThrow(ObjectId id)
         { 
-            return _repository.Get(id) ?? throw new BusinessLogicException("GymObject not found");
+            return _repository.Get(id) ?? throw new BusinessLogicException("Gym object not found");
         }
     }
 }

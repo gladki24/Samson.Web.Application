@@ -6,26 +6,26 @@ using MediatR;
 namespace Samson.Web.Application.Services.Interfaces
 {
     /// <summary>
-    /// Services to work with Event domain.
+    /// Services to work with Event aggregate.
     /// </summary>
     public interface IEventService
     {
         /// <summary>
-        /// CreatePersonalTrainer Event domain.
+        /// CreatePersonalTrainer Event aggregate.
         /// </summary>
         /// <param name="dataStructure">Data to create Event domain</param>
         /// <returns>Event Id</returns>
         Task<ObjectId> Create(CreateEventDataStructure dataStructure);
 
         /// <summary>
-        /// Update Event domain.
+        /// Update Event aggregate.
         /// </summary>
         /// <param name="dataStructure">Data to update Event domain</param>
         /// <returns>Event Id</returns>
         Task<ObjectId> Update(UpdateEventDataStructure dataStructure);
 
         /// <summary>
-        /// Delete Event domain.
+        /// Delete Event aggregate.
         /// </summary>
         /// <param name="id">Id of Event</param>
         /// <returns>Event Id</returns>

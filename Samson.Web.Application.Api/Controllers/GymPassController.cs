@@ -79,9 +79,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> Create(CreateGymPassTypeRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
 
             var command = _mapper.Map<CreateGymPassTypeRequest, CreateGymPassTypeCommand>(request);
             var result = await _mediator.Send(command);
@@ -96,9 +94,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> Update(UpdateGymPassTypeRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
 
             var command = _mapper.Map<UpdateGymPassTypeRequest, UpdateGymPassTypeCommand>(request);
             await _mediator.Send(command);
@@ -113,9 +109,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> Delete(DeleteGymPassTypeRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
 
             var command = _mapper.Map<DeleteGymPassTypeRequest, DeleteGymPassTypeCommand>(request);
             await _mediator.Send(command);

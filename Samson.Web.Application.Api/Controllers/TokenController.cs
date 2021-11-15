@@ -37,9 +37,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> Login(LoginUserRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
 
             var command = _mapper.Map<LoginUserRequest, LoginUserCommand>(request);
             var result = await _mediator.Send(command);

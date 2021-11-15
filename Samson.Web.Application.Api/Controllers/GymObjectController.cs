@@ -112,9 +112,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> Create(CreateGymObjectRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
 
             var command = _mapper.Map<CreateGymObjectRequest, CreateGymObjectCommand>(request);
             var result = await _mediator.Send(command);
@@ -129,9 +127,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> Update(UpdateGymObjectRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
 
             var command = _mapper.Map<UpdateGymObjectRequest, UpdateGymObjectCommand>(request);
             await _mediator.Send(command);
@@ -146,9 +142,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> Delete(DeleteGymObjectRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
 
             var command = _mapper.Map<DeleteGymObjectRequest, DeleteGymObjectCommand>(request);
             await _mediator.Send(command);
@@ -164,9 +158,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> AddRoom(AddGymRoomRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
 
             var command = _mapper.Map<AddGymRoomRequest, AddGymRoomCommand>(request);
             var result = await _mediator.Send(command);
@@ -182,9 +174,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> RemoveRoom(RemoveGymRoomRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
 
             var command = _mapper.Map<RemoveGymRoomRequest, RemoveGymRoomCommand>(request);
             await _mediator.Send(command);

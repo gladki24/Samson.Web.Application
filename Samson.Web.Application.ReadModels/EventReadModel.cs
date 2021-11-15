@@ -23,7 +23,7 @@ namespace Samson.Web.Application.ReadModels
         private readonly IMapper _mapper;
 
         /// <summary>
-        /// Default constructor
+        /// Default constructor.
         /// </summary>
         /// <param name="databaseConfiguration">Configuration of connection with database</param>
         /// <param name="mapper">Mapper to map between models</param>

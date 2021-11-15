@@ -8,7 +8,7 @@ namespace Samson.Web.Application.Persistence.Entities
     /// <summary>
     /// Entity of Subscription.
     /// </summary>
-    public class SubscriptionEntity : IAggregateRoot
+    public class SubscriptionEntity : IAggregate
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

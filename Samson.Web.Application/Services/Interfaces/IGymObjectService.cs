@@ -5,26 +5,26 @@ using Samson.Web.Application.Models.DataStructures.GymObject;
 namespace Samson.Web.Application.Services.Interfaces
 {
     /// <summary>
-    /// Services to work with GymObject domain
+    /// Services to work with GymObject aggregate.
     /// </summary>
     public interface IGymObjectService
     {
         /// <summary>
-        /// CreatePersonalTrainer GymObject domain
+        /// CreatePersonalTrainer GymObject aggregate.
         /// </summary>
         /// <param name="dataStructure">Data to create GymObject domain</param>
         /// <returns>GymObject Id</returns>
         Task<ObjectId> Create(CreateGymObjectDataStructure dataStructure);
 
         /// <summary>
-        /// Update GymObject domain
+        /// Update GymObject aggregate.
         /// </summary>
         /// <param name="dataStructure">Data to update GymObject domain</param>
         /// <returns>GymObject Id</returns>
         Task<ObjectId> Update(UpdateGymObjectDataStructure dataStructure);
 
         /// <summary>
-        /// Delete GymObject domain
+        /// Delete GymObject aggregate.
         /// </summary>
         /// <param name="id">Id of GymObject</param>
         /// <returns>Deleted GymObject Id</returns>

@@ -10,7 +10,7 @@ namespace Samson.Web.Application.Services.Interfaces
     public interface IUserService
     {
         /// <summary>
-        /// Delete User domain.
+        /// Delete User aggregate.
         /// </summary>
         /// <param name="dataStructure">Data to delete User domain</param>
         /// <returns>Deleted User Id</returns>

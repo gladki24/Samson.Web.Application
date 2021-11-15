@@ -7,14 +7,14 @@ namespace Samson.Web.Application.Services.Interfaces
     public interface IPersonalTrainerService : IUserService
     {
         /// <summary>
-        /// CreatePersonalTrainer User domain.
+        /// CreatePersonalTrainer User aggregate.
         /// </summary>
         /// <param name="dataStructure">Data to create User domain</param>
         /// <returns>Created User Id</returns>
         Task<ObjectId> Create(CreatePersonalTrainerDataStructure dataStructure);
 
         /// <summary>
-        /// Update PersonalTrainer domain.
+        /// Update PersonalTrainer aggregate.
         /// </summary>
         /// <param name="dataStructure">Data to update PersonalTrainer domain</param>
         /// <returns>Updated PersonalTrainer Id</returns>

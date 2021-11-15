@@ -4,7 +4,7 @@ using System;
 
 namespace Samson.Web.Application.Models.Domains
 {
-    public class GymRoom : IAggregateRoot
+    public class GymRoom : IAggregate
     {
         public ObjectId Id { get; set; }
         public string Name { get; set; }

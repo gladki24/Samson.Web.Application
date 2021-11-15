@@ -15,7 +15,7 @@ namespace Samson.Web.Application.Services.Interfaces
         Task<ObjectId> Register(RegisterClientDataStructure dataStructure);
 
         /// <summary>
-        /// Update Client domain.
+        /// Update Client aggregate.
         /// </summary>
         /// <param name="dataStructure">Data to update Client domain</param>
         /// <returns>Updated Client Id</returns>

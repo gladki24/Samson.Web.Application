@@ -13,6 +13,11 @@ namespace Samson.Web.Application.Persistence.Repositories
     [Repository]
     public class GymPassTypeRepository : MongoRepository<GymPassType, GymPassTypeEntity>
     {
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="databaseConfiguration">Default configuration of database</param>
+        /// <param name="mapper">Mapper to map between types</param>
         public GymPassTypeRepository(IDatabaseConfiguration databaseConfiguration, IMapper mapper)
             : base(databaseConfiguration, mapper) {}
     }

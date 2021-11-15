@@ -8,7 +8,7 @@ namespace Samson.Web.Application.Models.Domains
     /// <summary>
     /// Represents gym object of gym network.
     /// </summary>
-    public class GymObject : IAggregateRoot
+    public class GymObject : IAggregate
     {
         public ObjectId Id { get; private set; }
         public string Name { get; private set; }
