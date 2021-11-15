@@ -7,7 +7,7 @@ namespace Samson.Web.Application.Models.Domains
     /// <summary>
     /// Represents gym pass type subscription.
     /// </summary>
-    public class GymPassType : IAggregateRoot
+    public class GymPassType : IAggregate
     {
         public ObjectId Id { get; private set; }
         public string Name { get; private set; }

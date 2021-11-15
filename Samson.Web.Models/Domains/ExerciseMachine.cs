@@ -9,7 +9,7 @@ namespace Samson.Web.Application.Models.Domains
     /// <summary>
     /// Represent ExerciseMachine
     /// </summary>
-    public class ExerciseMachine : IAggregateRoot
+    public class ExerciseMachine : IAggregate
     {
         public ObjectId Id { get; set; }
         public string Code { get; set; }

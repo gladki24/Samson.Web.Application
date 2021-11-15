@@ -77,9 +77,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> Create(CreateExerciseMachineRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
 
             var command = _mapper.Map<CreateExerciseMachineRequest, CreateExerciseMachineCommand>(request);
             var result = await _mediator.Send(command);
@@ -94,9 +92,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> Update(UpdateExerciseMachineRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
 
             var command = _mapper.Map<UpdateExerciseMachineRequest, UpdateExerciseMachineCommand>(request);
             await _mediator.Send(command);
@@ -111,9 +107,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> Delete(DeleteExerciseMachineRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
 
             var command = _mapper.Map<DeleteExerciseMachineRequest, DeleteExerciseMachineCommand>(request);
             await _mediator.Send(command);

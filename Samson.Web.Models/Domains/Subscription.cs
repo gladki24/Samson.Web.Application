@@ -7,7 +7,7 @@ namespace Samson.Web.Application.Models.Domains
     /// <summary>
     /// Represent actual active client gym pass subscription.
     /// </summary>
-    public class Subscription : IAggregateRoot
+    public class Subscription : IAggregate
     {
         public ObjectId Id { get; private set; }
         public DateTime StartDate { get; private set; }

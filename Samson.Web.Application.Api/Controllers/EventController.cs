@@ -45,7 +45,7 @@ namespace Samson.Web.Application.Api.Controllers
         {
             if (id.IsNullOrEmpty())
             {
-                BadRequest();
+                return BadRequest();
             }
 
             var query = _mapper.Map<string, GetEventByIdQuery>(id);
@@ -68,7 +68,7 @@ namespace Samson.Web.Application.Api.Controllers
         }
 
         /// <summary>
-        /// CreatePersonalTrainer new Event.
+        /// Create new Event.
         /// </summary>
         /// <param name="request">Data to create new Event</param>
         [HttpPost("create")]

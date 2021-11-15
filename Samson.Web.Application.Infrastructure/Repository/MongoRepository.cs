@@ -13,7 +13,7 @@ namespace Samson.Web.Application.Infrastructure.Repository
     /// </summary>
     /// <typeparam name="TModel">Type of model mapped to entity in MongoDB collection</typeparam>
     /// <typeparam name="TEntity">Type of entity stored in MongoDB collection</typeparam>
-    public abstract class MongoRepository<TModel, TEntity> : IRepository<TModel> where TModel : IAggregateRoot where TEntity : IEntity
+    public abstract class MongoRepository<TModel, TEntity> : IRepository<TModel> where TModel : IAggregate where TEntity : IEntity
     {
         protected readonly IMongoCollection<TEntity> Collection;
         protected readonly IMapper Mapper;

@@ -9,7 +9,7 @@ namespace Samson.Web.Application.Infrastructure.Repository
     /// Generic Repository to communicate with data source
     /// </summary>
     /// <typeparam name="TModel">Type of model mapped to entity in data source</typeparam>
-    public interface IRepository<TModel> where TModel : IAggregateRoot
+    public interface IRepository<TModel> where TModel : IAggregate
     {
         /// <summary>
         /// Get model by id

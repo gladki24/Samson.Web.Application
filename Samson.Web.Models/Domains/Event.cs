@@ -9,7 +9,7 @@ namespace Samson.Web.Application.Models.Domains
     /// <summary>
     /// Represent Event in gym object.
     /// </summary>
-    public class Event : IAggregateRoot
+    public class Event : IAggregate
     {
         public ObjectId Id { get; set; }
         public string Name { get; set; }
@@ -44,7 +44,7 @@ namespace Samson.Web.Application.Models.Domains
         {}
 
         /// <summary>
-        /// Update model by data structure
+        /// Update model by data structure.
         /// </summary>
         /// <param name="dataStructure">Data structure of Event domain</param>
         public void Update(UpdateEventDataStructure dataStructure)

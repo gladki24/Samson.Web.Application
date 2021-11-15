@@ -7,7 +7,7 @@ namespace Samson.Web.Application.Models.Domains
     /// <summary>
     /// User domain to represent application user.
     /// </summary>
-    public class User : IAggregateRoot
+    public class User : IAggregate
     {
         public ObjectId Id { get; private set; }
         public string Name { get; private set; }

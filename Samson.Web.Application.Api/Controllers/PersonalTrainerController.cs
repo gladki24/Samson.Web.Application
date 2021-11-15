@@ -63,9 +63,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> Create(CreatePersonalTrainerRequest request)
         {
             if (request == null)
-            {
-                BadRequest();
-            }
+                return BadRequest();
 
             var command = _mapper.Map<CreatePersonalTrainerRequest, CreatePersonalTrainerCommand>(request);
             var result = await _mediator.Send(command);
@@ -80,9 +78,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> Update(UpdatePersonalTrainerRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
 
             var command = _mapper.Map<UpdatePersonalTrainerRequest, UpdatePersonalTrainerCommand>(request);
             await _mediator.Send(command);
@@ -97,9 +93,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> Delete(DeleteUserRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
 
             var command = _mapper.Map<DeleteUserRequest, DeletePersonalTrainerCommand>(request);
             await _mediator.Send(command);
