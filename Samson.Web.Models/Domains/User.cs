@@ -33,9 +33,8 @@ namespace Samson.Web.Application.Models.Domains
         /// <summary>
         /// Empty constructor.
         /// </summary>
-        protected User()
+        public User()
         {
-
         }
 
         /// <summary>

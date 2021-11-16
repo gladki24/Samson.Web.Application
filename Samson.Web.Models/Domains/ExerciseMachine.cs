@@ -11,11 +11,11 @@ namespace Samson.Web.Application.Models.Domains
     /// </summary>
     public class ExerciseMachine : IAggregate
     {
-        public ObjectId Id { get; set; }
-        public string Code { get; set; }
-        public string Name { get; set; }
-        public MachineType Type { get; set; }
-        public ObjectId LocalizationGymObjectId { get; set; }
+        public ObjectId Id { get; private set; }
+        public string Code { get; private set; }
+        public string Name { get; private set; }
+        public MachineType Type { get; private set; }
+        public ObjectId LocalizationGymObjectId { get; private set; }
 
         /// <summary>
         /// Default constructor.
@@ -30,6 +30,12 @@ namespace Samson.Web.Application.Models.Domains
             Type = dataStructure.Type;
             LocalizationGymObjectId = dataStructure.LocalizationGymObjectId;
         }
+
+        /// <summary>
+        /// Empty constructor.
+        /// </summary>
+        public ExerciseMachine()
+        {}
 
         /// <summary>
         /// Update ExerciseMachine domain.

@@ -28,7 +28,7 @@ namespace Samson.Web.Application.Models.Domains
         }
 
         /// <summary>
-        /// Empty constructor.
+        /// Empty constructor
         /// </summary>
         public GymPassType()
         {

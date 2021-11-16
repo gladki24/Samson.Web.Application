@@ -24,7 +24,7 @@ namespace Samson.Web.Application.Models.Domains
         }
 
         /// <summary>
-        /// Empty constructor.
+        /// Default constructor
         /// </summary>
         public Client()
         {

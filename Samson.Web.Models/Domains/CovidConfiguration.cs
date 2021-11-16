@@ -1,5 +1,4 @@
 ﻿using MongoDB.Bson;
-using Samson.Web.Application.Models.DataStructures;
 using Samson.Web.Application.Models.DataStructures.GymObject;
 
 namespace Samson.Web.Application.Models.Domains
@@ -9,9 +8,9 @@ namespace Samson.Web.Application.Models.Domains
     /// </summary>
     public class CovidConfiguration
     {
-        public ObjectId Id { get; set; }
-        public decimal PersonFactorPerMeter { get; set; }
-        public bool IsActive { get; set; }
+        public ObjectId Id { get; private set; }
+        public decimal PersonFactorPerMeter { get; private set; }
+        public bool IsActive { get; private set; }
 
         /// <summary>
         /// Default constructor
@@ -24,6 +23,13 @@ namespace Samson.Web.Application.Models.Domains
             Id = id;
             PersonFactorPerMeter = personFactorPerMeter;
             IsActive = isActive;
+        }
+
+        /// <summary>
+        /// Empty constructor.
+        /// </summary>
+        public CovidConfiguration()
+        {
         }
 
 

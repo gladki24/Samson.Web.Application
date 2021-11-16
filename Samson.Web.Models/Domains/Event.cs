@@ -11,14 +11,14 @@ namespace Samson.Web.Application.Models.Domains
     /// </summary>
     public class Event : IAggregate
     {
-        public ObjectId Id { get; set; }
-        public string Name { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public int MaximumParticipants { get; set; }
-        public IList<ObjectId> ParticipantsId { get; set; }
-        public ObjectId EventSupervisorId { get; set; }
-        public ObjectId GymRoomId { get; set; }
+        public ObjectId Id { get; private set; }
+        public string Name { get; private set; }
+        public DateTime StartDate { get; private set; }
+        public DateTime EndDate { get; private set; }
+        public int MaximumParticipants { get; private set; }
+        public IList<ObjectId> ParticipantsId { get; private set; }
+        public ObjectId EventSupervisorId { get; private set; }
+        public ObjectId GymRoomId { get; private set; }
 
         /// <summary>
         /// Default constructor.
@@ -41,7 +41,8 @@ namespace Samson.Web.Application.Models.Domains
         /// Empty constructor.
         /// </summary>
         public Event()
-        {}
+        {
+        }
 
         /// <summary>
         /// Update model by data structure.
