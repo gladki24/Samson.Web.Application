@@ -60,7 +60,7 @@ namespace Samson.Web.Application.Models.Domains
         /// <param name="dataStructure">Information about client id</param>
         public void Enroll(EnrollInIndividualTrainingDataStructure dataStructure)
         {
-            if (ClientId == null)
+            if (dataStructure.ClientId == null)
                 throw new BusinessLogicException("ClientId is obligatory to enroll");
 
             ClientId = dataStructure.ClientId;

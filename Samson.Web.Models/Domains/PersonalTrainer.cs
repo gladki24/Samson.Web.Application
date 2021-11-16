@@ -22,6 +22,9 @@ namespace Samson.Web.Application.Models.Domains
             PupilsGroupId = dataStructure.PupilGroupId;
         }
 
+        /// <summary>
+        /// Empty constructor.
+        /// </summary>
         public PersonalTrainer()
         {
         }

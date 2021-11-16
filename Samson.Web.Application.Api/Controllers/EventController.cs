@@ -75,9 +75,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> Create(CreateEventRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
 
             var command = _mapper.Map<CreateEventRequest, CreateEventCommand>(request);
             var result = await _mediator.Send(command);
@@ -92,9 +90,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> Update(UpdateEventRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
 
             var command = _mapper.Map<UpdateEventRequest, UpdateEventCommand>(request);
             await _mediator.Send(command);
@@ -110,9 +106,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> Delete(DeleteEventRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
 
             var command = _mapper.Map<DeleteEventRequest, DeleteEventCommand>(request);
             await _mediator.Send(command);
@@ -126,9 +120,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> Enroll(EnrollEventRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
 
             var command = _mapper.Map<EnrollEventRequest, EnrollEventCommand>(request);
             await _mediator.Send(command);
@@ -142,9 +134,7 @@ namespace Samson.Web.Application.Api.Controllers
         public async Task<ActionResult> Resign(ResignEventRequest request)
         {
             if (request == null)
-            {
                 return BadRequest();
-            }
 
             var command = _mapper.Map<ResignEventRequest, ResignEventCommand>(request);
             await _mediator.Send(command);

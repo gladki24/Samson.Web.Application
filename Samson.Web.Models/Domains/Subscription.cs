@@ -33,6 +33,13 @@ namespace Samson.Web.Application.Models.Domains
         }
 
         /// <summary>
+        /// Empty constructor.
+        /// </summary>
+        public Subscription()
+        {
+        }
+
+        /// <summary>
         /// Extend
         /// </summary>
         /// <param name="gymPass"></param>
