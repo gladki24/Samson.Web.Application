@@ -7,6 +7,7 @@ using Samson.Web.Application.Infrastructure.Exceptions;
 using Samson.Web.Application.Models.DataStructures.User;
 using Samson.Web.Application.Models.Domains;
 using Samson.Web.Application.Persistence.Repositories.Interfaces;
+using Samson.Web.Application.Resources;
 using Samson.Web.Application.Services.Interfaces;
 
 namespace Samson.Web.Application.Services
@@ -33,14 +34,14 @@ namespace Samson.Web.Application.Services
             var user = GetByLoginOrThrow(dataStructure.Login);
 
             if (!_hashService.Verify(dataStructure.Password, user.Password))
-                throw new BusinessLogicException("User password is invalid.");
+                throw new BusinessLogicException(ApplicationMessage.InvalidPassword);
 
             return Task.FromResult(_authenticationService.GenerateJwtToken(dataStructure.Login, user.Id.ToString(), user.Roles));
         }
 
         private User GetByLoginOrThrow(string login)
         {
-            return _repository.GetByLogin(login) ?? throw new BusinessLogicException("User login is invalid.");
+            return _repository.GetByLogin(login) ?? throw new BusinessLogicException(ApplicationMessage.InvalidUser);
         }
     }
 }

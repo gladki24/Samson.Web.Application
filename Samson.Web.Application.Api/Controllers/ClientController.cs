@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using Samson.Web.Application.Api.Requests.User;
@@ -17,6 +18,7 @@ namespace Samson.Web.Application.Api.Controllers
     /// Client domain API Controller.
     /// </summary>
     [ApiController]
+    [Authorize]
     [Route("[controller]")]
     public class ClientController : ControllerBase
     {

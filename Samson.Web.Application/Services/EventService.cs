@@ -9,6 +9,7 @@ using Samson.Web.Application.Services.Interfaces;
 using System;
 using System.Threading.Tasks;
 using MediatR;
+using Samson.Web.Application.Resources;
 
 namespace Samson.Web.Application.Services
 {
@@ -44,11 +45,11 @@ namespace Samson.Web.Application.Services
             var @event = GetOrThrow(dataStructure.EventId);
 
             if (@event.ParticipantsId.Contains(dataStructure.ClientId))
-                throw new BusinessLogicException("The user is already signed up for this event.");
+                throw new BusinessLogicException(ApplicationMessage.UserAlreadySignedUpEvent);
             if (@event.ParticipantsId.Count + 1 > @event.MaximumParticipants)
-                throw new BusinessLogicException("Too many event participants.");
+                throw new BusinessLogicException(ApplicationMessage.TooManyParticipants);
             if (@event.EndDate.CompareTo(DateTime.Now) < 0)
-                throw new BusinessLogicException("The event is no longer available.");
+                throw new BusinessLogicException(ApplicationMessage.EventNoLongerAvailable);
 
             @event.ParticipantsId.Add(dataStructure.ClientId);
 
@@ -60,7 +61,7 @@ namespace Samson.Web.Application.Services
             var @event = GetOrThrow(dataStructure.EventId);
 
             if (!@event.ParticipantsId.Remove(dataStructure.ClientId))
-                throw new BusinessLogicException("Client not take part event");
+                throw new BusinessLogicException(ApplicationMessage.ClientNotTakePart);
 
             return _repository.Update(dataStructure.EventId, @event).ContinueWith(_ => new Unit());
         }
@@ -74,7 +75,7 @@ namespace Samson.Web.Application.Services
 
         private Event GetOrThrow(ObjectId id)
         {
-            return _repository.Get(id) ?? throw new BusinessLogicException("Event not found");
+            return _repository.Get(id) ?? throw new BusinessLogicException(ApplicationMessage.EventNotFound);
         }
     }
 }

@@ -9,6 +9,7 @@ using Samson.Web.Application.Infrastructure.Exceptions;
 using Samson.Web.Application.Models.DataStructures.User.Client;
 using Samson.Web.Application.Models.Domains;
 using Samson.Web.Application.Persistence.Repositories.Interfaces;
+using Samson.Web.Application.Resources;
 using Samson.Web.Application.Services.Domain.Interfaces;
 using Samson.Web.Application.Services.Interfaces;
 
@@ -35,7 +36,7 @@ namespace Samson.Web.Application.Services
         public Task<ObjectId> Register(RegisterClientDataStructure dataStructure)
         {
             if (Repository.GetByLogin(dataStructure.Login) != null)
-                throw new BusinessLogicException("An account with this login already exists.");
+                throw new BusinessLogicException(ApplicationMessage.LoginAlreadyExist);
 
             var client = _factory.CreateClient(dataStructure);
             return Repository.Create(client);

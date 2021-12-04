@@ -7,6 +7,7 @@ using Samson.Web.Application.Infrastructure.Repository;
 using Samson.Web.Application.Models.DataStructures.User.Client;
 using Samson.Web.Application.Models.Domains;
 using Samson.Web.Application.Persistence.Repositories.Interfaces;
+using Samson.Web.Application.Resources;
 using Samson.Web.Application.Services.Domain.Interfaces;
 
 namespace Samson.Web.Application.Services.Domain
@@ -31,10 +32,10 @@ namespace Samson.Web.Application.Services.Domain
         public Task<Unit> Extend(ExtendClientPassDataStructure dataStructure)
         {
             var client = _clientRepository.Get(dataStructure.ClientId)
-                         ?? throw new BusinessLogicException("Client not found");
+                         ?? throw new BusinessLogicException(ApplicationMessage.ClientNotFound);
 
             var gymPassType = _gymPassTypeRepository.Get(dataStructure.GymPassTypeId)
-                              ?? throw new BusinessLogicException("Gym pass not found");
+                              ?? throw new BusinessLogicException(ApplicationMessage.GymPassNotFound);
 
             client.ExtendPass(gymPassType);
             return _clientRepository.Update(dataStructure.ClientId, client)

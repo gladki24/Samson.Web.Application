@@ -7,6 +7,7 @@ using Samson.Web.Application.Infrastructure.Exceptions;
 using Samson.Web.Application.Models.DataStructures.User;
 using Samson.Web.Application.Models.Domains;
 using Samson.Web.Application.Persistence.Repositories.Interfaces;
+using Samson.Web.Application.Resources;
 using Samson.Web.Application.Services.Interfaces;
 
 namespace Samson.Web.Application.Services
@@ -31,14 +32,14 @@ namespace Samson.Web.Application.Services
             var user = GetOrThrow(dataStructure.Id);
 
             if (!_hashService.Verify(dataStructure.Password, user.Password))
-                throw new BusinessLogicException("Invalid password. Valid password is required to delete account");
+                throw new BusinessLogicException(ApplicationMessage.InvalidPasswordToDelete);
 
             return Repository.Remove(user);
         }
 
         protected TUser GetOrThrow(ObjectId id)
         {
-            return Repository.Get(id) ?? throw new BusinessLogicException("User not found.");
+            return Repository.Get(id) ?? throw new BusinessLogicException(ApplicationMessage.UserNotFound);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Samson.Web.Application.Api.Requests.IndividualTraining;
 using Samson.Web.Application.Api.ViewModels.IndividualTraining;
@@ -17,6 +18,7 @@ namespace Samson.Web.Application.Api.Controllers
     /// IndividualTraining API controller.
     /// </summary>
     [ApiController]
+    [Authorize]
     [Route("[controller]")]
     public class IndividualTrainingController : ControllerBase
     {

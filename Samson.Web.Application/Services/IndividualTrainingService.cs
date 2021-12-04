@@ -7,6 +7,7 @@ using Samson.Web.Application.Infrastructure.Exceptions;
 using Samson.Web.Application.Infrastructure.Repository;
 using Samson.Web.Application.Models.DataStructures.IndividualTraining;
 using Samson.Web.Application.Models.Domains;
+using Samson.Web.Application.Resources;
 using Samson.Web.Application.Services.Interfaces;
 
 namespace Samson.Web.Application.Services
@@ -62,7 +63,7 @@ namespace Samson.Web.Application.Services
 
         private IndividualTraining GetOrThrow(ObjectId id)
         {
-            return _repository.Get(id) ?? throw new BusinessLogicException("Individual training not found.");
+            return _repository.Get(id) ?? throw new BusinessLogicException(ApplicationMessage.IndividualTrainingNotFound);
         }
     }
 }

@@ -10,6 +10,7 @@ using Samson.Web.Application.Models;
 using Samson.Web.Application.Models.DataStructures.Gym;
 using Samson.Web.Application.Models.Domains;
 using Samson.Web.Application.Persistence.Repositories.Interfaces;
+using Samson.Web.Application.Resources;
 using Samson.Web.Application.Services.Interfaces;
 
 namespace Samson.Web.Application.Services
@@ -40,9 +41,9 @@ namespace Samson.Web.Application.Services
             var validation = ValidateEntrance(dataStructure);
 
             if (!validation.HasValidPass)
-                throw new BusinessLogicException("The customer does not have a valid subscription.");
+                throw new BusinessLogicException(ApplicationMessage.NotValidSubscription);
             if (validation.IsGymFull)
-                throw new BusinessLogicException("The gym is full now.");
+                throw new BusinessLogicException(ApplicationMessage.GymIsFull);
 
 
             var entrance = _entranceFactory.Create(dataStructure);
@@ -81,7 +82,7 @@ namespace Samson.Web.Application.Services
             var client = _clientRepository.Get(clientId);
 
             if (client == null)
-                throw new BusinessLogicException("Client not found.");
+                throw new BusinessLogicException(ApplicationMessage.ClientNotFound);
 
             return client;
         }
@@ -91,7 +92,7 @@ namespace Samson.Web.Application.Services
             var gymObject = _gymObjectRepository.Get(gymObjectId);
 
             if (gymObject == null)
-                throw new BusinessLogicException("Gym object not found.");
+                throw new BusinessLogicException(ApplicationMessage.GymObjectNotFound);
 
             return gymObject;
         }

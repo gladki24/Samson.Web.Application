@@ -8,6 +8,7 @@ using Samson.Web.Application.Infrastructure.Exceptions;
 using Samson.Web.Application.Infrastructure.Repository;
 using Samson.Web.Application.Models.DataStructures.GymObject;
 using Samson.Web.Application.Models.Domains;
+using Samson.Web.Application.Resources;
 using Samson.Web.Application.Services.Interfaces;
 
 namespace Samson.Web.Application.Services
@@ -69,7 +70,7 @@ namespace Samson.Web.Application.Services
 
         private GymObject GetOrThrow(ObjectId id)
         { 
-            return _repository.Get(id) ?? throw new BusinessLogicException("Gym object not found");
+            return _repository.Get(id) ?? throw new BusinessLogicException(ApplicationMessage.GymObjectNotFound);
         }
     }
 }

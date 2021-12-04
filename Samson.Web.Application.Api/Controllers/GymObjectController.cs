@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using MongoDB.Bson;
 using Samson.Web.Application.Api.Requests.GymObject;
 using Samson.Web.Application.Api.ViewModels.GymObject;
@@ -19,6 +20,7 @@ namespace Samson.Web.Application.Api.Controllers
     /// Gym object API Controller. Provide CRUD operations on GymObject model.
     /// </summary>
     [ApiController]
+    [Authorize]
     [Route("[controller]")]
     public class GymObjectController : ControllerBase
     {

@@ -7,6 +7,7 @@ using Samson.Web.Application.Infrastructure.Exceptions;
 using Samson.Web.Application.Infrastructure.Repository;
 using Samson.Web.Application.Models.DataStructures.ExerciseMachine;
 using Samson.Web.Application.Models.Domains;
+using Samson.Web.Application.Resources;
 using Samson.Web.Application.Services.Interfaces;
 
 namespace Samson.Web.Application.Services
@@ -46,6 +47,6 @@ namespace Samson.Web.Application.Services
         }
 
         private ExerciseMachine GetOrThrow(ObjectId id) =>
-            _repository.Get(id) ?? throw new BusinessLogicException("Exercise machine not found");
+            _repository.Get(id) ?? throw new BusinessLogicException(ApplicationMessage.ExerciseMachineNotFound);
     }
 }
