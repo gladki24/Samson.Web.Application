@@ -81,7 +81,7 @@ namespace Samson.Web.Application.Api.Controllers
 
             var command = _mapper.Map<CreateExerciseMachineRequest, CreateExerciseMachineCommand>(request);
             var result = await _mediator.Send(command);
-            return Ok(result.ToJson());
+            return Ok(result.ToString().ToJson());
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Samson.Web.Application.Api.Controllers
         /// Delete ExerciseMachine.
         /// </summary>
         /// <param name="request">Data to find and delete ExerciseMachine</param>
-        [HttpPost("delete")]
+        [HttpDelete("delete")]
         public async Task<ActionResult> Delete(DeleteExerciseMachineRequest request)
         {
             if (request == null)

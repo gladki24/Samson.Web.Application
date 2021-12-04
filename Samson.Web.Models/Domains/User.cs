@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using System.Collections.Generic;
+using MongoDB.Bson;
 using Samson.Web.Application.Infrastructure;
 using Samson.Web.Application.Models.DataStructures.User;
 
@@ -14,6 +15,7 @@ namespace Samson.Web.Application.Models.Domains
         public string Surname { get; private set; }
         public string Login { get; private set; }
         public string Password { get; private set; }
+        public IList<string> Roles { get; private set; }
 
         /// <summary>
         /// Default constructor.
@@ -28,6 +30,7 @@ namespace Samson.Web.Application.Models.Domains
             Surname = dataStructure.Surname;
             Login = dataStructure.Login;
             Password = password;
+            Roles = new List<string>() {"User"};
         }
 
         /// <summary>

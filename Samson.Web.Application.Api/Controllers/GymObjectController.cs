@@ -105,7 +105,7 @@ namespace Samson.Web.Application.Api.Controllers
         }
 
         /// <summary>
-        /// CreatePersonalTrainer new GymObject.
+        /// Create new GymObject.
         /// </summary>
         /// <param name="request">Data to create new GymObject</param>
         [HttpPost("create")]
@@ -116,7 +116,7 @@ namespace Samson.Web.Application.Api.Controllers
 
             var command = _mapper.Map<CreateGymObjectRequest, CreateGymObjectCommand>(request);
             var result = await _mediator.Send(command);
-            return Ok(result.ToJson());
+            return Ok(result.ToString().ToJson());
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace Samson.Web.Application.Api.Controllers
             var command = _mapper.Map<AddGymRoomRequest, AddGymRoomCommand>(request);
             var result = await _mediator.Send(command);
 
-            return Ok(result.ToJson());
+            return Ok(result.ToString().ToJson());
         }
 
         /// <summary>

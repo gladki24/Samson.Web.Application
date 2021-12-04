@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using Samson.Web.Application.Api.Requests.User;
 using Samson.Web.Application.Api.ViewModels.User;
-using Samson.Web.Application.Commands.User;
 using Samson.Web.Application.Commands.User.Client;
 using Samson.Web.Application.Infrastructure;
 using Samson.Web.Application.Models.Dtos.User;
@@ -68,7 +67,7 @@ namespace Samson.Web.Application.Api.Controllers
             var command = _mapper.Map<RegisterClientRequest, RegisterClientCommand>(request);
             var result = await _mediator.Send(command);
 
-            return Ok(result.ToJson());
+            return Ok(result.ToString().ToJson());
         }
 
         /// <summary>

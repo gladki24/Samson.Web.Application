@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -19,17 +20,25 @@ namespace Samson.Web.Application.Identity.Services
             _jwtConfiguration = jwtConfiguration ?? throw new ArgumentNullException(nameof(jwtConfiguration));
         }
 
-        public string GenerateJwtToken(string login)
+        public string GenerateJwtToken(string login, string id, IEnumerable<string> roles)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenKey = Encoding.ASCII.GetBytes(_jwtConfiguration.Key);
 
+            var claims = new List<Claim>()
+            {
+                new Claim(ClaimTypes.NameIdentifier, login),
+                new Claim("id", id)
+            };
+
+            foreach (var role in roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
+
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.NameIdentifier, login)
-                }),
+                Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.Now.AddHours(2),
                 SigningCredentials = new SigningCredentials(
                     new SymmetricSecurityKey(tokenKey),

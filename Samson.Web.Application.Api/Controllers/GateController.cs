@@ -43,7 +43,7 @@ namespace Samson.Web.Application.Api.Controllers
 
             var command = _mapper.Map<EntryRequest, EntryCommand>(request);
             var result = await _mediator.Send(command);
-            return Ok(result.ToJson());
+            return Ok(result.ToString().ToJson());
         }
 
         /// <summary>

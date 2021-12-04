@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using System.Collections.Generic;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Samson.Web.Application.Infrastructure;
 
@@ -18,5 +19,6 @@ namespace Samson.Web.Application.Persistence.Entities
         public string Surname { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
+        public IEnumerable<string> Roles { get; set; }
     }
 }

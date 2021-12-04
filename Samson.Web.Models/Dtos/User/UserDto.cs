@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using System.Collections.Generic;
+using MongoDB.Bson;
 
 namespace Samson.Web.Application.Models.Dtos.User
 {
@@ -12,5 +13,6 @@ namespace Samson.Web.Application.Models.Dtos.User
         public string Login { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
+        public IList<string> Roles { get; set; }
     }
 }

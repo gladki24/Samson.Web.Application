@@ -19,6 +19,7 @@ namespace Samson.Web.Application.Models.Domains
         public PersonalTrainer(ObjectId id, string password, CreatePersonalTrainerDataStructure dataStructure)
             : base(id, password, dataStructure)
         {
+            Roles.Add("PersonalTrainer");
             PupilsGroupId = dataStructure.PupilGroupId;
         }
 

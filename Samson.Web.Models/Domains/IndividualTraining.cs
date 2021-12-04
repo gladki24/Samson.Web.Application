@@ -86,9 +86,6 @@ namespace Samson.Web.Application.Models.Domains
         /// </summary>
         public void Cancel()
         {
-            if (Type != IndividualTrainingType.Cancelled)
-                throw new BusinessLogicException("Training is already cancelled.");
-
             Type = IndividualTrainingType.Cancelled;
         }
     }

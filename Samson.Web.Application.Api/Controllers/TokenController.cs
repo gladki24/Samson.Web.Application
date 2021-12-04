@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 using Samson.Web.Application.Api.Requests.User;
 using Samson.Web.Application.Commands.User;
 
@@ -41,7 +42,7 @@ namespace Samson.Web.Application.Api.Controllers
 
             var command = _mapper.Map<LoginUserRequest, LoginUserCommand>(request);
             var result = await _mediator.Send(command);
-            return Ok(result);
+            return Ok(result.ToJson());
         }
     }
 }

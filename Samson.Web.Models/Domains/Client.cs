@@ -21,6 +21,7 @@ namespace Samson.Web.Application.Models.Domains
         public Client(ObjectId id, string password, RegisterClientDataStructure dataStructure)
             : base(id, password, dataStructure)
         {
+            Roles.Add("Client");
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Samson.Web.Application.Identity.Services.Interfaces;
 using Samson.Web.Application.Infrastructure.Attributes;
@@ -34,7 +35,7 @@ namespace Samson.Web.Application.Services
             if (!_hashService.Verify(dataStructure.Password, user.Password))
                 throw new BusinessLogicException("User password is invalid.");
 
-            return Task.FromResult(_authenticationService.GenerateJwtToken(dataStructure.Login));
+            return Task.FromResult(_authenticationService.GenerateJwtToken(dataStructure.Login, user.Id.ToString(), user.Roles));
         }
 
         private User GetByLoginOrThrow(string login)

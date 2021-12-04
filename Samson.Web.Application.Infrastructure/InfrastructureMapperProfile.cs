@@ -18,6 +18,8 @@ namespace Samson.Web.Application.Infrastructure
                 .ConstructUsing(dimension => new Tuple<int, int>(dimension.Height, dimension.Width));
             CreateMap<Tuple<int, int>, DimensionViewModel>()
                 .ConstructUsing(tuple => new DimensionViewModel(tuple.Item1, tuple.Item2));
+            CreateMap<DateTime, string>()
+                .ConstructUsing(datetime => datetime.ToString("s"));
         }
     }
 }
