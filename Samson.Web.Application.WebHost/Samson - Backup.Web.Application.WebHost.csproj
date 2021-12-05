@@ -3,11 +3,10 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>850e789d-cade-436d-8a8e-00b992e54ae2</UserSecretsId>
-	  <DocumentationFile>..\Samson.Web.Application.WebHost\doc\xml\Samson.Web.Application.WebHost.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile></DocumentationFile>
+    <DocumentationFile>C:\Users\sewer\source\repos\Samson.Web.Application\Samson.Web.Application.WebHost\Samson.Web.Application.WebHost.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

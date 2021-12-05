@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using System.Runtime.CompilerServices;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
@@ -67,6 +69,8 @@ namespace Samson.Web.Application.WebHost
                         new string[] { }
                     }
                 });
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Samson.Web.Application.Api.xml"));
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Samson.Web.Application.Models.xml"));
             });
         }
 
