@@ -36,6 +36,7 @@ namespace Samson.Web.Application.CommandHandlers.User.Client
         /// </summary>
         /// <param name="request">Command</param>
         /// <param name="cancellationToken">Cancellation notification</param>
+        /// <returns>Id of registered client</returns>
         public Task<ObjectId> Handle(RegisterClientCommand request, CancellationToken cancellationToken)
         {
             var dataStructure = _mapper.Map<RegisterClientCommand, RegisterClientDataStructure>(request);

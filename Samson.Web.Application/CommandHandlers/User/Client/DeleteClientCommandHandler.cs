@@ -36,7 +36,7 @@ namespace Samson.Web.Application.CommandHandlers.User.Client
         /// </summary>
         /// <param name="request">Command</param>
         /// <param name="cancellationToken">Cancellation notification</param>
-        /// <returns></returns>
+        /// <returns>Id of deleted client account</returns>
         public Task<ObjectId> Handle(DeleteClientCommand request, CancellationToken cancellationToken)
         {
             var dataStructure = _mapper.Map<DeleteClientCommand, DeleteUserDataStructure>(request);

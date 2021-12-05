@@ -35,7 +35,7 @@ namespace Samson.Web.Application.CommandHandlers.User.Client
         /// </summary>
         /// <param name="request">Command</param>
         /// <param name="cancellationToken">Cancellation notification</param>
-        /// <returns></returns>
+        /// <returns>Id of client</returns>
         public Task<Unit> Handle(ExtendClientPassCommand request, CancellationToken cancellationToken)
         {
             var dataStructure = _mapper.Map<ExtendClientPassCommand, ExtendClientPassDataStructure>(request);

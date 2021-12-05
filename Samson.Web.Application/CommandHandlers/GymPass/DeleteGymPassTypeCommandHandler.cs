@@ -35,7 +35,7 @@ namespace Samson.Web.Application.CommandHandlers.GymPass
         /// </summary>
         /// <param name="request"></param>
         /// <param name="cancellationToken"></param>
-        /// <returns></returns>
+        /// <returns>Id of deleted gym pass</returns>
         public Task<ObjectId> Handle(DeleteGymPassTypeCommand request, CancellationToken cancellationToken)
         {
             var id = _mapper.Map<string, ObjectId>(request.Id);

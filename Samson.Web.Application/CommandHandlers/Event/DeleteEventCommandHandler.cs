@@ -35,7 +35,7 @@ namespace Samson.Web.Application.CommandHandlers.Event
         /// </summary>
         /// <param name="request">Command</param>
         /// <param name="cancellationToken">Cancellation notification</param>
-        /// <returns></returns>
+        /// <returns>Deleted event Id</returns>
         public Task<ObjectId> Handle(DeleteEventCommand request, CancellationToken cancellationToken)
         {
             var id = _mapper.Map<string, ObjectId>(request.Id);

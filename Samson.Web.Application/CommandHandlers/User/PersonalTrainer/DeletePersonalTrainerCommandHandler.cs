@@ -36,6 +36,7 @@ namespace Samson.Web.Application.CommandHandlers.User.PersonalTrainer
         /// </summary>
         /// <param name="request">Command</param>
         /// <param name="cancellationToken">Cancellation notification</param>
+        /// <returns>Id of deleted personal trainer account</returns>
         public Task<ObjectId> Handle(DeletePersonalTrainerCommand request, CancellationToken cancellationToken)
         {
             var dataStructure = _mapper.Map<DeletePersonalTrainerCommand, DeleteUserDataStructure>(request);
