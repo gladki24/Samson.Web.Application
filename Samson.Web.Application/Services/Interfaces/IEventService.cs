@@ -35,7 +35,7 @@ namespace Samson.Web.Application.Services.Interfaces
         /// Client for the event.
         /// </summary>
         /// <param name="dataStructure">Data structure to client enroll to event</param>
-        /// <returns></returns>
+        /// <returns>void</returns>
         Task<Unit> ClientEnroll(EnrollEventDataStructure dataStructure);
 
         /// <summary>

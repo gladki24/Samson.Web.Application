@@ -34,6 +34,11 @@ namespace Samson.Web.Application.ReadModels
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
+        /// <summary>
+        /// Get PersonalTrainer from collection by id.
+        /// </summary>
+        /// <param name="id">Key</param>
+        /// <returns>Dto</returns>
         public Task<PersonalTrainerDto> GetById(ObjectId id)
         {
             var client = new MongoClient(_databaseConfiguration.ConnectionString);

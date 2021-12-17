@@ -15,6 +15,9 @@ using Samson.Web.Application.Services.Interfaces;
 
 namespace Samson.Web.Application.Services
 {
+    /// <summary>
+    /// Service to manage gate exit and entrance to gym.
+    /// </summary>
     [Service]
     public class GateService : IGateService
     {
@@ -23,6 +26,13 @@ namespace Samson.Web.Application.Services
         private readonly IRepository<GymObject> _gymObjectRepository;
         private readonly IEntranceRepository _entranceRepository;
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="clientRepository">Repository to manage gate entity</param>
+        /// <param name="gymObjectRepository">Repository to manage gym object entity</param>
+        /// <param name="entranceRepository">Repository to manage entrance entity</param>
+        /// <param name="entranceFactory">Repository to create Entrance</param>
         public GateService(IClientRepository clientRepository, IRepository<GymObject> gymObjectRepository, IEntranceRepository entranceRepository, IEntranceFactory entranceFactory)
         {
             _clientRepository = clientRepository ?? throw new ArgumentNullException(nameof(clientRepository));
@@ -31,11 +41,21 @@ namespace Samson.Web.Application.Services
             _entranceFactory = entranceFactory ?? throw new ArgumentNullException(nameof(entranceFactory));
         }
 
+        /// <summary>
+        /// Validate attempt to entry to the gym object.
+        /// </summary>
+        /// <param name="dataStructure">Information entrance attempt</param>
+        /// <returns>Return information about entry possibility</returns>
         public Task<EntryValidationViewModel> ValidEntrance(EntryDataStructure dataStructure)
         {
             return Task.FromResult(ValidateEntrance(dataStructure));
         }
 
+        /// <summary>
+        /// Inform about client entry to gym.
+        /// </summary>
+        /// <param name="dataStructure">Information about client entrance</param>
+        /// <returns>Entrance aggregate id</returns>
         public Task<ObjectId> Entry(EntryDataStructure dataStructure)
         {
             var validation = ValidateEntrance(dataStructure);
@@ -50,6 +70,10 @@ namespace Samson.Web.Application.Services
             return _entranceRepository.Create(entrance);
         }
 
+        /// <summary>
+        /// Inform about client exit from gym.
+        /// </summary>
+        /// <param name="dataStructure">Information about exit</param>
         public Task<Unit> Exit(ExitDataStructure dataStructure)
         {
             var entrances = _entranceRepository.GetAllByGymObjectIdAndClientId(dataStructure.GymObjectId, dataStructure.ClientId);

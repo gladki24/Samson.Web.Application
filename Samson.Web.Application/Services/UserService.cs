@@ -21,12 +21,22 @@ namespace Samson.Web.Application.Services
         protected readonly IUserRepository<TUser> Repository;
         private readonly IHashService _hashService;
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="repository">Repository to manage user entity</param>
+        /// <param name="hashService">Service to validate password</param>
         public UserService(IUserRepository<TUser> repository, IHashService hashService)
         {
             Repository = repository ?? throw new ArgumentNullException(nameof(repository));
             _hashService = hashService ?? throw new ArgumentNullException(nameof(hashService));
         }
 
+        /// <summary>
+        /// Delete User aggregate.
+        /// </summary>
+        /// <param name="dataStructure">Data to delete User domain</param>
+        /// <returns>Deleted User Id</returns>
         public Task<ObjectId> Delete(DeleteUserDataStructure dataStructure)
         {
             var user = GetOrThrow(dataStructure.Id);

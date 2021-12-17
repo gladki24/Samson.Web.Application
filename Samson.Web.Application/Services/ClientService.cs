@@ -24,6 +24,13 @@ namespace Samson.Web.Application.Services
         private readonly IExtendClientPassDomainService _extendClientPassDomainService;
         private readonly IUserFactory _factory;
 
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        /// <param name="repository">Repository to manage client entity</param>
+        /// <param name="hashService">Service to hash and validate password</param>
+        /// <param name="factory">Factory to create new client account</param>
+        /// <param name="extendClientPassDomainService">Domain service to extend client gym pass</param>
         public ClientService(IClientRepository repository, IHashService hashService, IUserFactory factory,
             IExtendClientPassDomainService extendClientPassDomainService)
             : base(repository, hashService)
@@ -33,6 +40,11 @@ namespace Samson.Web.Application.Services
                                              throw new ArgumentNullException(nameof(extendClientPassDomainService));
         }
 
+        /// <summary>
+        /// Register new Client.
+        /// </summary>
+        /// <param name="dataStructure">Data to register new Client</param>
+        /// <returns>CreatePersonalTrainer Client Id</returns>
         public Task<ObjectId> Register(RegisterClientDataStructure dataStructure)
         {
             if (Repository.GetByLogin(dataStructure.Login) != null)
@@ -42,6 +54,11 @@ namespace Samson.Web.Application.Services
             return Repository.Create(client);
         }
 
+        /// <summary>
+        /// Update Client aggregate.
+        /// </summary>
+        /// <param name="dataStructure">Data to update Client domain</param>
+        /// <returns>Updated Client Id</returns>
         public Task<ObjectId> Update(UpdateClientDataStructure dataStructure)
         {
             var client = GetOrThrow(dataStructure.Id);
@@ -49,6 +66,10 @@ namespace Samson.Web.Application.Services
             return Repository.Update(dataStructure.Id, client);
         }
 
+        /// <summary>
+        /// Extend Client gym pass.
+        /// </summary>
+        /// <param name="dataStructure">Data structure to extend gym pass.</param>
         public Task<Unit> ExtendGymPass(ExtendClientPassDataStructure dataStructure)
         {
             return _extendClientPassDomainService.Extend(dataStructure);

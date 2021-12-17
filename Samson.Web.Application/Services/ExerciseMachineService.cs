@@ -21,18 +21,33 @@ namespace Samson.Web.Application.Services
         private readonly IRepository<ExerciseMachine> _repository;
         private readonly IExerciseMachineFactory _factory;
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="repository">Repository to manage exercise machine entity</param>
+        /// <param name="factory">Factory to create new exercise machine</param>
         public ExerciseMachineService(IRepository<ExerciseMachine> repository, IExerciseMachineFactory factory)
         {
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
             _factory = factory ?? throw new ArgumentNullException(nameof(factory));
         }
 
+        /// <summary>
+        /// CreatePersonalTrainer ExerciseMachine domain.
+        /// </summary>
+        /// <param name="dataStructure">Data to create ExerciseMachine domain</param>
+        /// <returns>ExerciseMachine Id</returns>
         public Task<ObjectId> Create(CreateExerciseMachineDataStructure dataStructure)
         {
             var machine = _factory.Create(dataStructure);
             return _repository.Create(machine);
         }
 
+        /// <summary>
+        /// Update ExerciseMachine domain.
+        /// </summary>
+        /// <param name="dataStructure">Data to update ExerciseMachine domain</param>
+        /// <returns>ExerciseMachine Id</returns>
         public Task<ObjectId> Update(UpdateExerciseMachineDataStructure dataStructure)
         {
             var machine = GetOrThrow(dataStructure.Id);
@@ -40,6 +55,11 @@ namespace Samson.Web.Application.Services
             return _repository.Update(dataStructure.Id, machine);
         }
 
+        /// <summary>
+        /// Delete ExerciseMachineDomain.
+        /// </summary>
+        /// <param name="id">Id of ExerciseMachine</param>
+        /// <returns>ExerciseMachine Id</returns>
         public Task<ObjectId> Delete(ObjectId id)
         {
             var machine = GetOrThrow(id);

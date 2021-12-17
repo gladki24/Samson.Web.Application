@@ -41,6 +41,11 @@ namespace Samson.Web.Application.ReadModels
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
+        /// <summary>
+        /// Get ExerciseMachine from collection by id.
+        /// </summary>
+        /// <param name="id">Key</param>
+        /// <returns>Dto</returns>
         public Task<ExerciseMachineDto> GetById(ObjectId id)
         {
             var query = GetGetAllExerciseMachinesQuery()
@@ -50,6 +55,10 @@ namespace Samson.Web.Application.ReadModels
             return query.SingleOrDefaultAsync();
         }
 
+        /// <summary>
+        /// Get all ExerciseMachine dtos from collection.
+        /// </summary>
+        /// <returns>Dtos list</returns>
         public Task<List<ExerciseMachineDto>> GetAll()
         {
             var query = GetGetAllExerciseMachinesQuery()

@@ -19,8 +19,13 @@ namespace Samson.Web.Application.Services.Domain
     public class ExtendClientPassDomainService : IExtendClientPassDomainService
     {
         private readonly IRepository<GymPassType> _gymPassTypeRepository;
-        private IClientRepository _clientRepository;
+        private readonly IClientRepository _clientRepository;
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="gymPassTypeRepository">Repository to manage gymPass entity</param>
+        /// <param name="clientRepository">Repository to manage client entity</param>
         public ExtendClientPassDomainService(
             IRepository<GymPassType> gymPassTypeRepository, IClientRepository clientRepository)
         {
@@ -29,6 +34,10 @@ namespace Samson.Web.Application.Services.Domain
             _clientRepository = clientRepository ?? throw new ArgumentNullException(nameof(clientRepository));
         }
 
+        /// <summary>
+        /// Extend Client gym pass.
+        /// </summary>
+        /// <param name="dataStructure">Data to extend Client's gym pass</param>
         public Task<Unit> Extend(ExtendClientPassDataStructure dataStructure)
         {
             var client = _clientRepository.Get(dataStructure.ClientId)

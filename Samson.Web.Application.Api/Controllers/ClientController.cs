@@ -18,7 +18,6 @@ namespace Samson.Web.Application.Api.Controllers
     /// Client domain API Controller.
     /// </summary>
     [ApiController]
-    [Authorize]
     [Route("[controller]")]
     public class ClientController : ControllerBase
     {
@@ -41,6 +40,7 @@ namespace Samson.Web.Application.Api.Controllers
         /// </summary>
         /// <param name="id">Id of Client</param>
         /// <returns>Client</returns>
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult> GetById(string id)
         {
@@ -76,6 +76,7 @@ namespace Samson.Web.Application.Api.Controllers
         /// Update Client.
         /// </summary>
         /// <param name="request">Data to update Client</param>
+        [Authorize]
         [HttpPost("update")]
         public async Task<ActionResult> Update(UpdateClientRequest request)
         {
@@ -91,6 +92,7 @@ namespace Samson.Web.Application.Api.Controllers
         /// Delete Client.
         /// </summary>
         /// <param name="request">Data to find and delete Client</param>
+        [Authorize]
         [HttpDelete("delete")]
         public async Task<ActionResult> Delete(DeleteUserRequest request)
         {
@@ -105,6 +107,7 @@ namespace Samson.Web.Application.Api.Controllers
         /// <summary>
         /// Extend Client account pass.
         /// </summary>
+        [Authorize]
         [HttpPost("extendPass")]
         public async Task<ActionResult> ExtendPass(ExtendClientPassRequest request)
         {

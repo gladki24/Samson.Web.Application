@@ -10,6 +10,10 @@ using Samson.Web.Application.ReadModels;
 
 namespace Samson.Web.Application.UnitTests
 {
+    /// <summary>
+    /// Test application conventions
+    /// </summary>
+    [TestFixture]
     public class ConventionUnitTest
     {
         private IEnumerable<Type> _applicationTypes;

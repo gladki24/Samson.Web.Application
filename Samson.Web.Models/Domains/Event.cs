@@ -3,6 +3,8 @@ using Samson.Web.Application.Infrastructure;
 using Samson.Web.Application.Models.DataStructures.Event;
 using System;
 using System.Collections.Generic;
+using Samson.Web.Application.Infrastructure.Exceptions;
+using Samson.Web.Application.Models.Resources;
 
 namespace Samson.Web.Application.Models.Domains
 {
@@ -27,6 +29,9 @@ namespace Samson.Web.Application.Models.Domains
         /// <param name="dataStructure">Data structure to create Event</param>
         public Event(ObjectId id, CreateEventDataStructure dataStructure)
         {
+            if (dataStructure.StartDate.CompareTo(dataStructure.EndDate) >= 0)
+                throw new BusinessLogicException(DomainMessage.EndDateIsEarlierThanStartDate);
+
             Id = id;
             Name = dataStructure.Name;
             StartDate = dataStructure.StartDate;
@@ -50,6 +55,9 @@ namespace Samson.Web.Application.Models.Domains
         /// <param name="dataStructure">Data structure of Event domain</param>
         public void Update(UpdateEventDataStructure dataStructure)
         {
+            if (dataStructure.StartDate.CompareTo(dataStructure.EndDate) >= 0)
+                throw new BusinessLogicException(DomainMessage.EndDateIsEarlierThanStartDate);
+
             Name = dataStructure.Name;
             StartDate = dataStructure.StartDate;
             EndDate = dataStructure.EndDate;

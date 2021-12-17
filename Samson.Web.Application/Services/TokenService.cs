@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Samson.Web.Application.Identity.Services.Interfaces;
 using Samson.Web.Application.Infrastructure.Attributes;
@@ -22,6 +21,12 @@ namespace Samson.Web.Application.Services
         private readonly IHashService _hashService;
         private readonly IUserRepository _repository;
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="repository">Repository to manage user entity</param>
+        /// <param name="authenticationService">Service to authentication user</param>
+        /// <param name="hashService">Service to validate password</param>
         public TokenService(IUserRepository repository, IAuthenticationService authenticationService, IHashService hashService)
         {
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
@@ -29,6 +34,10 @@ namespace Samson.Web.Application.Services
             _hashService = hashService ?? throw new ArgumentNullException(nameof(hashService));
         }
 
+        /// <summary>
+        /// Authenticate User.
+        /// </summary>
+        /// <returns>JWT Token</returns>
         public Task<string> Authenticate(AuthenticateUserDataStructure dataStructure)
         {
             var user = GetByLoginOrThrow(dataStructure.Login);

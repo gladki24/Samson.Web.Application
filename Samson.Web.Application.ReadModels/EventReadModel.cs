@@ -37,6 +37,11 @@ namespace Samson.Web.Application.ReadModels
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
+        /// <summary>
+        /// Get Event from collection by id.
+        /// </summary>
+        /// <param name="id">Key</param>
+        /// <returns>Dto</returns>
         public Task<EventDto> GetById(ObjectId id)
         {
             var client = new MongoClient(_databaseConfiguration.ConnectionString);
@@ -53,6 +58,10 @@ namespace Samson.Web.Application.ReadModels
                 .ContinueWith(result => _mapper.Map<EventDto>(result.Result));
         }
 
+        /// <summary>
+        /// Get all Events from collection.
+        /// </summary>
+        /// <returns>Dtos list</returns>
         public Task<List<EventDto>> GetAll()
         {
             var client = new MongoClient(_databaseConfiguration.ConnectionString);

@@ -4,6 +4,7 @@ using Samson.Web.Application.Infrastructure;
 using Samson.Web.Application.Infrastructure.Exceptions;
 using Samson.Web.Application.Models.DataStructures.IndividualTraining;
 using Samson.Web.Application.Models.Enums;
+using Samson.Web.Application.Models.Resources;
 
 namespace Samson.Web.Application.Models.Domains
 {
@@ -27,6 +28,9 @@ namespace Samson.Web.Application.Models.Domains
         /// <param name="dataStructure">Data structure to create IndividualTraining</param>
         public IndividualTraining(ObjectId id, CreateIndividualTrainingDataStructure dataStructure)
         {
+            if (dataStructure.StartDate.CompareTo(dataStructure.EndDate) >= 0)
+                throw new BusinessLogicException(DomainMessage.EndDateIsEarlierThanStartDate);
+
             Id = id;
             PersonalTrainerId = dataStructure.PersonalTrainerId;
             ClientId = dataStructure.ClientId;
@@ -50,6 +54,10 @@ namespace Samson.Web.Application.Models.Domains
         public void Update(UpdateIndividualTrainingDataStructure dataStructure)
         {
             GymObjectId = dataStructure.GymObjectId;
+
+            if (dataStructure.StartDate.CompareTo(dataStructure.EndDate) >= 0)
+                throw new BusinessLogicException(DomainMessage.EndDateIsEarlierThanStartDate);
+
             StartDate = dataStructure.StartDate;
             EndDate = dataStructure.EndDate;
         }
@@ -57,13 +65,13 @@ namespace Samson.Web.Application.Models.Domains
         /// <summary>
         /// Enroll client in individual training.
         /// </summary>
-        /// <param name="dataStructure">Information about client id</param>
-        public void Enroll(EnrollInIndividualTrainingDataStructure dataStructure)
+        /// <param name="clientId">Information about client id</param>
+        public void Enroll(ObjectId clientId)
         {
-            if (dataStructure.ClientId == null)
-                throw new BusinessLogicException("ClientId is obligatory to enroll");
+            if (clientId.Equals(ObjectId.Empty))
+                throw new BusinessLogicException(DomainMessage.ClientIdIsRequired);
 
-            ClientId = dataStructure.ClientId;
+            ClientId = clientId;
             Type = IndividualTrainingType.Pending;
         }
 
@@ -73,10 +81,9 @@ namespace Samson.Web.Application.Models.Domains
         public void Confirm()
         {
             if (Type != IndividualTrainingType.Pending)
-                throw new BusinessLogicException(
-                    "Invalid training type. Individual training should be pending to be confirmed.");
+                throw new BusinessLogicException(DomainMessage.InvalidTrainingType);
             if (ClientId == null)
-                throw new BusinessLogicException("Individual training must contains information about client.");
+                throw new BusinessLogicException(DomainMessage.ClientIdIsRequired);
 
             Type = IndividualTrainingType.Confirmed;
         }
