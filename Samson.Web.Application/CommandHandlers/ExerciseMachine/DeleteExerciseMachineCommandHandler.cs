@@ -35,7 +35,7 @@ namespace Samson.Web.Application.CommandHandlers.ExerciseMachine
         /// </summary>
         /// <param name="request">Command</param>
         /// <param name="cancellationToken">Cancellation notification</param>
-        /// <returns></returns>
+        /// <returns>Deleted exercise machine id</returns>
         public Task<ObjectId> Handle(DeleteExerciseMachineCommand request, CancellationToken cancellationToken)
         {
             var id = _mapper.Map<string, ObjectId>(request.Id);

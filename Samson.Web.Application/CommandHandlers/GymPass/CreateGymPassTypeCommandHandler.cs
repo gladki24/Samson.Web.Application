@@ -36,7 +36,7 @@ namespace Samson.Web.Application.CommandHandlers.GymPass
         /// </summary>
         /// <param name="request">Command</param>
         /// <param name="cancellationToken">Cancellation notification</param>
-        /// <returns></returns>
+        /// <returns>Id of created gym pass</returns>
         public Task<ObjectId> Handle(CreateGymPassTypeCommand request, CancellationToken cancellationToken)
         {
             var dataStructure = _mapper.Map<CreateGymPassTypeCommand, CreateGymPassTypeDataStructure>(request);

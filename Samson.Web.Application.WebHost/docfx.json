@@ -1,0 +1,207 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [
+            "Samson.Web.Application/**.cs"
+          ],
+          "exclude": [
+            "**/obj/**",
+            "**/bin/**"
+          ],
+          "src": ".."
+        }
+      ],
+      "dest": "doc/Samson.Web.Application",
+      "disableGitFeatures": false,
+      "disableDefaultFilter": false
+    },
+    {
+      "src": [
+        {
+          "files": [
+            "Samson.Web.Application.Api/**.cs"
+          ],
+          "exclude": [
+            "**/obj/**",
+            "**/bin/**"
+          ],
+          "src": ".."
+        }
+      ],
+      "dest": "doc/Samson.Web.Application.Api",
+      "disableGitFeatures": false,
+      "disableDefaultFilter": false
+    },
+    {
+      "src": [
+        {
+          "files": [
+            "Samson.Web.Application.Identity/**.cs"
+          ],
+          "exclude": [
+            "**/obj/**",
+            "**/bin/**"
+          ],
+          "src": ".."
+        }
+      ],
+      "dest": "doc/Samson.Web.Application.Identity",
+      "disableGitFeatures": false,
+      "disableDefaultFilter": false
+    },
+    {
+      "src": [
+        {
+          "files": [
+            "Samson.Web.Application.Infrastructure/**.cs"
+          ],
+          "exclude": [
+            "**/obj/**",
+            "**/bin/**"
+          ],
+          "src": ".."
+        }
+      ],
+      "dest": "doc/Samson.Web.Application.Infrastructure",
+      "disableGitFeatures": false,
+      "disableDefaultFilter": false
+    },
+    {
+      "src": [
+        {
+          "files": [
+            "Samson.Web.Application.Models/**.cs"
+          ],
+          "exclude": [
+            "**/obj/**",
+            "**/bin/**"
+          ],
+          "src": ".."
+        }
+      ],
+      "dest": "doc/Samson.Web.Application.Models",
+      "disableGitFeatures": false,
+      "disableDefaultFilter": false
+    },
+    {
+      "src": [
+        {
+          "files": [
+            "Samson.Web.Application.Persistence/**.cs"
+          ],
+          "exclude": [
+            "**/obj/**",
+            "**/bin/**"
+          ],
+          "src": ".."
+        }
+      ],
+      "dest": "doc/Samson.Web.Application.Persistence",
+      "disableGitFeatures": false,
+      "disableDefaultFilter": false
+    },
+    {
+      "src": [
+        {
+          "files": [
+            "Samson.Web.Application.ReadModels/**.cs"
+          ],
+          "exclude": [
+            "**/obj/**",
+            "**/bin/**"
+          ],
+          "src": ".."
+        }
+      ],
+      "dest": "doc/Samson.Web.Application.ReadModels",
+      "disableGitFeatures": false,
+      "disableDefaultFilter": false
+    },
+    {
+      "src": [
+        {
+          "files": [
+            "Samson.Web.Application.UnitTests/**.cs"
+          ],
+          "exclude": [
+            "**/obj/**",
+            "**/bin/**"
+          ],
+          "src": ".."
+        }
+      ],
+      "dest": "doc/Samson.Web.Application.UnitTests",
+      "disableGitFeatures": false,
+      "disableDefaultFilter": false
+    },
+    {
+      "src": [
+        {
+          "files": [
+            "Samson.Web.Application.WebHost/**.cs"
+          ],
+          "exclude": [
+            "**/obj/**",
+            "**/bin/**"
+          ],
+          "src": ".."
+        }
+      ],
+      "dest": "doc/Samson.Web.Application.WebHost",
+      "disableGitFeatures": false,
+      "disableDefaultFilter": false
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "doc/**.yml",
+          "doc/**/index.md"
+        ]
+      },
+      {
+        "files": [
+          "doc/articles/**.md",
+          "doc/articles/**/toc.yml",
+          "doc/toc.yml",
+          "doc/*.md"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "doc/images/**"
+        ],
+        "exclude": [
+          "obj/**"
+        ]
+      }
+    ],
+    "overwrite": [
+      {
+        "files": [
+          "doc/apidoc/**.md"
+        ],
+        "exclude": [
+          "obj/**"
+        ]
+      }
+    ],
+    "dest": "doc/Samson.Web.Application.Documentation",
+    "globalMetadataFiles": [],
+    "fileMetadataFiles": [],
+    "template": [
+      "default"
+    ],
+    "postProcessors": [],
+    "markdownEngineName": "markdig",
+    "noLangKeyword": false,
+    "keepFileLink": false,
+    "cleanupCacheHistory": false,
+    "disableGitFeatures": false
+  }
+}

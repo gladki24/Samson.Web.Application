@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using AutoMapper;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using MongoDB.Driver.Linq;
 using Samson.Web.Application.Infrastructure.Attributes;
 using Samson.Web.Application.Infrastructure.Configuration;
 using Samson.Web.Application.Models.Dtos.User;
@@ -34,6 +33,11 @@ namespace Samson.Web.Application.ReadModels
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
+        /// <summary>
+        /// Get Client from collection by id.
+        /// </summary>
+        /// <param name="id">Key</param>
+        /// <returns>Dto</returns>
         public Task<ClientDto> GetById(ObjectId id)
         {
             var client = new MongoClient(_databaseConfiguration.ConnectionString);

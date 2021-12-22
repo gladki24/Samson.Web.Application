@@ -7,9 +7,17 @@ using Samson.Web.Application.Models.Enums;
 
 namespace Samson.Web.Application.Factories
 {
+    /// <summary>
+    /// Factory to create IndividualTraining model.
+    /// </summary>
     [Factory]
     public class IndividualTrainingFactory : IIndividualTrainingFactory
     {
+        /// <summary>
+        /// Create IndividualTraining model with id generation
+        /// </summary>
+        /// <param name="dataStructure">Information about training</param>
+        /// <returns>IndividualTraining</returns>
         public IndividualTraining Create(CreateIndividualTrainingDataStructure dataStructure)
         {
             if (dataStructure.ClientId == null)

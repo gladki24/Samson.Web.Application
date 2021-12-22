@@ -40,9 +40,9 @@ namespace Samson.Web.Application.Models.Domains
         }
 
         /// <summary>
-        /// Extend
+        /// Extend subscription by gym pass.
         /// </summary>
-        /// <param name="gymPass"></param>
+        /// <param name="gymPass">Gym pass type</param>
         public void Extend(GymPassType gymPass)
         {
             GymPassTypeId = gymPass.Id;

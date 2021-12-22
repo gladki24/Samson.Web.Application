@@ -5,6 +5,9 @@ using Samson.Web.Application.Models.DataStructures.User.Client;
 
 namespace Samson.Web.Application.Services.Interfaces
 {
+    /// <summary>
+    /// Application service to work with Client.
+    /// </summary>
     public interface IClientService : IUserService
     {
         /// <summary>

@@ -14,18 +14,20 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ConnectionString:MongoDB:Atlas": "mongodb://localhost:27017/?readPreference=primary&ssl=false",
         "MongoDB:DatabaseName": "SamsonDatabase",
-        "Authentication:JWT:Key": "[ONLY DEV JWT KEY] Super key to provide JWT token in application"
+        "Authentication:JWT:Key": "[ONLY DEV JWT KEY] Super key to provide JWT token in application",
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionString:MongoDB:Atlas": "mongodb://localhost:27017/?readPreference=primary&ssl=false"
       }
     },
     "Samson.Web.Application": {
       "commandName": "Project",
-      "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "MongoDB:DatabaseName": "SamsonDatabase",
+        "Authentication:JWT:Key": "Top secret key to provide JWT token",
+        "ASPNETCORE_ENVIRONMENT": "Release",
+        "ConnectionString:MongoDB:Atlas": "mongodb://localhost:27017/?readPreference=primary&ssl=false"
       },
       "dotnetRunMessages": "true",
       "applicationUrl": "http://localhost:5000"

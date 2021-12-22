@@ -17,14 +17,28 @@ namespace Samson.Web.Application.Factories
     {
         private readonly IHashService _hashService;
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="hashService">Service to hash password</param>
         public UserFactory(IHashService hashService)
         {
             _hashService = hashService ?? throw new ArgumentNullException(nameof(hashService));
         }
 
+        /// <summary>
+        /// Create PersonalTrainer account model
+        /// </summary>
+        /// <param name="dataStructure">Information about personal trainer account</param>
+        /// <returns>PersonalTrainer</returns>
         public PersonalTrainer CreatePersonalTrainer(CreatePersonalTrainerDataStructure dataStructure)
             => new PersonalTrainer(ObjectId.GenerateNewId(), _hashService.HashPassword(dataStructure.Password), dataStructure);
 
+        /// <summary>
+        /// Create Client account model
+        /// </summary>
+        /// <param name="dataStructure">Information about Client</param>
+        /// <returns>Client</returns>
         public Client CreateClient(RegisterClientDataStructure dataStructure)
             => new Client(ObjectId.GenerateNewId(), _hashService.HashPassword(dataStructure.Password), dataStructure);
     }

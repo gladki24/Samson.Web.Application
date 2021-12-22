@@ -39,7 +39,7 @@ namespace Samson.Web.Application.CommandHandlers.GymObject
         /// </summary>
         /// <param name="request">Command</param>
         /// <param name="cancellationToken">Cancellation notification</param>
-        /// <returns></returns>
+        /// <returns>Id of removed gym room</returns>
         public Task<ObjectId> Handle(RemoveGymRoomCommand request, CancellationToken cancellationToken)
         {
             var dataStructure = _mapper.Map<RemoveGymRoomCommand, RemoveGymRoomDataStructure>(request);

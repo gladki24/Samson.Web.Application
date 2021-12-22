@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
@@ -19,6 +20,7 @@ namespace Samson.Web.Application.Api.Controllers
     /// GymPass object API controller. Provide CRUD operations on GymPass model.
     /// </summary>
     [ApiController]
+    [Authorize]
     [Route("[controller]")]
     public class GymPassController : ControllerBase
     {

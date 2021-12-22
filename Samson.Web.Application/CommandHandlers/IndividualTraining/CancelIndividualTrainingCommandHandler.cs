@@ -36,7 +36,7 @@ namespace Samson.Web.Application.CommandHandlers.IndividualTraining
         /// </summary>
         /// <param name="request">Command</param>
         /// <param name="cancellationToken">Cancellation notification</param>
-        /// <returns></returns>
+        /// <returns>Id of cancelled training</returns>
         public Task<ObjectId> Handle(CancelIndividualTrainingCommand request, CancellationToken cancellationToken)
         {
             var dataStructure =

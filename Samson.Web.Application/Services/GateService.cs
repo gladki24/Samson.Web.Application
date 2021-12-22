@@ -10,10 +10,14 @@ using Samson.Web.Application.Models;
 using Samson.Web.Application.Models.DataStructures.Gym;
 using Samson.Web.Application.Models.Domains;
 using Samson.Web.Application.Persistence.Repositories.Interfaces;
+using Samson.Web.Application.Resources;
 using Samson.Web.Application.Services.Interfaces;
 
 namespace Samson.Web.Application.Services
 {
+    /// <summary>
+    /// Service to manage gate exit and entrance to gym.
+    /// </summary>
     [Service]
     public class GateService : IGateService
     {
@@ -22,6 +26,13 @@ namespace Samson.Web.Application.Services
         private readonly IRepository<GymObject> _gymObjectRepository;
         private readonly IEntranceRepository _entranceRepository;
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="clientRepository">Repository to manage gate entity</param>
+        /// <param name="gymObjectRepository">Repository to manage gym object entity</param>
+        /// <param name="entranceRepository">Repository to manage entrance entity</param>
+        /// <param name="entranceFactory">Repository to create Entrance</param>
         public GateService(IClientRepository clientRepository, IRepository<GymObject> gymObjectRepository, IEntranceRepository entranceRepository, IEntranceFactory entranceFactory)
         {
             _clientRepository = clientRepository ?? throw new ArgumentNullException(nameof(clientRepository));
@@ -30,25 +41,39 @@ namespace Samson.Web.Application.Services
             _entranceFactory = entranceFactory ?? throw new ArgumentNullException(nameof(entranceFactory));
         }
 
+        /// <summary>
+        /// Validate attempt to entry to the gym object.
+        /// </summary>
+        /// <param name="dataStructure">Information entrance attempt</param>
+        /// <returns>Return information about entry possibility</returns>
         public Task<EntryValidationViewModel> ValidEntrance(EntryDataStructure dataStructure)
         {
             return Task.FromResult(ValidateEntrance(dataStructure));
         }
 
+        /// <summary>
+        /// Inform about client entry to gym.
+        /// </summary>
+        /// <param name="dataStructure">Information about client entrance</param>
+        /// <returns>Entrance aggregate id</returns>
         public Task<ObjectId> Entry(EntryDataStructure dataStructure)
         {
             var validation = ValidateEntrance(dataStructure);
 
             if (!validation.HasValidPass)
-                throw new BusinessLogicException("The customer does not have a valid subscription.");
+                throw new BusinessLogicException(ApplicationMessage.NotValidSubscription);
             if (validation.IsGymFull)
-                throw new BusinessLogicException("The gym is full now.");
+                throw new BusinessLogicException(ApplicationMessage.GymIsFull);
 
 
             var entrance = _entranceFactory.Create(dataStructure);
             return _entranceRepository.Create(entrance);
         }
 
+        /// <summary>
+        /// Inform about client exit from gym.
+        /// </summary>
+        /// <param name="dataStructure">Information about exit</param>
         public Task<Unit> Exit(ExitDataStructure dataStructure)
         {
             var entrances = _entranceRepository.GetAllByGymObjectIdAndClientId(dataStructure.GymObjectId, dataStructure.ClientId);
@@ -81,7 +106,7 @@ namespace Samson.Web.Application.Services
             var client = _clientRepository.Get(clientId);
 
             if (client == null)
-                throw new BusinessLogicException("Client not found.");
+                throw new BusinessLogicException(ApplicationMessage.ClientNotFound);
 
             return client;
         }
@@ -91,7 +116,7 @@ namespace Samson.Web.Application.Services
             var gymObject = _gymObjectRepository.Get(gymObjectId);
 
             if (gymObject == null)
-                throw new BusinessLogicException("Gym object not found.");
+                throw new BusinessLogicException(ApplicationMessage.GymObjectNotFound);
 
             return gymObject;
         }

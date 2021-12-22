@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using Samson.Web.Application.Api.Requests.ExerciseMachine;
@@ -18,6 +19,7 @@ namespace Samson.Web.Application.Api.Controllers
     /// Exercise machines API controller. Provide CRUD operations on ExerciseMachine model.
     /// </summary>
     [ApiController]
+    [Authorize]
     [Route("[controller]")]
     public class ExerciseMachinesController : ControllerBase
     {

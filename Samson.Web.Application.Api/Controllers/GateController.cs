@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using Samson.Web.Application.Api.Requests.Gate;
@@ -13,6 +14,7 @@ namespace Samson.Web.Application.Api.Controllers
     /// Controller to supervise clients count in gym object.
     /// </summary>
     [ApiController]
+    [Authorize]
     [Route("[controller]")]
     public class GateController : ControllerBase
     {

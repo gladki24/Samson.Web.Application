@@ -36,6 +36,7 @@ namespace Samson.Web.Application.CommandHandlers.GymPass
         /// </summary>
         /// <param name="request">Command</param>
         /// <param name="cancellationToken">Cancellation notification</param>
+        /// <returns>Id of updated gym pass</returns>
         public Task<ObjectId> Handle(UpdateGymPassTypeCommand request, CancellationToken cancellationToken)
         {
             var dataStructure = _mapper.Map<UpdateGymPassTypeCommand, UpdateGymPassTypeDataStructure>(request);

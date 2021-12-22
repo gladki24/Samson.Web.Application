@@ -35,7 +35,7 @@ namespace Samson.Web.Application.CommandHandlers.User
         /// </summary>
         /// <param name="request">Command</param>
         /// <param name="cancellationToken">Cancellation notification</param>
-        /// <returns></returns>
+        /// <returns>JWT token to store in client application</returns>
         public Task<string> Handle(LoginUserCommand request, CancellationToken cancellationToken)
         {
             var dataStructure = _mapper.Map<LoginUserCommand, AuthenticateUserDataStructure>(request);

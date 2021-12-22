@@ -66,7 +66,7 @@ namespace Samson.Web.Application.Models.Domains
                 return -1;
 
             var availableGymObjectArea = GymObjectArea();
-            return (int) Math.Floor(availableGymObjectArea / CovidConfiguration.PersonFactorPerMeter);
+            return (int) Math.Floor(availableGymObjectArea * CovidConfiguration.PersonFactorPerMeter);
         }
     }
 }

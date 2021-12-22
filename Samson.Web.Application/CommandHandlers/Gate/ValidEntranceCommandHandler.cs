@@ -36,7 +36,7 @@ namespace Samson.Web.Application.CommandHandlers.Gate
         /// </summary>
         /// <param name="request">Command</param>
         /// <param name="cancellationToken">Cancellation notification</param>
-        /// <returns>Entrance Id</returns>
+        /// <returns>Information about entrance validation</returns>
         public Task<EntryValidationViewModel> Handle(ValidEntranceCommand request, CancellationToken cancellationToken)
         {
             var dataStructure = _mapper.Map<ValidEntranceCommand, EntryDataStructure>(request);

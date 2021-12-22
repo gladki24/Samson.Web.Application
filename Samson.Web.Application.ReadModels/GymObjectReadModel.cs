@@ -41,6 +41,11 @@ namespace Samson.Web.Application.ReadModels
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
+        /// <summary>
+        /// Get GymObject from collection by id.
+        /// </summary>
+        /// <param name="id">key</param>
+        /// <returns>dto</returns>
         public Task<GymObjectDto> GetById(ObjectId id)
         {
             var client = new MongoClient(_databaseConfiguration.ConnectionString);
@@ -57,6 +62,10 @@ namespace Samson.Web.Application.ReadModels
                 .ContinueWith(result => _mapper.Map<GymObjectDto>(result.Result));
         }
 
+        /// <summary>
+        /// Get all GymObjects from collection.
+        /// </summary>
+        /// <returns>dtos list</returns>
         public Task<List<GymObjectDto>> GetAll()
         {
             var client = _databaseConfiguration.CreateClient(_logger);
@@ -72,6 +81,11 @@ namespace Samson.Web.Application.ReadModels
                 .ContinueWith(result => _mapper.Map<List<GymObjectDto>>(result.Result));
         }
 
+        /// <summary>
+        /// Get GymRoom from collection by id.
+        /// </summary>
+        /// <param name="id">key</param>
+        /// <returns>dto</returns>
         public Task<GymRoomDetailsDto> GetRoomById(ObjectId id)
         {
             var query = GetGetAllGymRoomDetailsQuery()
@@ -80,6 +94,10 @@ namespace Samson.Web.Application.ReadModels
             return query.As<GymRoomDetailsDto>().SingleOrDefaultAsync();
         }
 
+        /// <summary>
+        /// Get All GymRooms from collection.
+        /// </summary>
+        /// <returns>dtos list</returns>
         public Task<List<GymRoomDetailsDto>> GetAllRooms()
         {
             return GetGetAllGymRoomDetailsQuery()

@@ -35,6 +35,11 @@ namespace Samson.Web.Application.ReadModels
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
+        /// <summary>
+        /// Get GymPassType from collection by id.
+        /// </summary>
+        /// <param name="id">Key</param>
+        /// <returns>Dto</returns>
         public Task<GymPassTypeDto> GetById(ObjectId id)
         {
             var client = new MongoClient(_databaseConfiguration.ConnectionString);
@@ -51,6 +56,10 @@ namespace Samson.Web.Application.ReadModels
                 .ContinueWith(result => _mapper.Map<GymPassTypeDto>(result.Result));
         }
 
+        /// <summary>
+        /// Get all GypPassTypes from collection.
+        /// </summary>
+        /// <returns>Dtos list</returns>
         public Task<List<GymPassTypeDto>> GetAll()
         {
             var client = new MongoClient(_databaseConfiguration.ConnectionString);

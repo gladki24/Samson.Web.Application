@@ -36,7 +36,7 @@ namespace Samson.Web.Application.CommandHandlers.Event
         /// </summary>
         /// <param name="request">Command</param>
         /// <param name="cancellationToken">Cancellation notification</param>
-        /// <returns></returns>
+        /// <returns>Id of updated event</returns>
         public Task<ObjectId> Handle(UpdateEventCommand request, CancellationToken cancellationToken)
         {
             var dataStructure = _mapper.Map<UpdateEventCommand, UpdateEventDataStructure>(request);

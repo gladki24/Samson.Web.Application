@@ -38,7 +38,7 @@ namespace Samson.Web.Application.CommandHandlers.GymObject
         /// </summary>
         /// <param name="request">Command</param>
         /// <param name="cancellationToken">Cancellation notification</param>
-        /// <returns>void</returns>
+        /// <returns>Id of deleted gym object</returns>
         public Task<ObjectId> Handle(DeleteGymObjectCommand request, CancellationToken cancellationToken)
         {
             var id = _mapper.Map<string, ObjectId>(request.Id);

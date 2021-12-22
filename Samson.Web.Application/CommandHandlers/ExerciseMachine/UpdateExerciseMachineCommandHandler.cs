@@ -39,7 +39,7 @@ namespace Samson.Web.Application.CommandHandlers.ExerciseMachine
         /// </summary>
         /// <param name="request">Command</param>
         /// <param name="cancellationToken">Cancellation notification</param>
-        /// <returns></returns>
+        /// <returns>Updated exercise machine id</returns>
         public Task<ObjectId> Handle(UpdateExerciseMachineCommand request, CancellationToken cancellationToken)
         {
             var dataStructure = _mapper.Map<UpdateExerciseMachineCommand, UpdateExerciseMachineDataStructure>(request);

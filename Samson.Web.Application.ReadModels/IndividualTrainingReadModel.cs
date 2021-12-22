@@ -38,6 +38,11 @@ namespace Samson.Web.Application.ReadModels
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
+        /// <summary>
+        /// Get IndividualTraining from collection by id.
+        /// </summary>
+        /// <param name="id">Key</param>
+        /// <returns>Dto</returns>
         public Task<IndividualTrainingDto> GetById(ObjectId id)
         {
             var client = _databaseConfiguration.CreateClient(_logger);
@@ -55,6 +60,10 @@ namespace Samson.Web.Application.ReadModels
                 .ContinueWith(entity => _mapper.Map<IndividualTrainingDto>(entity.Result));
         }
 
+        /// <summary>
+        /// Get all IndividualTraining dtos from collection.
+        /// </summary>
+        /// <returns>Dtos list</returns>
         public Task<List<IndividualTrainingDto>> GetAll()
         {
             var client = _databaseConfiguration.CreateClient(_logger);

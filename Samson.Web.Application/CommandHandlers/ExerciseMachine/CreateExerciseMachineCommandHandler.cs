@@ -36,7 +36,7 @@ namespace Samson.Web.Application.CommandHandlers.ExerciseMachine
         /// </summary>
         /// <param name="request">Command</param>
         /// <param name="cancellationToken">Cancellation notification</param>
-        /// <returns>CreatePersonalTrainer ExerciseMachine Id</returns>
+        /// <returns>Created exercise machine id</returns>
         public Task<ObjectId> Handle(CreateExerciseMachineCommand request, CancellationToken cancellationToken)
         {
             var dataStructure = _mapper.Map<CreateExerciseMachineCommand, CreateExerciseMachineDataStructure>(request);

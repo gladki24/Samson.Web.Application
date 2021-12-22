@@ -36,7 +36,7 @@ namespace Samson.Web.Application.CommandHandlers.Event
         /// </summary>
         /// <param name="request">Command</param>
         /// <param name="cancellationToken">Cancellation notification</param>
-        /// <returns>CreatePersonalTrainer User Id</returns>
+        /// <returns>Created Event Id</returns>
         Task<ObjectId> IRequestHandler<CreateEventCommand, ObjectId>.Handle(CreateEventCommand request,
             CancellationToken cancellationToken)
         {
