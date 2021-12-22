@@ -8,8 +8,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Samson.Web.Application.Identity;
+using Samson.Web.Application.Infrastructure;
 using Samson.Web.Application.Infrastructure.Middlewares;
 using Samson.Web.Application.WebHost.Configuration;
 
@@ -42,7 +44,11 @@ namespace Samson.Web.Application.WebHost
         /// <param name="services">Collection of registered services</param>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddJwtAuth(Environment.GetEnvironmentVariable("Authentication:JWT:Key"));
+            var jwtKey = Environment.GetEnvironmentVariable("Authentication:JWT:Key");
+            if (jwtKey.IsNullOrEmpty())
+                throw new Exception("Empty Authentication:JWT:Key environment variable");
+
+            services.AddJwtAuth(jwtKey);
             services.AddOptions();
             services.AddControllers();
             services.AddSwaggerGen(c =>
