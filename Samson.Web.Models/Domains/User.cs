@@ -15,6 +15,7 @@ namespace Samson.Web.Application.Models.Domains
         public string Surname { get; private set; }
         public string Login { get; private set; }
         public string Password { get; private set; }
+        public bool IsArchived { get; private set; }
         public IList<string> Roles { get; private set; }
 
         /// <summary>
@@ -30,7 +31,9 @@ namespace Samson.Web.Application.Models.Domains
             Surname = dataStructure.Surname;
             Login = dataStructure.Login;
             Password = password;
+            IsArchived = false;
             Roles = new List<string>() {"User"};
+            
         }
 
         /// <summary>
@@ -48,6 +51,14 @@ namespace Samson.Web.Application.Models.Domains
         {
             Name = dataStructure.Name;
             Surname = dataStructure.Surname;
+        }
+
+        /// <summary>
+        /// Archive User account.
+        /// </summary>
+        public void Archive()
+        {
+            IsArchived = true;
         }
     }
 }

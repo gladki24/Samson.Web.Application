@@ -25,5 +25,6 @@
         public static string InvalidUser = "Nie znaleziono użytkownika o tym loginie";
         public static string InvalidPasswordToDelete = "Hasło niepoprawne. Nie można usunąć konta";
         public static string UserNotFound = "Nie można odnaleźć użytkownika";
+        public static string AccountIsArchived = "Konto jest nieaktywne";
     }
 }

@@ -42,6 +42,9 @@ namespace Samson.Web.Application.Services
         {
             var user = GetByLoginOrThrow(dataStructure.Login);
 
+            if (user.IsArchived)
+                throw new BusinessLogicException(ApplicationMessage.AccountIsArchived);
+
             if (!_hashService.Verify(dataStructure.Password, user.Password))
                 throw new BusinessLogicException(ApplicationMessage.InvalidPassword);
 

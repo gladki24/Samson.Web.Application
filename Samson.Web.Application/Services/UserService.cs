@@ -43,8 +43,9 @@ namespace Samson.Web.Application.Services
 
             if (!_hashService.Verify(dataStructure.Password, user.Password))
                 throw new BusinessLogicException(ApplicationMessage.InvalidPasswordToDelete);
-
-            return Repository.Remove(user);
+            
+            user.Archive();
+            return Repository.Update(dataStructure.Id, user);
         }
 
         protected TUser GetOrThrow(ObjectId id)

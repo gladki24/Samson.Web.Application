@@ -19,6 +19,7 @@ namespace Samson.Web.Application.Persistence.Entities
         public string Surname { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
+        public bool IsArchived { get; set; }
         public IEnumerable<string> Roles { get; set; }
     }
 }

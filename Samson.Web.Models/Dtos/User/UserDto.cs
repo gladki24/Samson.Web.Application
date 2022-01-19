@@ -13,6 +13,7 @@ namespace Samson.Web.Application.Models.Dtos.User
         public string Login { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
+        public bool IsArchived { get; set; }
         public IList<string> Roles { get; set; }
     }
 }
